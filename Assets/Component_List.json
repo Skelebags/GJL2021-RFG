@@ -1,0 +1,19 @@
+{
+    "Components": [
+        {
+            "name": "Green",
+            "slot": "Colour",
+            "effects": ["+10 DEX"]
+        },
+        {
+            "name": "Toad",
+            "slot": "Descriptor",
+            "effects": ["x2 INT", "x-0.5 STR"]
+        },
+        {
+            "name": "Dust",
+            "slot": "Type",
+            "effects": ["+10 INT", "x-0.5 STR"]
+        }
+    ]
+}
