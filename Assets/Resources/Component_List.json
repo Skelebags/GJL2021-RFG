@@ -3,17 +3,109 @@
         {
             "name": "Green",
             "slot": "Colour",
-            "effects": ["+10 DEX"]
+            "effects": 
+                [
+                    {"dex" : [{"mod": 10}, {"mult": 1}]}
+                ],
+            "cost": 10,
+            "tag": "any",
+            "tier": 1
         },
         {
             "name": "Toad",
             "slot": "Descriptor",
-            "effects": ["x2 INT", "x-0.5 STR"]
+            "effects": 
+                [
+                    {"int" : [{"mod": 0}, {"mult": 2}]},
+                    {"str" : [{"mod": 0}, {"mult":-0.5}]}
+                ],
+            "cost": 20,
+            "tag": "meat",
+            "tier": 1
         },
         {
             "name": "Dust",
             "slot": "Type",
-            "effects": ["+10 INT", "x-0.5 STR"]
+            "effects": 
+                [
+                    {"int" : [{"mod": 10}, {"mult": 1}]},
+                    {"str" : [{"mod": 0}, {"mult":-0.5}]}
+                ],
+            "cost": 40,
+            "tag": "mineral",
+            "tier": 1
+        },
+        {
+            "name": "Blue",
+            "slot": "Colour",
+            "effects": 
+                [
+                    {"int" : [{"mod": 10}, {"mult": 1}]}
+                ],
+            "cost": 15,
+            "tag": "any",
+            "tier": 1
+        },
+        {
+            "name": "Dragon",
+            "slot": "Descriptor",
+            "effects": 
+                [
+                    {"str" : [{"mod": 0}, {"mult": 2}]},
+                    {"dex" : [{"mod": 0}, {"mult": -0.5}]}
+                ],
+            "cost": 25,
+            "tag": "meat",
+            "tier": 3
+        },
+        {
+            "name": "Root",
+            "slot": "Type",
+            "effects": 
+                [
+                    {"int" : [{"mod": 0}, {"mult": -0.5}]},
+                    {"dex" : [{"mod": 10}, {"mult": 1}]}
+                ],
+            "cost": 30,
+            "tag": "plant",
+            "tier": 1
+        }
+        ,
+        {
+            "name": "Red",
+            "slot": "Colour",
+            "effects": 
+                [
+                    {"str" : [{"mod": 10}, {"mult": 1}]}
+                ],
+            "cost": 5,
+            "tag": "any",
+            "tier": 1
+        },
+        {
+            "name": "Human",
+            "slot": "Descriptor",
+            "effects": 
+                [
+                    {"str" : [{"mod": -10}, {"mult": 1}]},
+                    {"int" : [{"mod": 10}, {"mult": 1}]}
+                ],
+            "cost": 100,
+            "tag": "meat",
+            "tier": 2
+        },
+        {
+            "name": "Leaf",
+            "slot": "Type",
+            "effects": 
+                [
+                    {"str" : [{"mod": 5}, {"mult": 1}]},
+                    {"int" : [{"mod": 5}, {"mult": 1}]},
+                    {"dex" : [{"mod": 5}, {"mult": 1}]}
+                ],
+            "cost": 20,
+            "tag": "plant",
+            "tier": 1
         }
     ]
 }
