@@ -8,7 +8,7 @@
                     {"dex" : [{"mod": 10}, {"mult": 1}]}
                 ],
             "cost": 10,
-            "tag": "any",
+            "tags": ["any"],
             "tier": 1
         },
         {
@@ -20,7 +20,7 @@
                     {"str" : [{"mod": 0}, {"mult":-0.5}]}
                 ],
             "cost": 20,
-            "tag": "meat",
+            "tags": ["meat"],
             "tier": 1
         },
         {
@@ -32,7 +32,7 @@
                     {"str" : [{"mod": 0}, {"mult":-0.5}]}
                 ],
             "cost": 40,
-            "tag": "mineral",
+            "tags": ["mineral", "plant"],
             "tier": 1
         },
         {
@@ -43,7 +43,7 @@
                     {"int" : [{"mod": 10}, {"mult": 1}]}
                 ],
             "cost": 15,
-            "tag": "any",
+            "tags": ["any"],
             "tier": 1
         },
         {
@@ -55,7 +55,7 @@
                     {"dex" : [{"mod": 0}, {"mult": -0.5}]}
                 ],
             "cost": 25,
-            "tag": "meat",
+            "tags": ["meat"],
             "tier": 3
         },
         {
@@ -67,7 +67,7 @@
                     {"dex" : [{"mod": 10}, {"mult": 1}]}
                 ],
             "cost": 30,
-            "tag": "plant",
+            "tags": ["plant"],
             "tier": 1
         }
         ,
@@ -79,7 +79,7 @@
                     {"str" : [{"mod": 10}, {"mult": 1}]}
                 ],
             "cost": 5,
-            "tag": "any",
+            "tags": ["any"],
             "tier": 1
         },
         {
@@ -91,7 +91,7 @@
                     {"int" : [{"mod": 10}, {"mult": 1}]}
                 ],
             "cost": 100,
-            "tag": "meat",
+            "tags": ["meat"],
             "tier": 2
         },
         {
@@ -104,7 +104,7 @@
                     {"dex" : [{"mod": 5}, {"mult": 1}]}
                 ],
             "cost": 20,
-            "tag": "plant",
+            "tags": ["plant"],
             "tier": 1
         }
     ]

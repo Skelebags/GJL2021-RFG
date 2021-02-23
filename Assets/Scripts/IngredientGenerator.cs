@@ -30,16 +30,16 @@ public class IngredientGenerator : MonoBehaviour
 
         GenerateIngredients();
 
-        Debug.Log(Ingredients.Count);
-        foreach (Ingredient ingredient in Ingredients)
-        {
-            Debug.Log(ingredient.name);
-            Debug.Log(ingredient.cost);
-            foreach (KeyValuePair<string, float[]> effect in ingredient.effectsDict)
-            {
-                Debug.Log(effect.Key + ": Modifier => " + effect.Value[0] + " Multiplier => " + effect.Value[1]);
-            }
-        }
+        //Debug.Log(Ingredients.Count);
+        //foreach (Ingredient ingredient in Ingredients)
+        //{
+        //    Debug.Log(ingredient.name);
+        //    Debug.Log(ingredient.cost);
+        //    foreach (KeyValuePair<string, float[]> effect in ingredient.effectsDict)
+        //    {
+        //        Debug.Log(effect.Key + ": Modifier => " + effect.Value[0] + " Multiplier => " + effect.Value[1]);
+        //    }
+        //}
 
         
     }

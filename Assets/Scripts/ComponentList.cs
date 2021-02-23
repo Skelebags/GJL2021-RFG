@@ -15,6 +15,9 @@ public class ComponentList : MonoBehaviour
         public Dictionary<string, float[]> effectsDict = new Dictionary<string, float[]>() { {"str", new float[2] { 0f, 1f} }, { "int", new float[2] { 0f, 1f } }, { "dex", new float[2] { 0f, 1f } } };
         //public List<string> effects = new List<string>();
         public int cost;
+        public enum Tags { any, meat, mineral, plant};
+        public List<Tags> tags = new List<Tags>();
+        public int tier;
     }
 
     public TextAsset component_list_file;
@@ -53,24 +56,43 @@ public class ComponentList : MonoBehaviour
                 if(effectArray[j]["str"] != null)
                 {
                     JSONArray strArray = effectArray[j]["str"].AsArray;
-                    component.effectsDict["str"] = new float[2] { component.effectsDict["str"][0] + strArray[0]["mod"], component.effectsDict["str"][1] * strArray[1]["mult"]};
+                    component.effectsDict["str"] = new float[2] { component.effectsDict["str"][0] + strArray[0]["mod"].AsFloat, component.effectsDict["str"][1] * strArray[1]["mult"].AsFloat };
                     //Debug.Log(component.effectsDict["str"][0] + " : " + component.effectsDict["str"][1]);
                 }
                 else if (effectArray[j]["int"] != null) // Do the same for int
                 {
                     JSONArray strArray = effectArray[j]["int"].AsArray;
-                    component.effectsDict["int"] = new float[2] { component.effectsDict["int"][0] + strArray[0]["mod"], component.effectsDict["int"][1] * strArray[1]["mult"] };
+                    component.effectsDict["int"] = new float[2] { component.effectsDict["int"][0] + strArray[0]["mod"].AsFloat, component.effectsDict["int"][1] * strArray[1]["mult"].AsFloat };
                     //Debug.Log(component.effectsDict["int"][0] + " : " + component.effectsDict["int"][1]);
                 }
                 else if(effectArray[j]["dex"] != null) // And dex
                 {
                     JSONArray strArray = effectArray[j]["dex"].AsArray;
-                    component.effectsDict["dex"] = new float[2] { component.effectsDict["dex"][0] + strArray[0]["mod"], component.effectsDict["dex"][1] * strArray[1]["mult"] };
+                    component.effectsDict["dex"] = new float[2] { component.effectsDict["dex"][0] + strArray[0]["mod"].AsFloat, component.effectsDict["dex"][1] * strArray[1]["mult"].AsFloat };
                     //Debug.Log(component.effectsDict["dex"][0] + " : " + component.effectsDict["dex"][1]);
                 }
 
             }
+
+            // Get the component's cost
             component.cost = array[i]["cost"].AsInt;
+
+            // Get the component's tags
+            JSONArray tagsArray = array[i]["tags"].AsArray;
+
+            for(int j = 0; j < tagsArray.Count; j++)
+            {
+                component.tags.Add((Component.Tags)System.Enum.Parse(typeof(Component.Tags), tagsArray[j].Value));
+            }
+
+            foreach(Component.Tags tag in component.tags)
+            {
+                Debug.Log(tag.ToString());
+            }
+
+            // Get the component's tier
+            component.tier = array[i]["tier"].AsInt;
+
             Data.Add(component);
         }
 
