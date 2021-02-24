@@ -8,8 +8,8 @@ using UnityEngine;
 public class IngredientGenerator : MonoBehaviour
 {
     public List<Ingredient> Ingredients = new List<Ingredient>();
-
-    //private const int INGREDIENT_COUNT = 5;
+    //public Dictionary<string, Ingredient> Ingredients = new Dictionary<string, Ingredient>();
+    
 
     private const int PLANT_COUNT = 2;
     private const int MEAT_COUNT = 2;
@@ -78,11 +78,17 @@ public class IngredientGenerator : MonoBehaviour
     /// </summary>
     private void GenerateIngredient(PartList.Part.Tags targetTag)
     {
+        int loopCounter = 0;
+        int MAX_LOOPS = 50;
 
+        Ingredient ingredient = ScriptableObject.CreateInstance<Ingredient>();
+
+        do
+        {
             PartList.Part colourPart = null;
             PartList.Part descPart = null;
             PartList.Part typePart = null;
-            
+
             do
             {
                 int randIndex = Random.Range(0, Colours.Count);
@@ -91,7 +97,7 @@ public class IngredientGenerator : MonoBehaviour
                     colourPart = Colours[randIndex];
                 }
             } while (colourPart == null);
-            
+
             do
             {
                 int randIndex = Random.Range(0, Descriptors.Count);
@@ -99,8 +105,8 @@ public class IngredientGenerator : MonoBehaviour
                 {
                     descPart = Descriptors[randIndex];
                 }
-            } while (descPart == null) ;
-            
+            } while (descPart == null);
+
             do
             {
                 int randIndex = Random.Range(0, Types.Count);
@@ -110,7 +116,6 @@ public class IngredientGenerator : MonoBehaviour
                 }
             } while (typePart == null);
 
-            Ingredient ingredient = ScriptableObject.CreateInstance<Ingredient>();
 
             ingredient.name = colourPart.name + " " + descPart.name + " " + typePart.name;
             ingredient.cost = colourPart.cost + descPart.cost + typePart.cost;
@@ -128,9 +133,11 @@ public class IngredientGenerator : MonoBehaviour
 
             ingredient.desc_string = colourPart.desc_string + typePart.desc_string + descPart.desc_string;
 
-            Ingredients.Add(ingredient);
+            loopCounter++;
 
-       
+        } while (Ingredients.Contains(ingredient) || loopCounter < MAX_LOOPS);
+
+        Ingredients.Add(ingredient);     
     }
 
     private Sprite CombineSprites(Sprite colourSprite, Sprite descSprite, Sprite typeSprite)
