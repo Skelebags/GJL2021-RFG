@@ -1,0 +1,196 @@
+{
+    "Parts": [
+        {
+            "name": "Green",
+            "slot": "Colour",
+            "effects": 
+                [
+                    {"dex" : [{"mod": 10}, {"mult": 1}]}
+                ],
+            "cost": 10,
+            "tags": ["any"],
+            "tier": 1,
+            "graphic": "Sprites/Green_Graphic",
+            "desc": "A green"
+        },
+        {
+            "name": "Toad",
+            "slot": "Descriptor",
+            "effects": 
+                [
+                    {"int" : [{"mod": 0}, {"mult": 2}]},
+                    {"str" : [{"mod": 0}, {"mult":-0.5}]}
+                ],
+            "cost": 20,
+            "tags": ["meat"],
+            "tier": 1,
+            "graphic": "Sprites/Toad_Graphic",
+            "desc": " from a toad of some kind."
+        },
+        {
+            "name": "Dust",
+            "slot": "Type",
+            "effects": 
+                [
+                    {"int" : [{"mod": 10}, {"mult": 1}]},
+                    {"str" : [{"mod": 0}, {"mult":-0.5}]}
+                ],
+            "cost": 40,
+            "tags": ["any"],
+            "tier": 1,
+            "graphic": "Sprites/Dust_Graphic",
+            "desc": ", dusty residue"
+        },
+        {
+            "name": "Blue",
+            "slot": "Colour",
+            "effects": 
+                [
+                    {"int" : [{"mod": 10}, {"mult": 1}]}
+                ],
+            "cost": 15,
+            "tags": ["any"],
+            "tier": 1,
+            "graphic": "Sprites/Blue_Graphic",
+            "desc": "A blue"
+        },
+        {
+            "name": "Dragon",
+            "slot": "Descriptor",
+            "effects": 
+                [
+                    {"str" : [{"mod": 0}, {"mult": 2}]},
+                    {"dex" : [{"mod": 0}, {"mult": -0.5}]}
+                ],
+            "cost": 25,
+            "tags": ["meat"],
+            "tier": 3,
+            "graphic": "Sprites/Dragon_Graphic",
+            "desc": " from a scaled, winged, nasty-breathed monster."
+        },
+        {
+            "name": "Root",
+            "slot": "Type",
+            "effects": 
+                [
+                    {"int" : [{"mod": 0}, {"mult": -0.5}]},
+                    {"dex" : [{"mod": 10}, {"mult": 1}]}
+                ],
+            "cost": 30,
+            "tags": ["plant"],
+            "tier": 1,
+            "graphic": "Sprites/Root_Graphic",
+            "desc": ", tough, chewy root"
+        }
+        ,
+        {
+            "name": "Red",
+            "slot": "Colour",
+            "effects": 
+                [
+                    {"str" : [{"mod": 10}, {"mult": 1}]}
+                ],
+            "cost": 5,
+            "tags": ["any"],
+            "tier": 1,
+            "graphic": "Sprites/Red_Graphic",
+            "desc": "A red"
+        },
+        {
+            "name": "Human",
+            "slot": "Descriptor",
+            "effects": 
+                [
+                    {"str" : [{"mod": -10}, {"mult": 1}]},
+                    {"int" : [{"mod": 10}, {"mult": 1}]}
+                ],
+            "cost": 100,
+            "tags": ["meat"],
+            "tier": 2,
+            "graphic": "Sprites/Human_Graphic",
+            "desc": " from a... On second thought, lets not think about this too much."
+        },
+        {
+            "name": "Leaf",
+            "slot": "Type",
+            "effects": 
+                [
+                    {"str" : [{"mod": 5}, {"mult": 1}]},
+                    {"int" : [{"mod": 5}, {"mult": 1}]},
+                    {"dex" : [{"mod": 5}, {"mult": 1}]}
+                ],
+            "cost": 20,
+            "tags": ["plant", "mineral"],
+            "tier": 1,
+            "graphic": "Sprites/Leaf_Graphic",
+            "desc": " leaf"
+        },
+        {
+            "name": "Rusted",
+            "slot": "Colour",
+            "effects": 
+                [
+                    {"str" : [{"mod": 5}, {"mult": 1}]}
+                ],
+            "cost": 5,
+            "tags": ["mineral"],
+            "tier": 1,
+            "graphic": "Sprites/Rust_Graphic",
+            "desc" : "A rusty old"
+        },
+        {
+            "name": "Copper",
+            "slot": "Descriptor",
+            "effects": 
+                [
+                    {"str" : [{"mod": 0}, {"mult": 1.5}]}
+                ],
+            "cost": 20,
+            "tags": ["mineral"],
+            "tier": 1,
+            "graphic": "Sprites/Copper_Graphic",
+            "desc" : " of copper"
+        },
+        {
+            "name": "Ginger",
+            "slot": "Descriptor",
+            "effects": 
+                [
+                    {"str": [{"mod": 0}, {"mult": 1.5}]}
+                ],
+            "cost": 5,
+            "tags": ["plant"],
+            "tier": 1,
+            "graphic": "Sprites/Ginger_Graphic",
+            "desc": " of a popular spice"
+        },
+        {
+            "name": "Cave Slime",
+            "slot": "Descriptor",
+            "effects": 
+                [
+                    {"str": [{"mod": 0}, {"mult": -0.75}]},
+                    {"int": [{"mod": 0}, {"mult": 1.5}]},
+                    {"dex": [{"mod": 0}, {"mult": 2}]}
+                ],
+            "cost": 10,
+            "tags": ["plant", "meat", "toxic"],
+            "tier": 2,
+            "graphic": "Sprites/CaveSlime_Graphic",
+            "desc": " from a common dungeon monster"
+        },
+        {
+            "name": "Juice",
+            "slot": "Type",
+            "effects":
+                [
+                    {"dex":[{"mod":5}, {"mult": 1}]}
+                ],
+            "cost": 10,
+            "tags": ["plant", "meat", "blessed"],
+            "tier": 2,
+            "graphic": "Sprites/Juice_Graphic",
+            "desc": " juice squeezed"
+        }
+    ]
+}
