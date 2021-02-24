@@ -5,22 +5,24 @@ using UnityEngine.UI;
 
 public class Tooltip : MonoBehaviour
 {
-    private static Tooltip instance;  
     
     [SerializeField]
     private Camera uiCamera;
     
-    private Text tooltipText;
+    private Text tooltipTextComp;
     private RectTransform backgroundRectTransform;
 
+    private void Start()
+    {
+        backgroundRectTransform = transform.Find("Background").gameObject.GetComponent<RectTransform>();
+        tooltipTextComp = transform.Find("TooltipText").gameObject.GetComponent<Text>();
+        //HideTooltip();
+
+    }
+    
     private void Awake()
     {
-        instance = this;
-        backgroundRectTransform = transform.Find("Background").GetComponent<RectTransform>();
-        tooltipText = transform.Find("TooltipText").GetComponent<Text>();
-
-
-        ShowTooltip("Test Text");
+        //ShowTooltip("Test Text");
     }
 
     private void Update()
@@ -30,33 +32,22 @@ public class Tooltip : MonoBehaviour
         transform.localPosition = localPoint;
     }
     
-    private void ShowTooltip(string tooltipString)
+    public void ShowTooltip(string tooltipString)
     {
         gameObject.SetActive(true);
-        tooltipText.text = tooltipString;
+        tooltipTextComp.text = tooltipString;
         float textPaddingSize = 4f;
-        Vector2 backgroundSize = new Vector2(tooltipText.preferredWidth + textPaddingSize * 2f, tooltipText.preferredHeight + textPaddingSize * 2f);
+        Vector2 backgroundSize = new Vector2(tooltipTextComp.preferredWidth + textPaddingSize * 2f, tooltipTextComp.preferredHeight + textPaddingSize * 2f);
         backgroundRectTransform.sizeDelta = backgroundSize;
     }
     
-    private void HideTooltip()
+    public void HideTooltip()
     {
         gameObject.SetActive(false);
     }
 
-    public static void ShowTooltip_Static(string tooltipString)
-    {
-        instance.ShowTooltip(tooltipString);
+   
 
-
-
-    }
-
-    public static void HideTooltip_Static()
-    {
-        instance.HideTooltip();
-
-    }
 
 
 }
