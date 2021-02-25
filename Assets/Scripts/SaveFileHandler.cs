@@ -34,8 +34,7 @@ public class SaveFileHandler : MonoBehaviour
             if (System.IO.File.Exists(save_path))
             {
                 JSONNode S = JSON.Parse(System.IO.File.ReadAllText(save_path));
-
-                Debug.Log(S["Save_Name"].Value);
+                
             }
             else
             {
@@ -76,9 +75,12 @@ public class SaveFileHandler : MonoBehaviour
         string file_string = System.IO.File.ReadAllText(save_path);
 
         JSONNode S = JSON.Parse(file_string);
-        
 
-        if(S["Money"] != null && saveData["Money"] != null)
+        if (S["Save_Name"] != null && saveData["Save_Name"] != null)
+        {
+            S["Save_Name"] = saveData["Save_Name"].Value;
+        }
+        if (S["Money"] != null && saveData["Money"] != null)
         {
             S["Money"] = saveData["Money"].AsInt;
         }

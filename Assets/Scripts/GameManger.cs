@@ -11,11 +11,15 @@ public class GameManger : MonoBehaviour
 
     private SaveFileHandler handler;
 
+    [SerializeField]
+    private PlayerDataManager player;
+
     // Start is called before the first frame update
     void Start()
     {
         generator = GetComponent<IngredientGenerator>();
         handler = GetComponent<SaveFileHandler>();
+        player = GetComponent<PlayerDataManager>();
     }
 
 
@@ -29,30 +33,17 @@ public class GameManger : MonoBehaviour
             SpawnSprites();
         }
 
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            ClearSprites();
+            SpawnInventory();
+        }
+
 
         if (Input.GetKeyDown(KeyCode.S))
         {
 
-            JSONObject data = new JSONObject();
-            // Save money
-            data.Add("Money", 0);
-            // Save
-            data.Add("Day", 1);
-
-            // INVENTORY STARTS EMPTY
-            JSONArray inventory = new JSONArray();
-            for (int i = 0; i < 9; i++)
-            {
-                JSONObject item = new JSONObject();
-                JSONArray idArray = new JSONArray();
-                foreach(int id in generator.Ingredients[i].ids)
-                {
-                    idArray.Add(id);
-                }
-                item.Add("id", idArray);
-                inventory.Add(item);
-            }
-            data.Add("Inventory", inventory);
+            JSONObject data = BuildPlayerData();
 
             handler.Save(0, data);
         }
@@ -60,22 +51,14 @@ public class GameManger : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.L))
         {
             ClearSprites();
+            ApplyLoadData();
+        }
 
-            JSONNode load_data = handler.Load(0);
-
-            JSONArray inventoryArray = load_data["Inventory"].AsArray;
-
-            for(int i = 0; i < inventoryArray.Count; i++)
+        if(Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            for(int i = 0; i < 3; i++)
             {
-                if (inventoryArray[i]["id"].Value != "none")
-                {
-                    JSONArray idArray = inventoryArray[i]["id"].AsArray;
-                    generator.Ingredients[i] = generator.GenerateIngredientFromIDs(idArray[0].AsInt, idArray[1].AsInt, idArray[2].AsInt);
-                }
-                else
-                {
-                    Debug.Log("No saved inventory");
-                }
+                player.AddToInventoryAtSlot(i, generator.Ingredients[i]);
             }
         }
     }
@@ -98,6 +81,81 @@ public class GameManger : MonoBehaviour
             GameObject renderedIngredient = Instantiate(ingredientHolder, new Vector3(0, 0, 0), Quaternion.identity);
             renderedIngredient.GetComponent<SpriteRenderer>().sprite = generator.Ingredients[i].sprite;
             renderedIngredient.transform.position = new Vector3(-Camera.main.orthographicSize + (renderedIngredient.GetComponent<SpriteRenderer>().sprite.bounds.size.x * i), 0);
+        }
+    }
+
+    void SpawnInventory()
+    {
+
+        for (int i = 0; i < 9; i++)
+        {
+            if(player.GetIDsAtSlot(i)[0] != 0)
+            {
+                GameObject renderedIngredient = Instantiate(ingredientHolder, new Vector3(0, 0, 0), Quaternion.identity);
+                renderedIngredient.GetComponent<SpriteRenderer>().sprite = player.GetIngredientAtSlot(i).sprite;
+                renderedIngredient.transform.position = new Vector3(-Camera.main.orthographicSize + (renderedIngredient.GetComponent<SpriteRenderer>().sprite.bounds.size.x * i), 0);
+            }
+        }
+    }
+
+    JSONObject BuildPlayerData()
+    {
+        JSONObject data = new JSONObject();
+
+        // Save player name
+        data.Add("Save_Name", player.player_name);
+
+        // Save money
+        data.Add("Money", player.money);
+        // Save day
+        data.Add("Day", 1);
+
+        // Save current inventory
+        JSONArray invArray = new JSONArray();
+        for (int i = 0; i < 9; i++)
+        {
+            JSONObject item = new JSONObject();
+            if (player.GetIDsAtSlot(i)[0] != 0)
+            {
+                JSONArray idArray = new JSONArray();
+                foreach (int id in player.GetIDsAtSlot(i))
+                {
+                    idArray.Add(id);
+                }
+                item.Add("id", idArray);
+            }
+            else
+            {
+                item.Add("id", "none");
+            }
+
+            invArray.Add(item);
+        }
+        data.Add("Inventory", invArray);
+
+        return data;
+    }
+
+    void ApplyLoadData()
+    {
+        JSONNode load_data = handler.Load(0);
+
+        player.player_name = load_data["Save_Name"].Value;
+
+        JSONArray inventoryArray = load_data["Inventory"].AsArray;
+
+        for (int i = 0; i < inventoryArray.Count; i++)
+        {
+            if (inventoryArray[i]["id"].Value != "none")
+            {
+                JSONArray idArray = inventoryArray[i]["id"].AsArray;
+                //generator.Ingredients[i] = generator.GenerateIngredientFromIDs(idArray[0].AsInt, idArray[1].AsInt, idArray[2].AsInt);
+                player.AddToInventoryAtSlot(i, generator.GenerateIngredientFromIDs(idArray[0].AsInt, idArray[1].AsInt, idArray[2].AsInt));
+            }
+            else
+            {
+                Debug.Log("No saved inventory");
+            }
         }
     }
 }
