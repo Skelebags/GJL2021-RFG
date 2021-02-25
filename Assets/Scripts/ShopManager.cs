@@ -29,7 +29,7 @@ public class ShopManager : MonoBehaviour
 
         for (int invSlot = 0; invSlot < inventory_obj.transform.childCount; invSlot++)
         {
-            inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().AssignIngredient(shopInventory[invSlot]);
+            inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().AssignIngredient(shopInventory[invSlot], invSlot);
         }
     }
 }

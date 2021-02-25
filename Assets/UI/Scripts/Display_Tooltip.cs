@@ -18,7 +18,10 @@ public class Display_Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        tooltip.GetComponent<Tooltip>().ShowTooltip(tooltipText);
+        if(tooltip)
+        {
+            tooltip.GetComponent<Tooltip>().ShowTooltip(tooltipText);
+        }
     }
 
     public void OnPointerExit(PointerEventData pointerEventData)

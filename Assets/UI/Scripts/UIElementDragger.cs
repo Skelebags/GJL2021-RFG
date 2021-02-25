@@ -6,7 +6,8 @@ public class UIElementDragger : MonoBehaviour
 {
 
     public bool dragging;
-    public GameObject cauldron;
+    //public GameObject cauldron;
+    private GameObject overlap = null;
     public GameObject spawn;
     private bool returning = false;
     public float returnSpeed = 0.5f;
@@ -21,9 +22,53 @@ public class UIElementDragger : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 dragging = false;
-                if (RectTransformOverlap(GetComponent<RectTransform>(), cauldron.GetComponent<RectTransform>()))
-                {
+                //if (RectTransformOverlap(GetComponent<RectTransform>(), cauldron.GetComponent<RectTransform>()))
+                //{
                     
+                //}
+                //else if(RectTransformOverlap(GetComponent<RectTransform>(), ))
+                //{
+
+                //}
+                //else
+                //{
+                //    returning = true;
+                //}
+
+                if(overlap == null)
+                {
+                    returning = true;
+                }
+                else if(overlap.CompareTag("Catcher"))
+                {
+                    if(spawn.transform.parent.name == "Inventory")
+                    {
+                        Destroy(gameObject);
+                    }
+                    else
+                    {
+                        returning = true;
+                    }
+                }
+                else if(overlap.transform.parent.name == "Inventory")
+                {
+                    PlayerDataManager playerDataManager = GameObject.Find("GameManager").GetComponent<PlayerDataManager>();
+
+                    if (overlap.GetComponent<Storage>().IsEmpty() || playerDataManager.CompareIDs(ingredient.ids, overlap.GetComponent<Storage>().GetIngredient().ids))
+                    {
+                        GameObject.Find("GameManager").GetComponent<PlayerDataManager>().AddToInventoryAtSlot(overlap.GetComponent<Storage>().GetSlotNumber(), ingredient);
+                        Destroy(gameObject);
+                    }
+                    else if(spawn.transform.parent.name == "Inventory")
+                    {
+                        GameObject.Find("GameManager").GetComponent<PlayerDataManager>().SwapIngredientLocs(spawn.GetComponent<Storage>().GetSlotNumber(), overlap.GetComponent<Storage>().GetSlotNumber(), ingredient, overlap.GetComponent<Storage>().GetIngredient());
+                        overlap.GetComponent<Storage>().quantity++;
+                        Destroy(gameObject);
+                    }
+                    else
+                    {
+                        returning = true;
+                    }
                 }
                 else
                 {
@@ -42,10 +87,24 @@ public class UIElementDragger : MonoBehaviour
             if (RectTransformOverlap(GetComponent<RectTransform>(), spawn.GetComponent<RectTransform>()))
             {
                 returning = false;
+                spawn.GetComponent<Storage>().AssignIngredient(ingredient, spawn.GetComponent<Storage>().GetSlotNumber());
                 spawn.GetComponent<Storage>().quantity++;
                 Destroy(transform.gameObject);
             }
         }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Collided!");
+        overlap = collision.gameObject;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("Leaving");
+        overlap = null;
     }
 
 
