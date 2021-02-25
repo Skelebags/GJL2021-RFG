@@ -6,13 +6,13 @@ using UnityEngine.EventSystems;
 
 public class Display_Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public GameObject tooltip;
+    private GameObject tooltip;
     private string tooltipText = "Default";
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        //tooltip = GameObject.FindGameObjectWithTag("Tooltip");
+        tooltip = GameObject.FindGameObjectWithTag("Tooltip");
         tooltip.GetComponent<Tooltip>().HideTooltip();
     }
 

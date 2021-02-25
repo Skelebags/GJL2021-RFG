@@ -9,7 +9,8 @@ public class UIElementDragger : EventTrigger
     public GameObject cauldron;
     public GameObject spawn;
     private bool returning = false;
-    
+    public float returnSpeed = 0f;
+
     public void Update()
     {
         if (dragging)
@@ -30,7 +31,7 @@ public class UIElementDragger : EventTrigger
         }
         if (returning)
         {
-            transform.position = Vector2.Lerp(transform.position, spawn.transform.position, 0.075f);
+            transform.position = Vector2.Lerp(transform.position, spawn.transform.position, returnSpeed);
             if (RectTransformOverlap(GetComponent<RectTransform>(), spawn.GetComponent<RectTransform>()))
             {
                 returning = false;
