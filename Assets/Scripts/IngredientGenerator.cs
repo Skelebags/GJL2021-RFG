@@ -7,13 +7,8 @@ using UnityEngine;
 /// </summary>
 public class IngredientGenerator : MonoBehaviour
 {
-    public List<Ingredient> Ingredients = new List<Ingredient>();
+    //public List<Ingredient> Ingredients = new List<Ingredient>();
     //public Dictionary<string, Ingredient> Ingredients = new Dictionary<string, Ingredient>();
-    
-
-    private const int PLANT_COUNT = 3;
-    private const int MEAT_COUNT = 3;
-    private const int MINERAL_COUNT = 3;
 
     private PartList partList;
 
@@ -22,35 +17,31 @@ public class IngredientGenerator : MonoBehaviour
     private List<PartList.Part> Types = new List<PartList.Part>();
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        partList = GetComponent<PartList>();
-
-        partList.PopulatePartsFromJSON();
-
-        SplitData();
-
-        for (int i = 0; i < PLANT_COUNT; i++)
+        if (partList == null)
         {
-            GenerateIngredient(PartList.Part.Tags.plant);
-        }
+            partList = GetComponent<PartList>();
+            partList.PopulatePartsFromJSON();
 
-        for (int i = 0; i < MEAT_COUNT; i++)
-        {
-            GenerateIngredient(PartList.Part.Tags.meat);
+            SplitData();
         }
-
-        for (int i = 0; i < MINERAL_COUNT; i++)
-        {
-            GenerateIngredient(PartList.Part.Tags.mineral);
-        }
-
-        foreach (Ingredient ingredient in Ingredients)
-        {
-            //Debug.Log(ingredient.name + " : " + ingredient.desc_string);
-        }
-
     }
+
+    //public void GenerateNumberOfIngredients(int numberToGenerate, PartList.Part.Tags targetTag)
+    //{
+    //    partList = GetComponent<PartList>();
+
+    //    partList.PopulatePartsFromJSON();
+
+    //    SplitData();
+
+    //    for (int i = 0; i < numberToGenerate; i++)
+    //    {
+    //        GenerateIngredient(targetTag);
+    //    }
+    //}
+
 
     private void SplitData()
     {
@@ -76,71 +67,81 @@ public class IngredientGenerator : MonoBehaviour
     /// <summary>
     /// Generates an ingredient of a specified tag type
     /// </summary>
-    public void GenerateIngredient(PartList.Part.Tags targetTag)
+    public List<Ingredient> GenerateIngredients(int numberOfIngredients, PartList.Part.Tags targetTag)
     {
-        int loopCounter = 0;
-        int MAX_LOOPS = 50;
 
-        Ingredient ingredient = ScriptableObject.CreateInstance<Ingredient>();
+        List<Ingredient> Ingredients = new List<Ingredient>();
 
-        do
+
+        for (int i = 0; i < numberOfIngredients; i++)
         {
-            PartList.Part colourPart = null;
-            PartList.Part descPart = null;
-            PartList.Part typePart = null;
+            int loopCounter = 0;
+            int MAX_LOOPS = 50;
 
+            Ingredient ingredient = ScriptableObject.CreateInstance<Ingredient>();
             do
             {
-                int randIndex = Random.Range(0, Colours.Count);
-                if (Colours[randIndex].tags.Contains(PartList.Part.Tags.any) || Colours[randIndex].tags.Contains(targetTag))
+                PartList.Part colourPart = null;
+                PartList.Part descPart = null;
+                PartList.Part typePart = null;
+
+                do
                 {
-                    colourPart = Colours[randIndex];
-                }
-            } while (colourPart == null);
+                    int randIndex = Random.Range(0, Colours.Count);
+                    if (Colours[randIndex].tags.Contains(PartList.Part.Tags.any) || Colours[randIndex].tags.Contains(targetTag))
+                    {
+                        colourPart = Colours[randIndex];
+                    }
+                } while (colourPart == null);
 
-            do
-            {
-                int randIndex = Random.Range(0, Descriptors.Count);
-                if (Descriptors[randIndex].tags.Contains(PartList.Part.Tags.any) || Descriptors[randIndex].tags.Contains(targetTag))
+                do
                 {
-                    descPart = Descriptors[randIndex];
-                }
-            } while (descPart == null);
+                    int randIndex = Random.Range(0, Descriptors.Count);
+                    if (Descriptors[randIndex].tags.Contains(PartList.Part.Tags.any) || Descriptors[randIndex].tags.Contains(targetTag))
+                    {
+                        descPart = Descriptors[randIndex];
+                    }
+                } while (descPart == null);
 
-            do
-            {
-                int randIndex = Random.Range(0, Types.Count);
-                if (Types[randIndex].tags.Contains(PartList.Part.Tags.any) || Types[randIndex].tags.Contains(targetTag))
+                do
                 {
-                    typePart = Types[randIndex];
-                }
-            } while (typePart == null);
+                    int randIndex = Random.Range(0, Types.Count);
+                    if (Types[randIndex].tags.Contains(PartList.Part.Tags.any) || Types[randIndex].tags.Contains(targetTag))
+                    {
+                        typePart = Types[randIndex];
+                    }
+                } while (typePart == null);
 
-            ingredient.ids[0] = colourPart.id;
-            ingredient.ids[1] = descPart.id;
-            ingredient.ids[2] = typePart.id;
+                ingredient.ids[0] = colourPart.id;
+                ingredient.ids[1] = descPart.id;
+                ingredient.ids[2] = typePart.id;
 
-            ingredient.name = colourPart.name + " " + descPart.name + " " + typePart.name;
-            ingredient.cost = colourPart.cost + descPart.cost + typePart.cost;
+                ingredient.name = colourPart.name + " " + descPart.name + " " + typePart.name;
+                ingredient.cost = colourPart.cost + descPart.cost + typePart.cost;
 
 
-            ingredient.effectsDict["str"] = new float[2] { (colourPart.effectsDict["str"][0] + descPart.effectsDict["str"][0] + typePart.effectsDict["str"][0]), (colourPart.effectsDict["str"][1] * descPart.effectsDict["str"][1] * typePart.effectsDict["str"][1]) };
-            ingredient.effectsDict["int"] = new float[2] { (colourPart.effectsDict["int"][0] + descPart.effectsDict["int"][0] + typePart.effectsDict["int"][0]), (colourPart.effectsDict["int"][1] * descPart.effectsDict["int"][1] * typePart.effectsDict["int"][1]) };
-            ingredient.effectsDict["dex"] = new float[2] { (colourPart.effectsDict["dex"][0] + descPart.effectsDict["dex"][0] + typePart.effectsDict["dex"][0]), (colourPart.effectsDict["dex"][1] * descPart.effectsDict["dex"][1] * typePart.effectsDict["dex"][1]) };
+                ingredient.effectsDict["str"] = new float[2] { (colourPart.effectsDict["str"][0] + descPart.effectsDict["str"][0] + typePart.effectsDict["str"][0]), (colourPart.effectsDict["str"][1] * descPart.effectsDict["str"][1] * typePart.effectsDict["str"][1]) };
+                ingredient.effectsDict["int"] = new float[2] { (colourPart.effectsDict["int"][0] + descPart.effectsDict["int"][0] + typePart.effectsDict["int"][0]), (colourPart.effectsDict["int"][1] * descPart.effectsDict["int"][1] * typePart.effectsDict["int"][1]) };
+                ingredient.effectsDict["dex"] = new float[2] { (colourPart.effectsDict["dex"][0] + descPart.effectsDict["dex"][0] + typePart.effectsDict["dex"][0]), (colourPart.effectsDict["dex"][1] * descPart.effectsDict["dex"][1] * typePart.effectsDict["dex"][1]) };
 
-            ingredient.tags.AddRange(colourPart.tags);
-            ingredient.tags.AddRange(descPart.tags);
-            ingredient.tags.AddRange(typePart.tags);
+                ingredient.tags.AddRange(colourPart.tags);
+                ingredient.tags.AddRange(descPart.tags);
+                ingredient.tags.AddRange(typePart.tags);
 
-            ingredient.sprite = CombineSprites(colourPart.sprite, descPart.sprite, typePart.sprite);
+                ingredient.sprite = CombineSprites(colourPart.sprite, descPart.sprite, typePart.sprite);
 
-            ingredient.desc_string = colourPart.desc_string + typePart.desc_string + descPart.desc_string;
+                ingredient.desc_string = colourPart.desc_string + typePart.desc_string + descPart.desc_string;
 
-            loopCounter++;
+                loopCounter++;
 
-        } while (Ingredients.Contains(ingredient) || loopCounter < MAX_LOOPS);
+            } while (Ingredients.Contains(ingredient) && loopCounter < MAX_LOOPS);
 
-        Ingredients.Add(ingredient);     
+            Ingredients.Add(ingredient);
+        }
+
+        Debug.Log(Ingredients.Count);
+
+        return Ingredients;
     }
 
     public Ingredient GenerateIngredientFromIDs(int colourId, int descId, int typeId)

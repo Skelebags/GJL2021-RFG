@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using SimpleJSON;
 
-public class GameManger : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public GameObject ingredientHolder;
 
     private IngredientGenerator generator;
 
     private SaveFileHandler handler;
-
-    [SerializeField]
+    
     private PlayerDataManager player;
+
+    private GameObject tooltip;
 
     // Start is called before the first frame update
     void Start()
     {
-        generator = GetComponent<IngredientGenerator>();
+        generator = GameObject.Find("IngredientGenerator").GetComponent<IngredientGenerator>();
         handler = GetComponent<SaveFileHandler>();
         player = GetComponent<PlayerDataManager>();
+        tooltip = GameObject.Find("Tooltip");
+        tooltip.GetComponent<Tooltip>().HideTooltip();
     }
 
 
@@ -27,17 +30,17 @@ public class GameManger : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            ClearSprites();
-            SpawnSprites();
-        }
+        //if (Input.GetKeyDown(KeyCode.G))
+        //{
+        //    ClearSprites();
+        //    SpawnSprites();
+        //}
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            ClearSprites();
-            SpawnInventory();
-        }
+        //if (Input.GetKeyDown(KeyCode.I))
+        //{
+        //    ClearSprites();
+        //    SpawnInventory();
+        //}
 
 
         if (Input.GetKeyDown(KeyCode.S))
@@ -54,13 +57,13 @@ public class GameManger : MonoBehaviour
             ApplyLoadData();
         }
 
-        if(Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            for(int i = 0; i < 3; i++)
-            {
-                player.AddToInventoryAtSlot(i, generator.Ingredients[i]);
-            }
-        }
+        //if(Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    for(int i = 0; i < 3; i++)
+        //    {
+        //        player.AddToInventoryAtSlot(i, generator.Ingredients[i]);
+        //    }
+        //}
     }
 
     void ClearSprites()
@@ -73,30 +76,30 @@ public class GameManger : MonoBehaviour
         }
     }
 
-    void SpawnSprites()
-    {
+    //void SpawnSprites()
+    //{
 
-        for (int i = 0; i < generator.Ingredients.Count; i++)
-        {
-            GameObject renderedIngredient = Instantiate(ingredientHolder, new Vector3(0, 0, 0), Quaternion.identity);
-            renderedIngredient.GetComponent<SpriteRenderer>().sprite = generator.Ingredients[i].sprite;
-            renderedIngredient.transform.position = new Vector3(-Camera.main.orthographicSize + (renderedIngredient.GetComponent<SpriteRenderer>().sprite.bounds.size.x * i), 0);
-        }
-    }
+    //    for (int i = 0; i < generator.Ingredients.Count; i++)
+    //    {
+    //        GameObject renderedIngredient = Instantiate(ingredientHolder, new Vector3(0, 0, 0), Quaternion.identity);
+    //        renderedIngredient.GetComponent<SpriteRenderer>().sprite = generator.Ingredients[i].sprite;
+    //        renderedIngredient.transform.position = new Vector3(-Camera.main.orthographicSize + (renderedIngredient.GetComponent<SpriteRenderer>().sprite.bounds.size.x * i), 0);
+    //    }
+    //}
 
-    void SpawnInventory()
-    {
+    //void SpawnInventory()
+    //{
 
-        for (int i = 0; i < 9; i++)
-        {
-            if(player.GetIDsAtSlot(i)[0] != 0)
-            {
-                GameObject renderedIngredient = Instantiate(ingredientHolder, new Vector3(0, 0, 0), Quaternion.identity);
-                renderedIngredient.GetComponent<SpriteRenderer>().sprite = player.GetIngredientAtSlot(i).sprite;
-                renderedIngredient.transform.position = new Vector3(-Camera.main.orthographicSize + (renderedIngredient.GetComponent<SpriteRenderer>().sprite.bounds.size.x * i), 0);
-            }
-        }
-    }
+    //    for (int i = 0; i < 9; i++)
+    //    {
+    //        if(player.GetIDsAtSlot(i)[0] != 0)
+    //        {
+    //            GameObject renderedIngredient = Instantiate(ingredientHolder, new Vector3(0, 0, 0), Quaternion.identity);
+    //            renderedIngredient.GetComponent<SpriteRenderer>().sprite = player.GetIngredientAtSlot(i).sprite;
+    //            renderedIngredient.transform.position = new Vector3(-Camera.main.orthographicSize + (renderedIngredient.GetComponent<SpriteRenderer>().sprite.bounds.size.x * i), 0);
+    //        }
+    //    }
+    //}
 
     JSONObject BuildPlayerData()
     {
@@ -157,5 +160,10 @@ public class GameManger : MonoBehaviour
                 Debug.Log("No saved inventory");
             }
         }
+    }
+
+    public GameObject GetTooltip()
+    {
+        return tooltip;
     }
 }

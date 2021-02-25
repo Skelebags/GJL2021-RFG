@@ -170,8 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2906f86e0603f34ea69fb4bba0e2f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates: []
-  Icon: {fileID: 0}
+  icon_prefab: {fileID: 0}
   quantity: 0
 --- !u!114 &376799392521007811
 MonoBehaviour:
@@ -185,7 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88d1273e67325f4dafdca1921c17862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltip: {fileID: 0}
 --- !u!1 &5419437319032087474
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.63403344, b: 0.63403344, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

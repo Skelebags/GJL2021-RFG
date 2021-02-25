@@ -11,6 +11,8 @@ public class UIElementDragger : MonoBehaviour
     private bool returning = false;
     public float returnSpeed = 0.5f;
 
+    private Ingredient ingredient;
+
     public void Update()
     {
         if (dragging)
@@ -21,7 +23,7 @@ public class UIElementDragger : MonoBehaviour
                 dragging = false;
                 if (RectTransformOverlap(GetComponent<RectTransform>(), cauldron.GetComponent<RectTransform>()))
                 {
-                 
+                    
                 }
                 else
                 {
@@ -46,11 +48,6 @@ public class UIElementDragger : MonoBehaviour
         }
     }
 
-    public void Awake()
-    {
-
-    }
-
 
     public bool RectTransformOverlap(RectTransform rectTransform1, RectTransform rectTransform2)
     {
@@ -64,5 +61,12 @@ public class UIElementDragger : MonoBehaviour
         return rec.Overlaps(rec2);
 
 
+    }
+
+    public void SetIngredient(Ingredient newIngredient)
+    {
+        ingredient = Instantiate(newIngredient);
+        GetComponent<Image>().sprite = ingredient.sprite;
+        GetComponent<Display_Tooltip>().SetTooltipText(ingredient.name);
     }
 }

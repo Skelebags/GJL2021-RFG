@@ -8,6 +8,6 @@ public class Cauldron : MonoBehaviour
 
     public void AddIngredientToCauldron(Ingredient ingredient)
     {
-
+        
     }
 }

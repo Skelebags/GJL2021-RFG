@@ -6,14 +6,14 @@ using UnityEngine.EventSystems;
 
 public class Display_Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    private GameManager manager;
     private GameObject tooltip;
-    private string tooltipText = "Default";
+    private string tooltipText = "";
     
     // Start is called before the first frame update
     void Start()
     {
-        tooltip = GameObject.Find("Tooltip");
-        tooltip.GetComponent<Tooltip>().HideTooltip();
+        
     }
 
     public void OnPointerEnter(PointerEventData pointerEventData)
@@ -28,6 +28,9 @@ public class Display_Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void SetTooltipText(string TooltipTextInput)
     {
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        tooltip = manager.GetTooltip();
+
         tooltipText = TooltipTextInput;
 
     }
