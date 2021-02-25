@@ -1,6 +1,7 @@
 {
     "Parts": [
         {
+            "id": 1,
             "name": "Green",
             "slot": "Colour",
             "effects": 
@@ -14,6 +15,7 @@
             "desc": "A green"
         },
         {
+            "id": 2,
             "name": "Toad",
             "slot": "Descriptor",
             "effects": 
@@ -28,6 +30,7 @@
             "desc": " from a toad of some kind."
         },
         {
+            "id": 3,
             "name": "Dust",
             "slot": "Type",
             "effects": 
@@ -42,6 +45,7 @@
             "desc": ", dusty residue"
         },
         {
+            "id": 4,
             "name": "Blue",
             "slot": "Colour",
             "effects": 
@@ -55,6 +59,7 @@
             "desc": "A blue"
         },
         {
+            "id": 5,
             "name": "Dragon",
             "slot": "Descriptor",
             "effects": 
@@ -69,6 +74,7 @@
             "desc": " from a scaled, winged, nasty-breathed monster."
         },
         {
+            "id": 6,
             "name": "Root",
             "slot": "Type",
             "effects": 
@@ -84,6 +90,7 @@
         }
         ,
         {
+            "id": 7,
             "name": "Red",
             "slot": "Colour",
             "effects": 
@@ -97,6 +104,7 @@
             "desc": "A red"
         },
         {
+            "id": 8,
             "name": "Human",
             "slot": "Descriptor",
             "effects": 
@@ -111,6 +119,7 @@
             "desc": " from a... On second thought, lets not think about this too much."
         },
         {
+            "id": 9,
             "name": "Leaf",
             "slot": "Type",
             "effects": 
@@ -126,6 +135,7 @@
             "desc": " leaf"
         },
         {
+            "id": 10,
             "name": "Rusted",
             "slot": "Colour",
             "effects": 
@@ -139,6 +149,7 @@
             "desc" : "A rusty old"
         },
         {
+            "id": 11,
             "name": "Copper",
             "slot": "Descriptor",
             "effects": 
@@ -152,6 +163,7 @@
             "desc" : " of copper"
         },
         {
+            "id": 12,
             "name": "Ginger",
             "slot": "Descriptor",
             "effects": 
@@ -165,6 +177,7 @@
             "desc": " of a popular spice"
         },
         {
+            "id": 13,
             "name": "Cave Slime",
             "slot": "Descriptor",
             "effects": 
@@ -180,6 +193,7 @@
             "desc": " from a common dungeon monster"
         },
         {
+            "id": 14,
             "name": "Juice",
             "slot": "Type",
             "effects":

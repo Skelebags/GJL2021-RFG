@@ -9,6 +9,7 @@ public class PartList : MonoBehaviour
 {
     public class Part
     {
+        public int id;
         public string name;
         public string slot;
         public Dictionary<string, float[]> effectsDict = new Dictionary<string, float[]>() { {"str", new float[2] { 0f, 1f} }, { "int", new float[2] { 0f, 1f } }, { "dex", new float[2] { 0f, 1f } } };
@@ -26,7 +27,7 @@ public class PartList : MonoBehaviour
 
     public TextAsset part_list_file;
 
-    public List<Part> Data  = new List<Part>();
+    public Dictionary<int, Part> Data  = new Dictionary<int, Part>();
 
     /// <summary>
     /// Reads all the part data from the JSON file
@@ -46,6 +47,7 @@ public class PartList : MonoBehaviour
         {
             // Create a new part and get its name and slot type from the JSONArray
             Part part = new Part();
+            part.id = array[i]["id"].AsInt;
             part.name = array[i]["name"].Value;
             part.slot = array[i]["slot"].Value;
 
@@ -100,7 +102,7 @@ public class PartList : MonoBehaviour
             // Get the part's description
             part.desc_string = array[i]["desc"].Value;
 
-            Data.Add(part);
+            Data.Add(part.id, part);
         }
 
     }
