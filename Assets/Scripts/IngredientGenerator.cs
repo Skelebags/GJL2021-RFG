@@ -11,9 +11,9 @@ public class IngredientGenerator : MonoBehaviour
     //public Dictionary<string, Ingredient> Ingredients = new Dictionary<string, Ingredient>();
     
 
-    private const int PLANT_COUNT = 2;
-    private const int MEAT_COUNT = 2;
-    private const int MINERAL_COUNT = 2;
+    private const int PLANT_COUNT = 3;
+    private const int MEAT_COUNT = 3;
+    private const int MINERAL_COUNT = 3;
 
     private PartList partList;
 
@@ -47,14 +47,14 @@ public class IngredientGenerator : MonoBehaviour
 
         foreach (Ingredient ingredient in Ingredients)
         {
-            Debug.Log(ingredient.name + " : " + ingredient.desc_string);
+            //Debug.Log(ingredient.name + " : " + ingredient.desc_string);
         }
 
     }
 
     private void SplitData()
     {
-        foreach (PartList.Part part in partList.Data)
+        foreach (PartList.Part part in partList.Data.Values)
         {
             switch (part.slot)
             {
@@ -76,7 +76,7 @@ public class IngredientGenerator : MonoBehaviour
     /// <summary>
     /// Generates an ingredient of a specified tag type
     /// </summary>
-    private void GenerateIngredient(PartList.Part.Tags targetTag)
+    public void GenerateIngredient(PartList.Part.Tags targetTag)
     {
         int loopCounter = 0;
         int MAX_LOOPS = 50;
@@ -116,6 +116,9 @@ public class IngredientGenerator : MonoBehaviour
                 }
             } while (typePart == null);
 
+            ingredient.ids[0] = colourPart.id;
+            ingredient.ids[1] = descPart.id;
+            ingredient.ids[2] = typePart.id;
 
             ingredient.name = colourPart.name + " " + descPart.name + " " + typePart.name;
             ingredient.cost = colourPart.cost + descPart.cost + typePart.cost;
@@ -138,6 +141,37 @@ public class IngredientGenerator : MonoBehaviour
         } while (Ingredients.Contains(ingredient) || loopCounter < MAX_LOOPS);
 
         Ingredients.Add(ingredient);     
+    }
+
+    public Ingredient GenerateIngredientFromIDs(int colourId, int descId, int typeId)
+    {
+        Ingredient ingredient = ScriptableObject.CreateInstance<Ingredient>();
+
+        PartList.Part colourPart = partList.Data[colourId];
+        PartList.Part descPart = partList.Data[descId];
+        PartList.Part typePart = partList.Data[typeId];
+
+        ingredient.ids[0] = colourPart.id;
+        ingredient.ids[1] = descPart.id;
+        ingredient.ids[2] = typePart.id;
+
+        ingredient.name = colourPart.name + " " + descPart.name + " " + typePart.name;
+        ingredient.cost = colourPart.cost + descPart.cost + typePart.cost;
+
+
+        ingredient.effectsDict["str"] = new float[2] { (colourPart.effectsDict["str"][0] + descPart.effectsDict["str"][0] + typePart.effectsDict["str"][0]), (colourPart.effectsDict["str"][1] * descPart.effectsDict["str"][1] * typePart.effectsDict["str"][1]) };
+        ingredient.effectsDict["int"] = new float[2] { (colourPart.effectsDict["int"][0] + descPart.effectsDict["int"][0] + typePart.effectsDict["int"][0]), (colourPart.effectsDict["int"][1] * descPart.effectsDict["int"][1] * typePart.effectsDict["int"][1]) };
+        ingredient.effectsDict["dex"] = new float[2] { (colourPart.effectsDict["dex"][0] + descPart.effectsDict["dex"][0] + typePart.effectsDict["dex"][0]), (colourPart.effectsDict["dex"][1] * descPart.effectsDict["dex"][1] * typePart.effectsDict["dex"][1]) };
+
+        ingredient.tags.AddRange(colourPart.tags);
+        ingredient.tags.AddRange(descPart.tags);
+        ingredient.tags.AddRange(typePart.tags);
+
+        ingredient.sprite = CombineSprites(colourPart.sprite, descPart.sprite, typePart.sprite);
+
+        ingredient.desc_string = colourPart.desc_string + typePart.desc_string + descPart.desc_string;
+
+        return ingredient;
     }
 
     private Sprite CombineSprites(Sprite colourSprite, Sprite descSprite, Sprite typeSprite)
