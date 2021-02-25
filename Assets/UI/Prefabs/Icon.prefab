@@ -90,8 +90,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf13df35957a1844a2e8e9556704960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates: []
-  Spawn: {fileID: 0}
+  dragging: 0
+  cauldron: {fileID: 0}
+  spawn: {fileID: 0}
+  returnSpeed: 0.2
 --- !u!114 &4287168548367635743
 MonoBehaviour:
   m_ObjectHideFlags: 0

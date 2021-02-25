@@ -10,9 +10,9 @@ public class Display_Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private string tooltipText = "Default";
     
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        tooltip = GameObject.FindGameObjectWithTag("Tooltip");
+        tooltip = GameObject.Find("Tooltip");
         tooltip.GetComponent<Tooltip>().HideTooltip();
     }
 

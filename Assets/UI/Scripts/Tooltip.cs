@@ -12,16 +12,16 @@ public class Tooltip : MonoBehaviour
     private Text tooltipTextComp;
     private RectTransform backgroundRectTransform;
 
-    private void Start()
-    {
-        backgroundRectTransform = transform.Find("Background").gameObject.GetComponent<RectTransform>();
-        tooltipTextComp = transform.Find("TooltipText").gameObject.GetComponent<Text>();
-        //HideTooltip();
-
-    }
-    
     private void Awake()
     {
+        if(backgroundRectTransform == null)
+        {
+            backgroundRectTransform = transform.Find("Background").gameObject.GetComponent<RectTransform>();
+        }
+        if(tooltipTextComp == null)
+        {
+            tooltipTextComp = transform.Find("TooltipText").gameObject.GetComponent<Text>();
+        }
         //ShowTooltip("Test Text");
     }
 

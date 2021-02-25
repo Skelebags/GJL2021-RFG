@@ -2,14 +2,14 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIElementDragger : EventTrigger
+public class UIElementDragger : MonoBehaviour
 {
 
     public bool dragging;
     public GameObject cauldron;
     public GameObject spawn;
     private bool returning = false;
-    public float returnSpeed = 0f;
+    public float returnSpeed = 0.5f;
 
     public void Update()
     {
@@ -29,6 +29,11 @@ public class UIElementDragger : EventTrigger
                 }
             }
         }
+        
+    }
+
+    private void FixedUpdate()
+    {
         if (returning)
         {
             transform.position = Vector2.Lerp(transform.position, spawn.transform.position, returnSpeed);
@@ -43,9 +48,7 @@ public class UIElementDragger : EventTrigger
 
     public void Awake()
     {
-        //spawn = GameObject.Find("Storage");
-        //transform.position = spawn.transform.position;
-        
+
     }
 
 
