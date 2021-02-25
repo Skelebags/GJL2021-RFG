@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ingredient
+  - Tooltip
+  - Catcher
   layers:
   - Default
   - TransparentFX
