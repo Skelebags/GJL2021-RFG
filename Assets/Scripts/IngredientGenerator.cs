@@ -227,7 +227,7 @@ public class IngredientGenerator : MonoBehaviour
         }
         if (!(effectsDict["dex"][0] == 0 && effectsDict["dex"][1] == 1))
         {
-            if (str_string != "" || int_string != "") ;
+            if (str_string != "" || int_string != "")
             {
                 dex_string += "\n";
             }
