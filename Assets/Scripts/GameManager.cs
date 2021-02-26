@@ -30,19 +30,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        //if (Input.GetKeyDown(KeyCode.G))
-        //{
-        //    ClearSprites();
-        //    SpawnSprites();
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.I))
-        //{
-        //    ClearSprites();
-        //    SpawnInventory();
-        //}
-
-
         if (Input.GetKeyDown(KeyCode.S))
         {
 
@@ -57,13 +44,6 @@ public class GameManager : MonoBehaviour
             ApplyLoadData();
         }
 
-        //if(Input.GetKeyDown(KeyCode.Alpha3))
-        //{
-        //    for(int i = 0; i < 3; i++)
-        //    {
-        //        player.AddToInventoryAtSlot(i, generator.Ingredients[i]);
-        //    }
-        //}
     }
 
     void ClearSprites()
@@ -75,31 +55,6 @@ public class GameManager : MonoBehaviour
             Destroy(sprite);
         }
     }
-
-    //void SpawnSprites()
-    //{
-
-    //    for (int i = 0; i < generator.Ingredients.Count; i++)
-    //    {
-    //        GameObject renderedIngredient = Instantiate(ingredientHolder, new Vector3(0, 0, 0), Quaternion.identity);
-    //        renderedIngredient.GetComponent<SpriteRenderer>().sprite = generator.Ingredients[i].sprite;
-    //        renderedIngredient.transform.position = new Vector3(-Camera.main.orthographicSize + (renderedIngredient.GetComponent<SpriteRenderer>().sprite.bounds.size.x * i), 0);
-    //    }
-    //}
-
-    //void SpawnInventory()
-    //{
-
-    //    for (int i = 0; i < 9; i++)
-    //    {
-    //        if(player.GetIDsAtSlot(i)[0] != 0)
-    //        {
-    //            GameObject renderedIngredient = Instantiate(ingredientHolder, new Vector3(0, 0, 0), Quaternion.identity);
-    //            renderedIngredient.GetComponent<SpriteRenderer>().sprite = player.GetIngredientAtSlot(i).sprite;
-    //            renderedIngredient.transform.position = new Vector3(-Camera.main.orthographicSize + (renderedIngredient.GetComponent<SpriteRenderer>().sprite.bounds.size.x * i), 0);
-    //        }
-    //    }
-    //}
 
     JSONObject BuildPlayerData()
     {

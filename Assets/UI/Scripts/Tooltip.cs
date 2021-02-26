@@ -16,11 +16,11 @@ public class Tooltip : MonoBehaviour
     {
         if(backgroundRectTransform == null)
         {
-            backgroundRectTransform = transform.Find("Background").gameObject.GetComponent<RectTransform>();
+            //backgroundRectTransform = transform.Find("Background").gameObject.GetComponent<RectTransform>();
         }
         if(tooltipTextComp == null)
         {
-            tooltipTextComp = transform.Find("TooltipText").gameObject.GetComponent<Text>();
+            tooltipTextComp = GetComponentInChildren<Text>();//transform.Find("TooltipText").gameObject.GetComponent<Text>();
         }
         //ShowTooltip("Test Text");
     }
@@ -33,12 +33,13 @@ public class Tooltip : MonoBehaviour
     }
     
     public void ShowTooltip(string tooltipString)
-    {
-        gameObject.SetActive(true);
+    {        
         tooltipTextComp.text = tooltipString;
-        float textPaddingSize = 4f;
-        Vector2 backgroundSize = new Vector2(tooltipTextComp.preferredWidth + textPaddingSize * 2f, tooltipTextComp.preferredHeight + textPaddingSize * 2f);
-        backgroundRectTransform.sizeDelta = backgroundSize;
+        tooltipTextComp.supportRichText = true;
+        if(tooltipTextComp.text.Length > 20)
+        {
+            gameObject.SetActive(true);
+        }
     }
     
     public void HideTooltip()

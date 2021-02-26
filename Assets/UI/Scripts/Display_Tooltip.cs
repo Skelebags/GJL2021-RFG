@@ -21,7 +21,6 @@ public class Display_Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExit
         if(tooltip)
         {
             tooltip.GetComponent<Tooltip>().ShowTooltip(tooltipText);
-            //Debug.Log(tooltipText);
         }
     }
 

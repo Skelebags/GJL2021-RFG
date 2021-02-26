@@ -7,9 +7,6 @@ using UnityEngine;
 /// </summary>
 public class IngredientGenerator : MonoBehaviour
 {
-    //public List<Ingredient> Ingredients = new List<Ingredient>();
-    //public Dictionary<string, Ingredient> Ingredients = new Dictionary<string, Ingredient>();
-
     private PartList partList;
 
     private List<PartList.Part> Colours = new List<PartList.Part>();
@@ -27,21 +24,6 @@ public class IngredientGenerator : MonoBehaviour
             SplitData();
         }
     }
-
-    //public void GenerateNumberOfIngredients(int numberToGenerate, PartList.Part.Tags targetTag)
-    //{
-    //    partList = GetComponent<PartList>();
-
-    //    partList.PopulatePartsFromJSON();
-
-    //    SplitData();
-
-    //    for (int i = 0; i < numberToGenerate; i++)
-    //    {
-    //        GenerateIngredient(targetTag);
-    //    }
-    //}
-
 
     private void SplitData()
     {
@@ -213,19 +195,54 @@ public class IngredientGenerator : MonoBehaviour
         string int_string = "";
         string dex_string = "";
 
-        if(effectsDict["str"][0] != 0 && effectsDict["str"][1] != 1)
+        if (!(effectsDict["str"][0] == 0 && effectsDict["str"][1] == 1))
         {
-            str_string = "STR: " + ((effectsDict["str"][0] < 0) ? "" : "+") + effectsDict["str"][0] + " x" + effectsDict["str"][1] + "\n";
+            str_string = "<color=red>STR: ";
+            if (effectsDict["str"][0] != 0)
+            {
+                str_string += ((effectsDict["str"][0] < 0) ? "" : "+") + effectsDict["str"][0];
+            }
+            if (effectsDict["str"][1] != 1)
+            {
+                str_string += " x" + effectsDict["str"][1];
+            }
+            str_string += "</color>";
         }
-        if (effectsDict["dex"][0] != 0 && effectsDict["dex"][1] != 1)
+        if (!(effectsDict["int"][0] == 0 && effectsDict["int"][1] == 1))
         {
-            int_string = "DEX: " + ((effectsDict["dex"][0] < 0) ? "" : "+") + effectsDict["dex"][0] + " x" + effectsDict["dex"][1] + "\n";
+            if(str_string != "")
+            {
+                int_string += "\n";
+            }
+            int_string += "<color=blue>INT: ";
+            if (effectsDict["int"][0] != 0)
+            {
+                int_string += ((effectsDict["int"][0] < 0) ? "" : "+") + effectsDict["int"][0];
+            }
+            if (effectsDict["int"][1] != 1)
+            {
+                int_string += " x" + effectsDict["int"][1];
+            }
+            int_string += "</color>";
         }
-        if (effectsDict["int"][0] != 0 && effectsDict["int"][1] != 1)
+        if (!(effectsDict["dex"][0] == 0 && effectsDict["dex"][1] == 1))
         {
-            dex_string = "INT: " + ((effectsDict["int"][0] < 0) ? "" : "+") + effectsDict["int"][0] + " x" + effectsDict["int"][1] + "\n";
+            if (str_string != "" || int_string != "") ;
+            {
+                dex_string += "\n";
+            }
+            dex_string += "<color=green>DEX: ";
+            if (effectsDict["dex"][0] != 0)
+            {
+                dex_string += ((effectsDict["dex"][0] < 0) ? "" : "+") + effectsDict["dex"][0];
+            }
+            if (effectsDict["dex"][1] != 1)
+            {
+                dex_string += " x" + effectsDict["dex"][1];
+            }
+            dex_string += "</color>";
         }
-
+        
         finalString = str_string + int_string + dex_string;
 
         return finalString;

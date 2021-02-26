@@ -13,7 +13,6 @@ public class PartList : MonoBehaviour
         public string name;
         public string slot;
         public Dictionary<string, float[]> effectsDict = new Dictionary<string, float[]>() { {"str", new float[2] { 0f, 1f} }, { "int", new float[2] { 0f, 1f } }, { "dex", new float[2] { 0f, 1f } } };
-        //public List<string> effects = new List<string>();
         public int cost;
         public enum Tags { any, meat, mineral, plant, blessed, toxic};
         public List<Tags> tags = new List<Tags>();
@@ -62,19 +61,16 @@ public class PartList : MonoBehaviour
                     {
                         JSONArray strArray = effectArray[j]["str"].AsArray;
                         part.effectsDict["str"] = new float[2] { part.effectsDict["str"][0] + strArray[0]["mod"].AsFloat, part.effectsDict["str"][1] * strArray[1]["mult"].AsFloat };
-                        //Debug.Log(component.effectsDict["str"][0] + " : " + component.effectsDict["str"][1]);
                     }
                     else if (effectArray[j]["int"] != null) // Do the same for int
                     {
                         JSONArray strArray = effectArray[j]["int"].AsArray;
                         part.effectsDict["int"] = new float[2] { part.effectsDict["int"][0] + strArray[0]["mod"].AsFloat, part.effectsDict["int"][1] * strArray[1]["mult"].AsFloat };
-                        //Debug.Log(component.effectsDict["int"][0] + " : " + component.effectsDict["int"][1]);
                     }
                     else if (effectArray[j]["dex"] != null) // And dex
                     {
                         JSONArray strArray = effectArray[j]["dex"].AsArray;
                         part.effectsDict["dex"] = new float[2] { part.effectsDict["dex"][0] + strArray[0]["mod"].AsFloat, part.effectsDict["dex"][1] * strArray[1]["mult"].AsFloat };
-                        //Debug.Log(component.effectsDict["dex"][0] + " : " + component.effectsDict["dex"][1]);
                     }
 
                 }
