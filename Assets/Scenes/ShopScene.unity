@@ -652,6 +652,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 640380570}
     m_Modifications:
+    - target: {fileID: 375166807801813372, guid: f6464c8788c850e4c90b24e6082bdee5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 375166807801813372, guid: f6464c8788c850e4c90b24e6082bdee5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 375166807801813372, guid: f6464c8788c850e4c90b24e6082bdee5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1008543217432425384, guid: f6464c8788c850e4c90b24e6082bdee5, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -2231,7 +2243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
