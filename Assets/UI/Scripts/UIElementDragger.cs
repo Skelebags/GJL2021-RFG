@@ -2,17 +2,19 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIElementDragger : MonoBehaviour
+public class UIElementDragger : MonoBehaviour, IPointerDownHandler
 {
 
     public bool dragging;
-    //public GameObject cauldron;
     private GameObject overlap = null;
     public GameObject spawn;
     private bool returning = false;
     public float returnSpeed = 0.5f;
 
     private Ingredient ingredient;
+    private Potion potion;
+
+    private int overlaps = 0;
 
     public void Update()
     {
@@ -22,58 +24,54 @@ public class UIElementDragger : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 dragging = false;
-                //if (RectTransformOverlap(GetComponent<RectTransform>(), cauldron.GetComponent<RectTransform>()))
-                //{
-                    
-                //}
-                //else if(RectTransformOverlap(GetComponent<RectTransform>(), ))
-                //{
 
-                //}
-                //else
-                //{
-                //    returning = true;
-                //}
-
-                if(overlap == null)
+                if(ingredient)
                 {
-                    returning = true;
-                }
-                else if(overlap.CompareTag("Catcher"))
-                {
-                    if(spawn.transform.parent.name == "Inventory")
+                    if (overlap == null)
                     {
-                        Destroy(gameObject);
+                        returning = true;
+                    }
+                    else if (overlap.CompareTag("Catcher"))
+                    {
+                        if (spawn.transform.parent.name == "Inventory")
+                        {
+                            if (overlap.GetComponent<Cauldron>())
+                            {
+                                overlap.GetComponent<Cauldron>().AddIngredientToCauldron(ingredient);
+                            }
+                            Cleanup();
+                        }
+                        else
+                        {
+                            returning = true;
+                        }
+                    }
+                    else if (overlap.transform.parent.name == "Inventory")
+                    {
+                        PlayerDataManager playerDataManager = GameObject.Find("GameManager").GetComponent<PlayerDataManager>();
+
+                        if (overlap.GetComponent<Storage>().IsEmpty() || playerDataManager.CompareIDs(ingredient.ids, overlap.GetComponent<Storage>().GetIngredient().ids))
+                        {
+                            GameObject.Find("GameManager").GetComponent<PlayerDataManager>().AddToInventoryAtSlot(overlap.GetComponent<Storage>().GetSlotNumber(), ingredient);
+                            Cleanup();
+                        }
+                        else if (spawn.transform.parent.name == "Inventory")
+                        {
+                            GameObject.Find("GameManager").GetComponent<PlayerDataManager>().SwapIngredientLocs(spawn.GetComponent<Storage>().GetSlotNumber(), overlap.GetComponent<Storage>().GetSlotNumber(), ingredient, overlap.GetComponent<Storage>().GetIngredient());
+                            overlap.GetComponent<Storage>().quantity++;
+                            Cleanup();
+                        }
+                        else
+                        {
+                            returning = true;
+                        }
                     }
                     else
                     {
                         returning = true;
                     }
                 }
-                else if(overlap.transform.parent.name == "Inventory")
-                {
-                    PlayerDataManager playerDataManager = GameObject.Find("GameManager").GetComponent<PlayerDataManager>();
-
-                    if (overlap.GetComponent<Storage>().IsEmpty() || playerDataManager.CompareIDs(ingredient.ids, overlap.GetComponent<Storage>().GetIngredient().ids))
-                    {
-                        GameObject.Find("GameManager").GetComponent<PlayerDataManager>().AddToInventoryAtSlot(overlap.GetComponent<Storage>().GetSlotNumber(), ingredient);
-                        Destroy(gameObject);
-                    }
-                    else if(spawn.transform.parent.name == "Inventory")
-                    {
-                        GameObject.Find("GameManager").GetComponent<PlayerDataManager>().SwapIngredientLocs(spawn.GetComponent<Storage>().GetSlotNumber(), overlap.GetComponent<Storage>().GetSlotNumber(), ingredient, overlap.GetComponent<Storage>().GetIngredient());
-                        overlap.GetComponent<Storage>().quantity++;
-                        Destroy(gameObject);
-                    }
-                    else
-                    {
-                        returning = true;
-                    }
-                }
-                else
-                {
-                    returning = true;
-                }
+                
             }
         }
         
@@ -89,22 +87,38 @@ public class UIElementDragger : MonoBehaviour
                 returning = false;
                 spawn.GetComponent<Storage>().AssignIngredient(ingredient, spawn.GetComponent<Storage>().GetSlotNumber());
                 spawn.GetComponent<Storage>().quantity++;
-                Destroy(transform.gameObject);
+                Cleanup();
             }
         }
     }
 
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        dragging = true;
+    }
+
+    private void Cleanup()
+    {
+        GetComponent<Display_Tooltip>().ForceHideTooltip();
+        Destroy(gameObject);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collided!");
         overlap = collision.gameObject;
+        overlaps++;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Leaving");
-        overlap = null;
+        overlaps--;
+        
+        if(overlaps <= 0)
+        {
+            overlaps = 0;
+
+            overlap = null;
+        }
     }
 
 
@@ -124,8 +138,15 @@ public class UIElementDragger : MonoBehaviour
 
     public void SetIngredient(Ingredient newIngredient)
     {
-        ingredient = Instantiate(newIngredient);
+        ingredient = newIngredient;
         GetComponent<Image>().sprite = ingredient.sprite;
         GetComponent<Display_Tooltip>().SetTooltipText(ingredient.name + "\n" + "Price: " + ingredient.cost + "\n" + ingredient.desc_string + "\n" + ingredient.effect_string);
+    }
+
+    public void SetPotion(Potion newPotion)
+    {
+        potion = newPotion;
+        //GetComponent<Image>().sprite = potion.sprite;
+        GetComponent<Display_Tooltip>().SetTooltipText(potion.effect_string);
     }
 }

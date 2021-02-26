@@ -36,7 +36,7 @@ public class Tooltip : MonoBehaviour
     {        
         tooltipTextComp.text = tooltipString;
         tooltipTextComp.supportRichText = true;
-        if(tooltipTextComp.text.Length > 20)
+        if(tooltipTextComp.text.Substring(0, 1) != "\n" )
         {
             gameObject.SetActive(true);
         }

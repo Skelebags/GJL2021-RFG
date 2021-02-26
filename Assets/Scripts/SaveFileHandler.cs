@@ -60,6 +60,14 @@ public class SaveFileHandler : MonoBehaviour
                     inventory.Add(item);
                 }
                 save_data.Add("Inventory", inventory);
+
+                // QUANTITY ARRAY STARTS ALL 0s
+                JSONArray quantities = new JSONArray();
+                for(int i = 0; i < 9; i++)
+                {
+                    quantities.Add("slot " + i, 0);
+                }
+                save_data.Add("Quantities", quantities);
                 
                 System.IO.File.WriteAllText(save_path, save_data.ToString());
             }
@@ -91,6 +99,10 @@ public class SaveFileHandler : MonoBehaviour
         if (S["Inventory"] != null && saveData["Inventory"] != null)
         {
             S["Inventory"] = saveData["Inventory"].AsArray;
+        }
+        if(S["Quantities"] != null && saveData["Quantities"] != null)
+        {
+            S["Quantities"] = saveData["Quantities"].AsArray;
         }
 
         System.IO.File.WriteAllText(save_path, S.ToString());

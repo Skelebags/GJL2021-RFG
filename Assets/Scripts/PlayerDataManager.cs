@@ -12,11 +12,14 @@ public class PlayerDataManager : MonoBehaviour
 
     private Ingredient[] inventory = new Ingredient[9];
 
+    private int[] quantities = new int[9];
+
     private void Start()
     {
         for (int i = 0; i < inventory.Length; i++)
         {
             inventory[i] = ScriptableObject.CreateInstance<Ingredient>();
+            quantities[i] = 0;
         }
 
         for (int invSlot = 0; invSlot < inventory_obj.transform.childCount; invSlot++)
@@ -54,6 +57,7 @@ public class PlayerDataManager : MonoBehaviour
             inventory_obj.transform.GetChild(slot).GetComponent<Storage>().AssignIngredient(inventory[slot], slot);
             inventory_obj.transform.GetChild(slot).GetComponent<Storage>().quantity = 1;
         }
+        quantities[slot] = inventory_obj.transform.GetChild(slot).GetComponent<Storage>().quantity;
     }
 
     public Ingredient GetIngredientAtSlot(int slot)
@@ -66,6 +70,7 @@ public class PlayerDataManager : MonoBehaviour
         Ingredient empty = ScriptableObject.CreateInstance<Ingredient>();
 
         inventory[slot] = empty;
+        quantities[slot] = 0;
     }
 
     public void SwapIngredientLocs(int slot1, int slot2, Ingredient ing1, Ingredient ing2)
@@ -78,6 +83,8 @@ public class PlayerDataManager : MonoBehaviour
 
         inventory_obj.transform.GetChild(slot1).GetComponent<Storage>().quantity = quantity2;
         inventory_obj.transform.GetChild(slot2).GetComponent<Storage>().quantity = quantity1;
+        quantities[slot1] = quantity2;
+        quantities[slot2] = quantity1;
     }
 
     public bool CompareIDs(int[] ids1, int[] ids2)
@@ -92,5 +99,16 @@ public class PlayerDataManager : MonoBehaviour
         }
 
         return true;
+    }
+    
+    public int GetQuantityAtSlot(int slot)
+    {
+        return quantities[slot];
+    }
+
+    public void SetQuantityAtSlot(int slot, int quantity)
+    {
+        quantities[slot] = quantity;
+        inventory_obj.transform.GetChild(slot).GetComponent<Storage>().quantity = quantity;
     }
 }

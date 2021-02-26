@@ -141,10 +141,13 @@ public class IngredientGenerator : MonoBehaviour
         ingredient.name = colourPart.name + " " + descPart.name + " " + typePart.name;
         ingredient.cost = colourPart.cost + descPart.cost + typePart.cost;
 
+        ingredient.effectsDict = new Dictionary<string, float[]>();
 
-        ingredient.effectsDict["str"] = new float[2] { (colourPart.effectsDict["str"][0] + descPart.effectsDict["str"][0] + typePart.effectsDict["str"][0]), (colourPart.effectsDict["str"][1] * descPart.effectsDict["str"][1] * typePart.effectsDict["str"][1]) };
-        ingredient.effectsDict["int"] = new float[2] { (colourPart.effectsDict["int"][0] + descPart.effectsDict["int"][0] + typePart.effectsDict["int"][0]), (colourPart.effectsDict["int"][1] * descPart.effectsDict["int"][1] * typePart.effectsDict["int"][1]) };
-        ingredient.effectsDict["dex"] = new float[2] { (colourPart.effectsDict["dex"][0] + descPart.effectsDict["dex"][0] + typePart.effectsDict["dex"][0]), (colourPart.effectsDict["dex"][1] * descPart.effectsDict["dex"][1] * typePart.effectsDict["dex"][1]) };
+        ingredient.effectsDict.Add("str", new float[2] { (colourPart.effectsDict["str"][0] + descPart.effectsDict["str"][0] + typePart.effectsDict["str"][0]), (colourPart.effectsDict["str"][1] * descPart.effectsDict["str"][1] * typePart.effectsDict["str"][1]) });
+        ingredient.effectsDict.Add("int", new float[2] { (colourPart.effectsDict["int"][0] + descPart.effectsDict["int"][0] + typePart.effectsDict["int"][0]), (colourPart.effectsDict["int"][1] * descPart.effectsDict["int"][1] * typePart.effectsDict["int"][1]) });
+        ingredient.effectsDict.Add("dex", new float[2] { (colourPart.effectsDict["dex"][0] + descPart.effectsDict["dex"][0] + typePart.effectsDict["dex"][0]), (colourPart.effectsDict["dex"][1] * descPart.effectsDict["dex"][1] * typePart.effectsDict["dex"][1]) });
+        //ingredient.effectsDict["int"] = new float[2] { (colourPart.effectsDict["int"][0] + descPart.effectsDict["int"][0] + typePart.effectsDict["int"][0]), (colourPart.effectsDict["int"][1] * descPart.effectsDict["int"][1] * typePart.effectsDict["int"][1]) };
+        //ingredient.effectsDict["dex"] = new float[2] { (colourPart.effectsDict["dex"][0] + descPart.effectsDict["dex"][0] + typePart.effectsDict["dex"][0]), (colourPart.effectsDict["dex"][1] * descPart.effectsDict["dex"][1] * typePart.effectsDict["dex"][1]) };
 
         ingredient.tags.AddRange(colourPart.tags);
         ingredient.tags.AddRange(descPart.tags);

@@ -91,6 +91,13 @@ public class GameManager : MonoBehaviour
         }
         data.Add("Inventory", invArray);
 
+        JSONArray quantities = new JSONArray();
+        for (int i = 0; i < 9; i++)
+        {
+            quantities.Add("slot " + i, player.GetQuantityAtSlot(i));
+        }
+        data.Add("Quantities", quantities);
+
         return data;
     }
 
@@ -101,14 +108,15 @@ public class GameManager : MonoBehaviour
         player.player_name = load_data["Save_Name"].Value;
 
         JSONArray inventoryArray = load_data["Inventory"].AsArray;
+        JSONArray quantityArray = load_data["Quantities"].AsArray;
 
         for (int i = 0; i < inventoryArray.Count; i++)
         {
             if (inventoryArray[i]["id"].Value != "none")
             {
                 JSONArray idArray = inventoryArray[i]["id"].AsArray;
-                //generator.Ingredients[i] = generator.GenerateIngredientFromIDs(idArray[0].AsInt, idArray[1].AsInt, idArray[2].AsInt);
                 player.AddToInventoryAtSlot(i, generator.GenerateIngredientFromIDs(idArray[0].AsInt, idArray[1].AsInt, idArray[2].AsInt));
+                player.SetQuantityAtSlot(i, quantityArray[i].AsInt);
             }
             else
             {

@@ -9,16 +9,10 @@ public class Display_Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private GameManager manager;
     private GameObject tooltip;
     private string tooltipText = "";
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        if(tooltip)
+        if(tooltip = GameObject.Find("GameManager").GetComponent<GameManager>().GetTooltip())
         {
             tooltip.GetComponent<Tooltip>().ShowTooltip(tooltipText);
         }
@@ -26,15 +20,25 @@ public class Display_Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerExit(PointerEventData pointerEventData)
     {
-        tooltip.GetComponent<Tooltip>().HideTooltip();
+        if(tooltip = GameObject.Find("GameManager").GetComponent<GameManager>().GetTooltip())
+        {
+            tooltip.GetComponent<Tooltip>().HideTooltip();
+        }
     }
 
     public void SetTooltipText(string TooltipTextInput)
     {
-        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        tooltip = manager.GetTooltip();
 
         tooltipText = TooltipTextInput;
 
     }
+
+    public void ForceHideTooltip()
+    {
+        if(tooltip = GameObject.Find("GameManager").GetComponent<GameManager>().GetTooltip())
+        {
+            tooltip.GetComponent<Tooltip>().HideTooltip();
+        }
+    }
+    
 }

@@ -35,16 +35,15 @@ public class Storage : MonoBehaviour, IPointerDownHandler
         {
             GameObject draggedIcon = Instantiate(icon_prefab, Input.mousePosition, Quaternion.identity, GameObject.Find("Icons").transform);
             UIElementDragger dragger = draggedIcon.GetComponent<UIElementDragger>();
-            dragger.dragging = true; /*dragger.cauldron = cauldron;*/ dragger.spawn = transform.gameObject; dragger.SetIngredient(Instantiate(heldIngredient));
+            dragger.dragging = true; dragger.spawn = transform.gameObject; dragger.SetIngredient(/*Instantiate(heldIngredient)*/heldIngredient);
             quantity--;
         }
     }
 
     public void AssignIngredient(Ingredient ingredient, int slot_number)
     {
-        heldIngredient = Instantiate(ingredient);
-
-        //GetComponent<Display_Tooltip>().SetTooltipText(heldIngredient.name);
+        //heldIngredient = Instantiate(ingredient);
+        heldIngredient = ingredient;
 
         GetComponent<Display_Tooltip>().SetTooltipText(heldIngredient.name + "\n" + "Price: " + heldIngredient.cost + "\n" + heldIngredient.desc_string + "\n" + heldIngredient.effect_string);
 
