@@ -7,6 +7,9 @@ TagManager:
   - Ingredient
   - Tooltip
   - Catcher
+  - Inventory
+  - Shop
+  - GameManager
   layers:
   - Default
   - TransparentFX

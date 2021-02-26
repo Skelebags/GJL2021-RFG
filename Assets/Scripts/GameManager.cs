@@ -129,4 +129,9 @@ public class GameManager : MonoBehaviour
     {
         return tooltip;
     }
+
+    public PlayerDataManager GetPlayer()
+    {
+        return player;
+    }
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Storage : MonoBehaviour, IPointerDownHandler
 {
-    private GameObject catcher;
+    private GameManager manager;
     public GameObject icon_prefab;
     public int quantity;
 
@@ -18,7 +18,7 @@ public class Storage : MonoBehaviour, IPointerDownHandler
     // Start is called before the first frame update
     void Start()
     {
-        catcher = GameObject.FindGameObjectWithTag("Catcher");
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         
     }
 
@@ -33,10 +33,13 @@ public class Storage : MonoBehaviour, IPointerDownHandler
     {
         if (quantity >= 1)
         {
-            GameObject draggedIcon = Instantiate(icon_prefab, Input.mousePosition, Quaternion.identity, GameObject.Find("Icons").transform);
-            UIElementDragger dragger = draggedIcon.GetComponent<UIElementDragger>();
-            dragger.dragging = true; dragger.spawn = transform.gameObject; dragger.SetIngredient(/*Instantiate(heldIngredient)*/heldIngredient);
-            quantity--;
+            if (transform.parent.CompareTag("Inventory") || manager.GetPlayer().CanAfford(heldIngredient.cost))
+            {
+                GameObject draggedIcon = Instantiate(icon_prefab, Input.mousePosition, Quaternion.identity, GameObject.Find("Icons").transform);
+                UIElementDragger dragger = draggedIcon.GetComponent<UIElementDragger>();
+                dragger.dragging = true; dragger.spawn = transform.gameObject; dragger.SetIngredient(/*Instantiate(heldIngredient)*/heldIngredient); dragger.manager = manager;
+                quantity--;
+            }
         }
     }
 

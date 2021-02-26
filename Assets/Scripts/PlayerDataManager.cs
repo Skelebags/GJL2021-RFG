@@ -111,4 +111,29 @@ public class PlayerDataManager : MonoBehaviour
         quantities[slot] = quantity;
         inventory_obj.transform.GetChild(slot).GetComponent<Storage>().quantity = quantity;
     }
+
+    public void SetMoney(int newMoney)
+    {
+        money = newMoney;
+    }
+
+    public void AddMoney(int increase)
+    {
+        money += increase;
+    }
+
+    public int GetMoney()
+    {
+        return money;
+    }
+
+    public bool CanAfford(int price)
+    {
+        return money >= price;
+    }
+
+    public void Purchase(int price)
+    {
+        money -= price;
+    }
 }

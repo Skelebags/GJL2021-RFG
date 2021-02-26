@@ -8,6 +8,7 @@ public class UIElementDragger : MonoBehaviour, IPointerDownHandler
     public bool dragging;
     private GameObject overlap = null;
     public GameObject spawn;
+    public GameManager manager;
     private bool returning = false;
     public float returnSpeed = 0.5f;
 
@@ -33,7 +34,7 @@ public class UIElementDragger : MonoBehaviour, IPointerDownHandler
                     }
                     else if (overlap.CompareTag("Catcher"))
                     {
-                        if (spawn.transform.parent.name == "Inventory")
+                        if (spawn.transform.parent.CompareTag("Inventory"))
                         {
                             if (overlap.GetComponent<Cauldron>())
                             {
@@ -46,18 +47,22 @@ public class UIElementDragger : MonoBehaviour, IPointerDownHandler
                             returning = true;
                         }
                     }
-                    else if (overlap.transform.parent.name == "Inventory")
+                    else if (overlap.transform.parent.CompareTag("Inventory"))
                     {
-                        PlayerDataManager playerDataManager = GameObject.Find("GameManager").GetComponent<PlayerDataManager>();
+                        PlayerDataManager playerDataManager = manager.GetPlayer();
 
                         if (overlap.GetComponent<Storage>().IsEmpty() || playerDataManager.CompareIDs(ingredient.ids, overlap.GetComponent<Storage>().GetIngredient().ids))
                         {
-                            GameObject.Find("GameManager").GetComponent<PlayerDataManager>().AddToInventoryAtSlot(overlap.GetComponent<Storage>().GetSlotNumber(), ingredient);
+                            manager.GetComponent<PlayerDataManager>().AddToInventoryAtSlot(overlap.GetComponent<Storage>().GetSlotNumber(), ingredient);
+                            if(spawn.transform.parent.CompareTag("Shop"))
+                            {
+                                playerDataManager.Purchase(ingredient.cost);
+                            }
                             Cleanup();
                         }
                         else if (spawn.transform.parent.name == "Inventory")
                         {
-                            GameObject.Find("GameManager").GetComponent<PlayerDataManager>().SwapIngredientLocs(spawn.GetComponent<Storage>().GetSlotNumber(), overlap.GetComponent<Storage>().GetSlotNumber(), ingredient, overlap.GetComponent<Storage>().GetIngredient());
+                            manager.GetComponent<PlayerDataManager>().SwapIngredientLocs(spawn.GetComponent<Storage>().GetSlotNumber(), overlap.GetComponent<Storage>().GetSlotNumber(), ingredient, overlap.GetComponent<Storage>().GetIngredient());
                             overlap.GetComponent<Storage>().quantity++;
                             Cleanup();
                         }
