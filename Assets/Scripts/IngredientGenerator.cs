@@ -132,15 +132,15 @@ public class IngredientGenerator : MonoBehaviour
 
                 ingredient.desc_string = colourPart.desc_string + typePart.desc_string + descPart.desc_string;
 
+                ingredient.effect_string = BuildEffectString(ingredient.effectsDict);
+
                 loopCounter++;
 
             } while (Ingredients.Contains(ingredient) && loopCounter < MAX_LOOPS);
 
             Ingredients.Add(ingredient);
         }
-
-        Debug.Log(Ingredients.Count);
-
+        
         return Ingredients;
     }
 
@@ -171,6 +171,7 @@ public class IngredientGenerator : MonoBehaviour
         ingredient.sprite = CombineSprites(colourPart.sprite, descPart.sprite, typePart.sprite);
 
         ingredient.desc_string = colourPart.desc_string + typePart.desc_string + descPart.desc_string;
+        ingredient.effect_string = BuildEffectString(ingredient.effectsDict);
 
         return ingredient;
     }
@@ -202,5 +203,31 @@ public class IngredientGenerator : MonoBehaviour
         finalSprite = Sprite.Create(tex, new Rect(0, 0, 128, 128), Vector2.zero);
 
         return finalSprite;
+    }
+
+    private string BuildEffectString(Dictionary<string, float[]> effectsDict)
+    {
+        string finalString = "";
+
+        string str_string = "";
+        string int_string = "";
+        string dex_string = "";
+
+        if(effectsDict["str"][0] != 0 && effectsDict["str"][1] != 1)
+        {
+            str_string = "STR: " + ((effectsDict["str"][0] < 0) ? "" : "+") + effectsDict["str"][0] + " x" + effectsDict["str"][1] + "\n";
+        }
+        if (effectsDict["dex"][0] != 0 && effectsDict["dex"][1] != 1)
+        {
+            int_string = "DEX: " + ((effectsDict["dex"][0] < 0) ? "" : "+") + effectsDict["dex"][0] + " x" + effectsDict["dex"][1] + "\n";
+        }
+        if (effectsDict["int"][0] != 0 && effectsDict["int"][1] != 1)
+        {
+            dex_string = "INT: " + ((effectsDict["int"][0] < 0) ? "" : "+") + effectsDict["int"][0] + " x" + effectsDict["int"][1] + "\n";
+        }
+
+        finalString = str_string + int_string + dex_string;
+
+        return finalString;
     }
 }

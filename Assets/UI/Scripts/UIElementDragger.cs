@@ -126,6 +126,6 @@ public class UIElementDragger : MonoBehaviour
     {
         ingredient = Instantiate(newIngredient);
         GetComponent<Image>().sprite = ingredient.sprite;
-        GetComponent<Display_Tooltip>().SetTooltipText(ingredient.name);
+        GetComponent<Display_Tooltip>().SetTooltipText(ingredient.name + "\n" + ingredient.desc_string + "\n" + ingredient.effect_string);
     }
 }

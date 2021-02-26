@@ -44,7 +44,9 @@ public class Storage : MonoBehaviour, IPointerDownHandler
     {
         heldIngredient = Instantiate(ingredient);
 
-        GetComponent<Display_Tooltip>().SetTooltipText(heldIngredient.name);
+        //GetComponent<Display_Tooltip>().SetTooltipText(heldIngredient.name);
+
+        GetComponent<Display_Tooltip>().SetTooltipText(heldIngredient.name + "\n" + heldIngredient.desc_string + "\n" + heldIngredient.effect_string);
 
         transform.Find("StoredImage").GetComponent<Image>().sprite = heldIngredient.sprite;
 
