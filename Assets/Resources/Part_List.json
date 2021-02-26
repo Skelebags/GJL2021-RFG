@@ -969,7 +969,7 @@
       "cost": -10,
       "tags": [ "meat", "toxic" ],
       "tier": 1,
-      "graphic": "Sprites/Newt_Graphic",
+      "graphic": "Sprites/Toad_Graphic",
       "desc": " toe from"
     },
     {
@@ -999,7 +999,7 @@
       "cost": 15,
       "tags": [ "meat", "toxic" ],
       "tier": 3,
-      "graphic": "Sprites/Newt_Graphic",
+      "graphic": "Sprites/Toad_Graphic",
       "desc": " eye of"
     },
     {
@@ -1029,7 +1029,7 @@
       "cost": 20,
       "tags": [ "meat" ],
       "tier": 4,
-      "graphic": "Sprites/Newt_Graphic",
+      "graphic": "Sprites/Toad_Graphic",
       "desc": " brain of"
     },
     {
