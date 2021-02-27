@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 546447249871356674}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b1798519ff8a341aa40cfbe98ea22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientHolder: {fileID: 6665520665162649035, guid: da13edfaf4c28f84c9e5ae05963c9e0d, type: 3}
 --- !u!114 &546447249871356675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,3 +71,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_name: Peter
   money: 0
+  inventory_obj: {fileID: 0}

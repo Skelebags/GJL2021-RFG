@@ -7,25 +7,43 @@ using UnityEngine;
 /// </summary>
 public class PartList : MonoBehaviour
 {
+    /// <summary>
+    /// The data class for the Parts
+    /// </summary>
     public class Part
     {
+        // The ID of the part
         public int id;
-        public string name;
+        public string part_name;
+
+        // What slot in the ingredient does this part occupy
         public string slot;
+
+        // Dictionary of the part's effects
         public Dictionary<string, float[]> effectsDict = new Dictionary<string, float[]>() { {"str", new float[2] { 0f, 1f} }, { "int", new float[2] { 0f, 1f } }, { "dex", new float[2] { 0f, 1f } } };
         public int cost;
+
+        // The part's tags
         public enum Tags { any, meat, mineral, plant, blessed, toxic};
         public List<Tags> tags = new List<Tags>();
+
+        // The part's tier (will only appear in shops of the same tier or higher)
         public int tier;
+
+        // The path in the resources file to this part's sprite
         public string graphic_path;
 
+        // The actual sprite
         public Sprite sprite;
 
+        // The part's flavour text
         public string desc_string;
     }
 
+    // The file the part data is stored in
     public TextAsset part_list_file;
 
+    // The parts arranged by ID
     public Dictionary<int, Part> Data  = new Dictionary<int, Part>();
 
     /// <summary>
@@ -33,12 +51,13 @@ public class PartList : MonoBehaviour
     /// </summary>
     public void PopulatePartsFromJSON()
     {
+        // Grab the JSON from the file as a string
         string jsonString = part_list_file.text;
-
-        //Debug.Log(jsonString);
-
+        
+        // Part is with SimpleJSON
         JSONNode N = JSON.Parse(jsonString);
 
+        // The whole file is one BIG array
         JSONArray array = N["Parts"].AsArray;
         
         // Grab data from JSONArray
@@ -47,7 +66,7 @@ public class PartList : MonoBehaviour
             // Create a new part and get its name and slot type from the JSONArray
             Part part = new Part();
             part.id = array[i]["id"].AsInt;
-            part.name = array[i]["name"].Value;
+            part.part_name = array[i]["name"].Value;
             part.slot = array[i]["slot"].Value;
 
             // Read the effects as a new Array if the part has any effects
@@ -98,6 +117,7 @@ public class PartList : MonoBehaviour
             // Get the part's description
             part.desc_string = array[i]["desc"].Value;
 
+            // Add the part data to the dictionary, use its ID as the index
             Data.Add(part.id, part);
         }
 

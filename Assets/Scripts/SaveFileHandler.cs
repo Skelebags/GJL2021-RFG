@@ -28,19 +28,18 @@ public class SaveFileHandler : MonoBehaviour
         for(int save_slot = 0; save_slot < MAX_SAVES; save_slot++)
         {
             save_path = System.IO.Path.Combine(save_directory, "slot_" + save_slot.ToString() + ".json");
-
-            //Debug.Log(save_path);
-
+            
+            // If the file exists, read it
             if (System.IO.File.Exists(save_path))
             {
                 JSONNode S = JSON.Parse(System.IO.File.ReadAllText(save_path));
                 
             }
+            // Otherwise, make it
             else
             {
-
+                // Create the save file, then dispose of the filestream so we can access it
                 System.IO.File.Create(save_path).Dispose();
-                Debug.Log("Created save file at: " + save_path);
 
                 JSONObject save_data = new JSONObject();
 
@@ -60,6 +59,14 @@ public class SaveFileHandler : MonoBehaviour
                     inventory.Add(item);
                 }
                 save_data.Add("Inventory", inventory);
+
+                // QUANTITY ARRAY STARTS ALL 0s
+                JSONArray quantities = new JSONArray();
+                for(int i = 0; i < 9; i++)
+                {
+                    quantities.Add("slot " + i, 0);
+                }
+                save_data.Add("Quantities", quantities);
                 
                 System.IO.File.WriteAllText(save_path, save_data.ToString());
             }
@@ -68,14 +75,22 @@ public class SaveFileHandler : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Saves the game data to a particular slot
+    /// </summary>
+    /// <param name="save_slot">The current save slot number</param>
+    /// <param name="saveData">The JSON data to save</param>
     public void Save(int save_slot, JSONObject saveData)
     {
         save_path = System.IO.Path.Combine(save_directory, "slot_" + save_slot.ToString() + ".json");
 
+        // Grab the save file
         string file_string = System.IO.File.ReadAllText(save_path);
 
+        // Parse it
         JSONNode S = JSON.Parse(file_string);
 
+        // Replace the existing data with the new data
         if (S["Save_Name"] != null && saveData["Save_Name"] != null)
         {
             S["Save_Name"] = saveData["Save_Name"].Value;
@@ -92,10 +107,16 @@ public class SaveFileHandler : MonoBehaviour
         {
             S["Inventory"] = saveData["Inventory"].AsArray;
         }
+        if(S["Quantities"] != null && saveData["Quantities"] != null)
+        {
+            S["Quantities"] = saveData["Quantities"].AsArray;
+        }
 
+        // Write it
         System.IO.File.WriteAllText(save_path, S.ToString());
     }
 
+    // Load the save data from a save slot, return the parsed data
     public JSONNode Load(int save_slot)
     {
         string load_path = System.IO.Path.Combine(save_directory, "slot_" + save_slot.ToString() + ".json");
