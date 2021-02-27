@@ -884,7 +884,7 @@ RectTransform:
   m_GameObject: {fileID: 507895912}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.0422616, y: 4.0422616, z: 4.0422616}
+  m_LocalScale: {x: 2.546625, y: 2.546625, z: 2.546625}
   m_Children:
   - {fileID: 1777365145}
   - {fileID: 709490509}
@@ -900,7 +900,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 212, y: -143}
+  m_AnchoredPosition: {x: 202, y: -186}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &507895914
@@ -3372,6 +3372,10 @@ PrefabInstance:
       propertyPath: inventory_obj
       value: 
       objectReference: {fileID: 1939346318}
+    - target: {fileID: 8338340655839151235, guid: 53ea5c46564f1d449a558c6f10e98e37, type: 3}
+      propertyPath: tier
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53ea5c46564f1d449a558c6f10e98e37, type: 3}
 --- !u!1001 &8468581357517544332

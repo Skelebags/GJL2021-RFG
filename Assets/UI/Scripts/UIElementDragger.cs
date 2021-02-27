@@ -48,10 +48,10 @@ public class UIElementDragger : MonoBehaviour, IPointerDownHandler
                 // The element is no longer being dragged
                 dragging = false;
 
+                overlap = GetClosestOverlap();
+
                 // Grab the player data manager for ease
                 PlayerDataManager playerDataManager = manager.GetPlayer();
-
-                overlap = GetClosestOverlap();
 
                 // If this element is an ingredient
                 if (ingredient)

@@ -12,6 +12,9 @@ public class Cauldron : MonoBehaviour, IPointerDownHandler
     // The draggable icon prefab
     public GameObject icon_prefab;
 
+    // The GameManager
+    private GameManager manager;
+
     // Variables for holding the various cauldron objects, and the mutable fill colour
     [SerializeField]
     private GameObject fillObj;
@@ -32,6 +35,7 @@ public class Cauldron : MonoBehaviour, IPointerDownHandler
     {
         // Get the color of the fill image
         fillColour = fillObj.GetComponent<Image>().color;
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -61,7 +65,7 @@ public class Cauldron : MonoBehaviour, IPointerDownHandler
             // Create a draggable ui element to hold that potion
             GameObject draggedIcon = Instantiate(icon_prefab, Input.mousePosition, Quaternion.identity, GameObject.Find("Icons").transform);
             UIElementDragger dragger = draggedIcon.GetComponent<UIElementDragger>();
-            dragger.dragging = true; dragger.spawn = transform.gameObject; dragger.SetPotion(newPotion);
+            dragger.dragging = true; dragger.spawn = transform.gameObject; dragger.SetPotion(newPotion); dragger.manager = manager;
 
             // Dump the cauldron
             EmptyCauldron();

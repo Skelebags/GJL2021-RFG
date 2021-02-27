@@ -19,6 +19,9 @@ public class ShopManager : MonoBehaviour
     // The scene's ingredient generator
     private IngredientGenerator generator;
 
+    [SerializeField]
+    private int tier = 1;
+
 
     private void Start()
     {
@@ -27,7 +30,7 @@ public class ShopManager : MonoBehaviour
 
         // Generate a group of appropriate unique ingredients
         List<Ingredient> generated = new List<Ingredient>();
-        generated = generator.GenerateIngredients(shopInventory.Length, shopTag);
+        generated = generator.GenerateIngredients(shopInventory.Length, shopTag, tier);
 
         // Assign those ingredients to the shop's inventory
         for (int i = 0; i < shopInventory.Length; i++)
@@ -40,5 +43,15 @@ public class ShopManager : MonoBehaviour
         {
             inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().AssignIngredient(shopInventory[invSlot], invSlot);
         }
+    }
+
+    public void SetTier(int newTier)
+    {
+        tier = newTier;
+    }
+
+    public int GetTier()
+    {
+        return tier;
     }
 }

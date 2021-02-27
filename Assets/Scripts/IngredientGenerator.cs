@@ -53,7 +53,7 @@ public class IngredientGenerator : MonoBehaviour
     /// <summary>
     /// Generates an ingredient of a specified tag type
     /// </summary>
-    public List<Ingredient> GenerateIngredients(int numberOfIngredients, PartList.Part.Tags targetTag)
+    public List<Ingredient> GenerateIngredients(int numberOfIngredients, PartList.Part.Tags targetTag, int shopTier)
     {
         // Create the list we will return
         List<Ingredient> Ingredients = new List<Ingredient>();
@@ -74,31 +74,31 @@ public class IngredientGenerator : MonoBehaviour
                 PartList.Part descPart = null;
                 PartList.Part typePart = null;
 
-                // Get a random Colour of the targetted tag, or with the "any" tag
+                // Get a random Colour of the targetted tag, or with the "any" tag at a particular tier or below
                 do
                 {
                     int randIndex = Random.Range(0, Colours.Count);
-                    if (Colours[randIndex].tags.Contains(PartList.Part.Tags.any) || Colours[randIndex].tags.Contains(targetTag))
+                    if ((Colours[randIndex].tags.Contains(PartList.Part.Tags.any) || Colours[randIndex].tags.Contains(targetTag)) && Colours[randIndex].tier <= shopTier)
                     {
                         colourPart = Colours[randIndex];
                     }
                 } while (colourPart == null);
 
-                // Get a random Descriptor, or with the "any" tag
+                // Get a random Descriptor, or with the "any" tag at a particular tier or below
                 do
                 {
                     int randIndex = Random.Range(0, Descriptors.Count);
-                    if (Descriptors[randIndex].tags.Contains(PartList.Part.Tags.any) || Descriptors[randIndex].tags.Contains(targetTag))
+                    if ((Descriptors[randIndex].tags.Contains(PartList.Part.Tags.any) || Descriptors[randIndex].tags.Contains(targetTag)) && Descriptors[randIndex].tier <= shopTier)
                     {
                         descPart = Descriptors[randIndex];
                     }
                 } while (descPart == null);
 
-                // Get a random Type, or with the "any" tag
+                // Get a random Type, or with the "any" tag at a particular tier or below
                 do
                 {
                     int randIndex = Random.Range(0, Types.Count);
-                    if (Types[randIndex].tags.Contains(PartList.Part.Tags.any) || Types[randIndex].tags.Contains(targetTag))
+                    if ((Types[randIndex].tags.Contains(PartList.Part.Tags.any) || Types[randIndex].tags.Contains(targetTag)) && Types[randIndex].tier <= shopTier)
                     {
                         typePart = Types[randIndex];
                     }
@@ -119,6 +119,7 @@ public class IngredientGenerator : MonoBehaviour
         // Return the list
         return Ingredients;
     }
+    
 
     /// <summary>
     /// Create a specific ingredient from 3 specific part IDs
