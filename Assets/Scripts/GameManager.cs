@@ -8,6 +8,8 @@ using SimpleJSON;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    // What save slot is this?
+
     // The Ingredient Generator in this scene
     private IngredientGenerator generator;
 
@@ -24,8 +26,31 @@ public class GameManager : MonoBehaviour
         generator = GameObject.FindGameObjectWithTag("IngredientGenerator").GetComponent<IngredientGenerator>();
         handler = GetComponent<SaveFileHandler>();
         player = GetComponent<PlayerDataManager>();
-        tooltip = GameObject.Find("Tooltip");
-        tooltip.GetComponent<Tooltip>().HideTooltip();
+        if(tooltip = GameObject.Find("Tooltip"))
+        {
+            tooltip.GetComponent<Tooltip>().HideTooltip();
+        }
+        
+
+        ApplyLoadData();
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        Debug.Log("Scene Change!");
+        // Grab all of our components
+        generator = GameObject.FindGameObjectWithTag("IngredientGenerator").GetComponent<IngredientGenerator>();
+        handler = GetComponent<SaveFileHandler>();
+        player = GetComponent<PlayerDataManager>();
+        if (tooltip = GameObject.Find("Tooltip"))
+        {
+            tooltip.GetComponent<Tooltip>().HideTooltip();
+        }
+
+        JSONObject data = BuildPlayerData();
+        handler.Save(0, data);
+
+        ApplyLoadData();
     }
 
 
@@ -53,7 +78,7 @@ public class GameManager : MonoBehaviour
     /// Create a JSONObject that contains all of the data relevant to the player
     /// </summary>
     /// <returns>The Player Data as a JSONObject</returns>
-    JSONObject BuildPlayerData()
+    public JSONObject BuildPlayerData()
     {
         JSONObject data = new JSONObject();
 
@@ -71,7 +96,9 @@ public class GameManager : MonoBehaviour
         {
             JSONObject item = new JSONObject();
             // If there is an item in this inventory slot, save it to an array of ids
-            if (player.GetIDsAtSlot(i)[0] != 0)
+            int[] ids = player.GetIDsAtSlot(i);
+
+            if (ids[0] != 0)
             {
                 JSONArray idArray = new JSONArray();
                 foreach (int id in player.GetIDsAtSlot(i))
@@ -124,14 +151,12 @@ public class GameManager : MonoBehaviour
             {
                 JSONArray idArray = inventoryArray[i]["id"].AsArray;
                 // Tell the generator to create the specific ingredient that corresponds to the stored IDs
-                player.AddToInventoryAtSlot(i, generator.GenerateIngredientFromIDs(idArray[0].AsInt, idArray[1].AsInt, idArray[2].AsInt));
-                player.SetQuantityAtSlot(i, quantityArray[i].AsInt);
+                player.SetInventoryAtSlot(i, generator.GenerateIngredientFromIDs(idArray[0].AsInt, idArray[1].AsInt, idArray[2].AsInt), quantityArray[i].AsInt);
             }
             else
             {
                 Ingredient ingredient = ScriptableObject.CreateInstance<Ingredient>();
-                player.AddToInventoryAtSlot(i, ingredient);
-                player.SetQuantityAtSlot(i, quantityArray[i].AsInt);
+                player.SetInventoryAtSlot(i, ingredient, quantityArray[i].AsInt);
             }
         }
     }

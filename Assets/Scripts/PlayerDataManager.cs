@@ -32,27 +32,41 @@ public class PlayerDataManager : MonoBehaviour
             quantities[i] = 0;
         }
 
-        // Assign those empty ingredients to the storage objects
-        for (int invSlot = 0; invSlot < inventory_obj.transform.childCount; invSlot++)
+        if (inventory_obj)
         {
-            inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().AssignIngredient(inventory[invSlot], invSlot);
-        }
-    }
-
-
-    private void Update()
-    {
-        // Loop through every inventory slot
-        for (int invSlot = 0; invSlot < inventory_obj.transform.childCount; invSlot++)
-        {
-            // If it has run out of an ingredient
-            if(inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().quantity <= 0)
+            // Assign those empty ingredients to the storage objects
+            for (int invSlot = 0; invSlot < inventory_obj.transform.childCount; invSlot++)
             {
-                // Assign it an empty ingredient
-                inventory[invSlot] = ScriptableObject.CreateInstance<Ingredient>();
                 inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().AssignIngredient(inventory[invSlot], invSlot);
             }
         }
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if(inventory_obj = GameObject.FindGameObjectWithTag("Inventory"))
+        {
+            Debug.Log("Inventory Found!");
+        }
+    }
+
+    private void Update()
+    {
+        if(inventory_obj)
+        {
+            // Loop through every inventory slot
+            for (int invSlot = 0; invSlot < inventory_obj.transform.childCount; invSlot++)
+            {
+                // If it has run out of an ingredient
+                if(inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().quantity <= 0)
+                {
+                    // Assign it an empty ingredient
+                    inventory[invSlot] = ScriptableObject.CreateInstance<Ingredient>();
+                    inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().AssignIngredient(inventory[invSlot], invSlot);
+                }
+            }
+        }
+        
     }
 
     // Return the ID array of the ingredient at a slot
@@ -61,21 +75,33 @@ public class PlayerDataManager : MonoBehaviour
         return inventory[slot].ids;
     }
 
+    public void SetInventoryAtSlot(int slot, Ingredient ingredient, int quantity)
+    {
+        inventory[slot] = ingredient;
+        quantities[slot] = quantity;
+    }
+
     // Add a specific ingredient to a particular slot
     public void AddToInventoryAtSlot(int slot, Ingredient ingredient)
     {
         // If this inventory slot already contains this ingredient
         if(CompareIDs(inventory[slot].ids, ingredient.ids))
         {
-            // Increment the quantity
-            inventory_obj.transform.GetChild(slot).GetComponent<Storage>().quantity++;
+            if (inventory_obj)
+            {
+                // Increment the quantity
+                inventory_obj.transform.GetChild(slot).GetComponent<Storage>().quantity++;
+            }
         }
         else
         { 
             // Assign that ingredient to the inventory slot, to the storage object, and set the quantity to 1
             inventory[slot] = ingredient;
-            inventory_obj.transform.GetChild(slot).GetComponent<Storage>().AssignIngredient(inventory[slot], slot);
-            inventory_obj.transform.GetChild(slot).GetComponent<Storage>().quantity = 1;
+            if (inventory_obj)
+            {
+                inventory_obj.transform.GetChild(slot).GetComponent<Storage>().AssignIngredient(inventory[slot], slot);
+                inventory_obj.transform.GetChild(slot).GetComponent<Storage>().quantity = 1;
+            }
         }
 
         // Update the quantities list
@@ -100,6 +126,7 @@ public class PlayerDataManager : MonoBehaviour
     // Swap the ingredients at 2 locations, and their quantities
     public void SwapIngredientLocs(int slot1, int slot2, Ingredient ing1, Ingredient ing2)
     {
+
         int quantity1 = inventory_obj.transform.GetChild(slot1).GetComponent<Storage>().quantity;
         int quantity2 = inventory_obj.transform.GetChild(slot2).GetComponent<Storage>().quantity;
 
@@ -137,7 +164,10 @@ public class PlayerDataManager : MonoBehaviour
     public void SetQuantityAtSlot(int slot, int quantity)
     {
         quantities[slot] = quantity;
-        inventory_obj.transform.GetChild(slot).GetComponent<Storage>().quantity = quantity;
+        if (inventory_obj)
+        {
+            inventory_obj.transform.GetChild(slot).GetComponent<Storage>().quantity = quantity;
+        }
     }
 
     // Set the player's money
