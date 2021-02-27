@@ -1,0 +1,379 @@
+fileFormatVersion: 2
+guid: 29a127322359b534eb9680b1293f3384
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7532728636329750153
+    second: Cauldron_Fill_Animated_0
+  - first:
+      213: -2527396694765077119
+    second: Cauldron_Fill_Animated_1
+  - first:
+      213: 4471098737898904215
+    second: Cauldron_Fill_Animated_2
+  - first:
+      213: 5403913726117115424
+    second: Cauldron_Fill_Animated_3
+  - first:
+      213: 6212803118485810977
+    second: Cauldron_Fill_Animated_4
+  - first:
+      213: 8072286008365868910
+    second: Cauldron_Fill_Animated_5
+  - first:
+      213: 2556741597411568705
+    second: Cauldron_Fill_Animated_6
+  - first:
+      213: 4815547878300086811
+    second: Cauldron_Fill_Animated_7
+  - first:
+      213: 2814073634156189079
+    second: Cauldron_Fill_Animated_8
+  - first:
+      213: 5787550275044577584
+    second: Cauldron_Fill_Animated_9
+  - first:
+      213: -3754319704869256469
+    second: Cauldron_Fill_Animated_10
+  - first:
+      213: 7336946791197691097
+    second: Cauldron_Fill_Animated_11
+  - first:
+      213: 7608658595788143785
+    second: Cauldron_Fill_Animated_12
+  - first:
+      213: -3701009459986027216
+    second: Cauldron_Fill_Animated_13
+  - first:
+      213: 5553565997765848337
+    second: Cauldron_Fill_Animated_14
+  - first:
+      213: -6304981565578922019
+    second: Cauldron_Fill_Animated_15
+  - first:
+      213: 6637288398661370689
+    second: Cauldron_Fill_Animated_16
+  - first:
+      213: -5092654894708416535
+    second: Cauldron_Fill_Animated_17
+  - first:
+      213: 5962772963060284506
+    second: Cauldron_Fill_Animated_18
+  - first:
+      213: 7045977579013127886
+    second: Cauldron_Fill_Animated_19
+  - first:
+      213: -8405590186422941199
+    second: Cauldron_Fill_Animated_20
+  - first:
+      213: 5537345433664380485
+    second: Cauldron_Fill_Animated_21
+  - first:
+      213: -241000681364935780
+    second: Cauldron_Fill_Animated_22
+  - first:
+      213: 2746403564463662113
+    second: Cauldron_Fill_Animated_23
+  - first:
+      213: -8881901399024885492
+    second: Cauldron_Fill_Animated_24
+  - first:
+      213: -3980055161787255302
+    second: Cauldron_Fill_Animated_25
+  - first:
+      213: -2389683202394290974
+    second: Cauldron_Fill_Animated_26
+  - first:
+      213: 4708866466617465684
+    second: Cauldron_Fill_Animated_27
+  - first:
+      213: 5097718519211813427
+    second: Cauldron_Fill_Animated_28
+  - first:
+      213: -1749991540543725247
+    second: Cauldron_Fill_Animated_29
+  - first:
+      213: 5213790668554362812
+    second: Cauldron_Fill_Animated_30
+  - first:
+      213: -3665118187431681087
+    second: Cauldron_Fill_Animated_31
+  - first:
+      213: 6919902423004746479
+    second: Cauldron_Fill_Animated_32
+  - first:
+      213: -142822227384267195
+    second: Cauldron_Fill_Animated_33
+  - first:
+      213: 5310985189946622154
+    second: Cauldron_Fill_Animated_34
+  - first:
+      213: -8666414961173065002
+    second: Cauldron_Fill_Animated_35
+  - first:
+      213: 3701914982950854964
+    second: Cauldron_Fill_Animated_36
+  - first:
+      213: 7731425948544868627
+    second: Cauldron_Fill_Animated_37
+  - first:
+      213: -2777417254073676440
+    second: Cauldron_Fill_Animated_38
+  - first:
+      213: 371394280214156151
+    second: Cauldron_Fill_Animated_39
+  - first:
+      213: 7398814237484574808
+    second: Cauldron_Fill_Animated_40
+  - first:
+      213: 5224483134242166687
+    second: Cauldron_Fill_Animated_41
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cauldron_Fill_Animated_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98ee8ddd8c0a98860800000000000000
+      internalID: 7532728636329750153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cauldron_Fill_Animated_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18df70ac812ececd0800000000000000
+      internalID: -2527396694765077119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cauldron_Fill_Animated_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79a592cfc988c0e30800000000000000
+      internalID: 4471098737898904215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cauldron_Fill_Animated_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 026711a17ee8efa40800000000000000
+      internalID: 5403913726117115424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cauldron_Fill_Animated_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12f29c8f48f483650800000000000000
+      internalID: 6212803118485810977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cauldron_Fill_Animated_5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e67e0061b55860070800000000000000
+      internalID: 8072286008365868910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cauldron_Fill_Animated_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14c6e28cfee5b7320800000000000000
+      internalID: 2556741597411568705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
