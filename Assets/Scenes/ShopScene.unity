@@ -3248,5 +3248,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: IngredientGenerator
       objectReference: {fileID: 0}
+    - target: {fileID: 8468581357063247855, guid: 051b2f3c28a3d64488b3209fbd44c650, type: 3}
+      propertyPath: m_TagString
+      value: IngredientGenerator
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 051b2f3c28a3d64488b3209fbd44c650, type: 3}

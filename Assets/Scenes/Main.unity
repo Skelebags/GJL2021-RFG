@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 546447249871356676, guid: 8ba38af7fc6d2d14fa7f801d3d8d90b9, type: 3}
+      propertyPath: m_TagString
+      value: GameManager
+      objectReference: {fileID: 0}
     - target: {fileID: 546447249871356678, guid: 8ba38af7fc6d2d14fa7f801d3d8d90b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -195,7 +199,7 @@ GameObject:
   - component: {fileID: 246261212}
   m_Layer: 5
   m_Name: Inventory
-  m_TagString: Untagged
+  m_TagString: Inventory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -503,6 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon_prefab: {fileID: 4287168548367635736, guid: 48b3cc4de581da84a9aab83253b2ad9b, type: 3}
+  fillObj: {fileID: 1897191607}
 --- !u!114 &427964274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2162,6 +2167,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8468581357063247855, guid: 051b2f3c28a3d64488b3209fbd44c650, type: 3}
       propertyPath: m_Name
+      value: IngredientGenerator
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468581357063247855, guid: 051b2f3c28a3d64488b3209fbd44c650, type: 3}
+      propertyPath: m_TagString
       value: IngredientGenerator
       objectReference: {fileID: 0}
     m_RemovedComponents: []

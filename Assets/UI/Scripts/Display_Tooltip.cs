@@ -4,28 +4,43 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Attaching this script to an object causes it to display a tooltip when hovered over
+/// </summary>
 public class Display_Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private GameManager manager;
+    // Variables to hold relevant objects
     private GameObject tooltip;
+
+    // The string that will be displayed on the tooltip
     private string tooltipText = "";
 
+    // When hovered over
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        if(tooltip = GameObject.Find("GameManager").GetComponent<GameManager>().GetTooltip())
+        // If we can find a tooltip object from the game manager
+        if(tooltip = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().GetTooltip())
         {
+            // Show the tooltip
             tooltip.GetComponent<Tooltip>().ShowTooltip(tooltipText);
         }
     }
 
+    // When stop hovering over
     public void OnPointerExit(PointerEventData pointerEventData)
     {
-        if(tooltip = GameObject.Find("GameManager").GetComponent<GameManager>().GetTooltip())
+        // If we can find a tooltip object from the game manager
+        if (tooltip = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().GetTooltip())
         {
+            // Hide the tooltip
             tooltip.GetComponent<Tooltip>().HideTooltip();
         }
     }
 
+    /// <summary>
+    /// Set this object's tooltip text
+    /// </summary>
+    /// <param name="TooltipTextInput">The desired text</param>
     public void SetTooltipText(string TooltipTextInput)
     {
 
@@ -33,10 +48,15 @@ public class Display_Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     }
 
+    /// <summary>
+    /// Force the tooltip to be hidden
+    /// </summary>
     public void ForceHideTooltip()
     {
-        if(tooltip = GameObject.Find("GameManager").GetComponent<GameManager>().GetTooltip())
+        // If we can find a tooltip object from the game manager
+        if (tooltip = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().GetTooltip())
         {
+            // Hide the tooltip
             tooltip.GetComponent<Tooltip>().HideTooltip();
         }
     }
