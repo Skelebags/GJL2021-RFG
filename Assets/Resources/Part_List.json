@@ -67,10 +67,10 @@
         }
       ],
       "cost": 5,
-      "tags": [ "any" ],
+      "tags": [ "meat" ],
       "tier": 1,
       "graphic": "Sprites/Red_Graphic",
-      "desc": "A still-bleeding"
+      "desc": "The still-bleeding"
     },
     {
       "id": 5,
@@ -142,7 +142,7 @@
       "tags": [ "any" ],
       "tier": 2,
       "graphic": "Sprites/Rust_Graphic",
-      "desc": "The glittering"
+      "desc": "A glittering"
     },
     {
       "id": 9,
@@ -160,7 +160,7 @@
       "tags": [ "any", "toxic", "toxic" ],
       "tier": 2,
       "graphic": "Sprites/Rust_Graphic",
-      "desc": "The glowing"
+      "desc": "A glowing"
     },
     {
       "id": 10,
@@ -181,10 +181,10 @@
         }
       ],
       "cost": 15,
-      "tags": [ "any" ],
+      "tags": [ "plant", "meat" ],
       "tier": 3,
       "graphic": "Sprites/Rust_Graphic",
-      "desc": "A sun-bleached"
+      "desc": "The sun-bleached"
     },
     {
       "id": 11,
@@ -208,7 +208,7 @@
       "tags": [ "any" ],
       "tier": 3,
       "graphic": "Sprites/Rust_Graphic",
-      "desc": "A stained"
+      "desc": "The stained"
     },
     {
       "id": 12,
@@ -429,7 +429,7 @@
       "cost": 5,
       "tags": [ "meat" ],
       "tier": 1,
-      "graphic": "Sprites/CaveSlime_Graphic",
+      "graphic": "Sprites/Toad_Graphic",
       "desc": " a common salamander with useful regenerative abilities."
     },
     {
@@ -760,7 +760,7 @@
       "tags": [ "plant" ],
       "tier": 1,
       "graphic": "Sprites/Root_Graphic",
-      "desc": ", root from"
+      "desc": " root from"
     },
     {
       "id": 37,
@@ -775,10 +775,10 @@
         }
       ],
       "cost": 5,
-      "tags": [ "plant", "mineral" ],
+      "tags": [ "plant" ],
       "tier": 1,
       "graphic": "Sprites/Leaf_Graphic",
-      "desc": ", leaf of"
+      "desc": " leaf of"
     },
     {
       "id": 38,
@@ -796,7 +796,7 @@
       "tags": [ "plant", "meat" ],
       "tier": 1,
       "graphic": "Sprites/Root_Graphic",
-      "desc": ", flesh of"
+      "desc": " flesh of"
     },
     {
       "id": 39,
@@ -820,7 +820,7 @@
       "tags": [ "plant", "meat" ],
       "tier": 2,
       "graphic": "Sprites/Root_Graphic",
-      "desc": ", slice of"
+      "desc": " slice of"
     },
     {
       "id": 40,
@@ -868,7 +868,7 @@
       "tags": [ "any" ],
       "tier": 3,
       "graphic": "Sprites/Dust_Graphic",
-      "desc": " dust of"
+      "desc": " residue from"
     },
     {
       "id": 42,
@@ -919,7 +919,7 @@
         }
       ],
       "cost": 20,
-      "tags": [ "plant", "meat" ],
+      "tags": [ "plant" ],
       "tier": 4,
       "graphic": "Sprites/Leaf_Graphic",
       "desc": " flower of"
@@ -969,7 +969,7 @@
       "cost": -10,
       "tags": [ "meat", "toxic" ],
       "tier": 1,
-      "graphic": "Sprites/Toad_Graphic",
+      "graphic": "Sprites/Juice_Graphic",
       "desc": " toe from"
     },
     {
@@ -999,12 +999,12 @@
       "cost": 15,
       "tags": [ "meat", "toxic" ],
       "tier": 3,
-      "graphic": "Sprites/Toad_Graphic",
+      "graphic": "Sprites/Juice_Graphic",
       "desc": " eye of"
     },
     {
       "id": 48,
-      "name": "Toe",
+      "name": "Brain",
       "slot": "Type",
       "effects": [
         {
@@ -1029,7 +1029,7 @@
       "cost": 20,
       "tags": [ "meat" ],
       "tier": 4,
-      "graphic": "Sprites/Toad_Graphic",
+      "graphic": "Sprites/Juice_Graphic",
       "desc": " brain of"
     },
     {
