@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -30,7 +31,8 @@ public class UIElementDragger : MonoBehaviour, IPointerDownHandler
     private Potion potion;
 
     // How many things is the element overlapping
-    private int overlaps = 0;
+    //private int overlaps = 0;
+    private List<Collider2D> overlaps = new List<Collider2D>();
 
     public void Update()
     {
@@ -48,6 +50,8 @@ public class UIElementDragger : MonoBehaviour, IPointerDownHandler
 
                 // Grab the player data manager for ease
                 PlayerDataManager playerDataManager = manager.GetPlayer();
+
+                overlap = GetClosestOverlap();
 
                 // If this element is an ingredient
                 if (ingredient)
@@ -185,24 +189,25 @@ public class UIElementDragger : MonoBehaviour, IPointerDownHandler
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Keep track of what it's overlapped most recently
-        overlap = collision.gameObject;
+        //overlap = collision.gameObject;
 
         // and how many things it is overlapping with
-        overlaps++;
+        //overlaps++;
+        overlaps.Add(collision);
     }
 
     // When the element leaves a trigger
     private void OnTriggerExit2D(Collider2D collision)
     {
         // It's overlapping one less thing
-        overlaps--;
+        overlaps.Remove(collision);
         
         // If it's overlapping nothing, set overlap to null
-        if(overlaps <= 0)
+        if(overlaps.Count <= 0)
         {
-            overlaps = 0;
+            overlaps.Clear();
 
-            overlap = null;
+            //overlap = null;
         }
     }
 
@@ -240,5 +245,25 @@ public class UIElementDragger : MonoBehaviour, IPointerDownHandler
         potion = newPotion;
         //GetComponent<Image>().sprite = potion.sprite;
         GetComponent<Display_Tooltip>().SetTooltipText(potion.effect_string);
+    }
+
+    private GameObject GetClosestOverlap()
+    {
+        if(overlaps.Count == 0)
+        {
+            return null;
+        }
+        else
+        {
+            GameObject closest = overlaps[0].gameObject;
+            foreach(Collider2D collider in overlaps)
+            {
+                if((collider.transform.position - transform.position).magnitude < (closest.transform.position - transform.position).magnitude)
+                {
+                    closest = collider.gameObject;
+                }
+            }
+            return closest;
+        }
     }
 }

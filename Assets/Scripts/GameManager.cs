@@ -127,6 +127,12 @@ public class GameManager : MonoBehaviour
                 player.AddToInventoryAtSlot(i, generator.GenerateIngredientFromIDs(idArray[0].AsInt, idArray[1].AsInt, idArray[2].AsInt));
                 player.SetQuantityAtSlot(i, quantityArray[i].AsInt);
             }
+            else
+            {
+                Ingredient ingredient = ScriptableObject.CreateInstance<Ingredient>();
+                player.AddToInventoryAtSlot(i, ingredient);
+                player.SetQuantityAtSlot(i, quantityArray[i].AsInt);
+            }
         }
     }
 
