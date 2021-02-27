@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2906f86e0603f34ea69fb4bba0e2f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon_prefab: {fileID: 0}
+  icon_prefab: {fileID: 4287168548367635736, guid: 48b3cc4de581da84a9aab83253b2ad9b, type: 3}
   quantity: 0
 --- !u!114 &376799392521007811
 MonoBehaviour:
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 06d7ef982703b064ab9717506bd7084c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

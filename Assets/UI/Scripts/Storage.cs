@@ -28,13 +28,29 @@ public class Storage : MonoBehaviour, IPointerDownHandler
     {
         // Grab the game manager
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Keep the colliders in check with UI scaling
+        GetComponent<BoxCollider2D>().size = new Vector2(gameObject.GetComponent<RectTransform>().sizeDelta.x, gameObject.GetComponent<RectTransform>().sizeDelta.y);
+
         // Keep tabs on the quantity of ingredients available
-        GetComponentInChildren<Text>().text = quantity.ToString();
+        if (quantity > 0)
+        {
+            GetComponentInChildren<Text>().text = quantity.ToString();
+        }
+        else
+        {
+            GetComponentInChildren<Text>().text = "";
+        }
+
+        if(heldIngredient.sprite == null)
+        {
+            transform.Find("StoredImage").GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Empty");
+        }
     }
 
     // When the storage is clicked
@@ -67,7 +83,12 @@ public class Storage : MonoBehaviour, IPointerDownHandler
 
         GetComponent<Display_Tooltip>().SetTooltipText(heldIngredient.ingredient_name + "\n" + "Price: " + heldIngredient.cost + "\n" + heldIngredient.desc_string + "\n" + heldIngredient.effect_string);
 
-        transform.Find("StoredImage").GetComponent<Image>().sprite = heldIngredient.sprite;
+        if (heldIngredient.sprite != null)
+        {
+            transform.Find("StoredImage").GetComponent<Image>().sprite = heldIngredient.sprite;
+        }
+        
+        
 
         slot = slot_number;
     }

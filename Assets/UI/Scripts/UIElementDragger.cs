@@ -46,11 +46,12 @@ public class UIElementDragger : MonoBehaviour, IPointerDownHandler
                 // The element is no longer being dragged
                 dragging = false;
 
+                // Grab the player data manager for ease
+                PlayerDataManager playerDataManager = manager.GetPlayer();
+
                 // If this element is an ingredient
-                if(ingredient)
+                if (ingredient)
                 {
-                    // Grab the player data manager for ease
-                    PlayerDataManager playerDataManager = manager.GetPlayer();
 
                     // If nothing is being overlapped
                     if (overlap == null)
@@ -124,6 +125,14 @@ public class UIElementDragger : MonoBehaviour, IPointerDownHandler
                     {
                         // Get back to spawn
                         returning = true;
+                    }
+                }
+                else if(potion)
+                {
+                    if(overlap.CompareTag("Customer"))
+                    {
+                        playerDataManager.AddMoney(overlap.GetComponent<Customer>().Sell(potion));
+                        Cleanup();
                     }
                 }
                 
