@@ -3656,6 +3656,10 @@ PrefabInstance:
       propertyPath: tier
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8338340655839151235, guid: 53ea5c46564f1d449a558c6f10e98e37, type: 3}
+      propertyPath: shopTag
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53ea5c46564f1d449a558c6f10e98e37, type: 3}
 --- !u!1001 &8468581357517544332
