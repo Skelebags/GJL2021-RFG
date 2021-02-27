@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Tooltip : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Tooltip : MonoBehaviour
     [SerializeField]
     private Camera uiCamera;
     
-    private Text tooltipTextComp;
+    private TMP_Text tooltipTextComp;
     private RectTransform backgroundRectTransform;
     private RectTransform taper;
 
@@ -21,7 +22,7 @@ public class Tooltip : MonoBehaviour
         }
         if(tooltipTextComp == null)
         {
-            tooltipTextComp = GetComponentInChildren<Text>(); //transform.Find("TooltipText").gameObject.GetComponent<Text>();
+            tooltipTextComp = GetComponentInChildren <TMP_Text> (); //transform.Find("TooltipText").gameObject.GetComponent<Text>();
         }
         if (taper == null)
         {
@@ -42,7 +43,7 @@ public class Tooltip : MonoBehaviour
     public void ShowTooltip(string tooltipString)
     {        
         tooltipTextComp.text = tooltipString;
-        tooltipTextComp.supportRichText = true;
+        //tooltipTextComp.supportRichText = true;
         
         if(tooltipTextComp.text.Length > 20)
         {

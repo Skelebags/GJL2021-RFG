@@ -70,7 +70,7 @@
       "tags": [ "meat" ],
       "tier": 1,
       "graphic": "Sprites/Red_Graphic",
-      "desc": "A still-bleeding"
+      "desc": "The still-bleeding"
     },
     {
       "id": 5,
@@ -88,7 +88,7 @@
       "tags": [ "any", "toxic" ],
       "tier": 1,
       "graphic": "Sprites/Rust_Graphic",
-      "desc": "The slimy"
+      "desc": "A slimy"
     },
     {
       "id": 6,
@@ -429,7 +429,7 @@
       "cost": 5,
       "tags": [ "meat" ],
       "tier": 1,
-      "graphic": "Sprites/CaveSlime_Graphic",
+      "graphic": "Sprites/Toad_Graphic",
       "desc": " a common salamander with useful regenerative abilities."
     },
     {
@@ -919,7 +919,7 @@
         }
       ],
       "cost": 20,
-      "tags": [ "plant", "meat" ],
+      "tags": [ "plant" ],
       "tier": 4,
       "graphic": "Sprites/Leaf_Graphic",
       "desc": " flower of"
@@ -969,7 +969,7 @@
       "cost": -10,
       "tags": [ "meat", "toxic" ],
       "tier": 1,
-      "graphic": "Sprites/Toad_Graphic",
+      "graphic": "Sprites/Juice_Graphic",
       "desc": " toe from"
     },
     {
@@ -999,12 +999,12 @@
       "cost": 15,
       "tags": [ "meat", "toxic" ],
       "tier": 3,
-      "graphic": "Sprites/Toad_Graphic",
+      "graphic": "Sprites/Juice_Graphic",
       "desc": " eye of"
     },
     {
       "id": 48,
-      "name": "Toe",
+      "name": "Brain",
       "slot": "Type",
       "effects": [
         {
@@ -1029,7 +1029,7 @@
       "cost": 20,
       "tags": [ "meat" ],
       "tier": 4,
-      "graphic": "Sprites/Toad_Graphic",
+      "graphic": "Sprites/Juice_Graphic",
       "desc": " brain of"
     },
     {
