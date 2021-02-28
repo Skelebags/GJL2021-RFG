@@ -18,6 +18,12 @@ public class Customer : MonoBehaviour, IPointerDownHandler
     
     public bool hasBeenServed = false;
 
+    public GameObject speechBubble;
+    private float timer = 0f;
+    [SerializeField]
+    private float visTime = 5f;
+    protected bool isVisible = false;
+
     // Calculate the sell price of a potion based on how much the customer wants it
     public virtual int Sell(Potion potion)
     {
@@ -43,10 +49,31 @@ public class Customer : MonoBehaviour, IPointerDownHandler
         return sellPrice;
     }
 
+    private void Update()
+    {
+        if(isVisible)
+        {
+            timer += Time.deltaTime;
+        }
+
+        if(timer >= visTime)
+        {
+            timer = 0;
+            isVisible = false;
+        }
+
+        speechBubble.SetActive(isVisible);
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
-        int randomIndex = Random.Range(0, 3);
-        string randomVoiceline = voiceLine[randomIndex];
-        FindObjectOfType<AudioManager>().Play(randomVoiceline, voicePitch);
+        if (!isVisible)
+        {
+            int randomIndex = Random.Range(0, 3);
+            string randomVoiceline = voiceLine[randomIndex];
+            FindObjectOfType<AudioManager>().Play(randomVoiceline, voicePitch);
+
+            isVisible = true;
+        }
     }
 }
