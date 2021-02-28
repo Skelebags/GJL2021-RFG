@@ -13,6 +13,10 @@ public class PlayerDataManager : MonoBehaviour
     // The player's wallet
     public int money;
 
+    // What day it is
+    public int day;
+
+
     // The object who's children are the player's storage objects
     public GameObject inventory_obj;
 
@@ -22,6 +26,8 @@ public class PlayerDataManager : MonoBehaviour
     // The quantities of the ingredients at each position
     private int[] quantities = new int[9];
 
+    // The shop tiers
+    Dictionary<string, int> tier_dict = new Dictionary<string, int>() { { "plant", 1 }, { "meat", 1 }, { "mineral", 1 } };
 
     private void Start()
     {
@@ -39,6 +45,15 @@ public class PlayerDataManager : MonoBehaviour
             {
                 inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().AssignIngredient(inventory[invSlot], invSlot);
             }
+        }
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        ShopManager shopManager;
+        if(shopManager = GameObject.FindGameObjectWithTag("ShopManager").GetComponent<ShopManager>())
+        {
+            shopManager.SetTier(tier_dict[shopManager.shopTag.ToString()]);
         }
     }
 

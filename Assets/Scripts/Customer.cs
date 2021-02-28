@@ -10,8 +10,10 @@ public class Customer : MonoBehaviour
     public float int_mult = 1.0f;
     public float dex_mult = 1.0f;
 
+    public bool hasBeenServed = false;
+
     // Calculate the sell price of a potion based on how much the customer wants it
-    public int Sell(Potion potion)
+    public virtual int Sell(Potion potion)
     {
         int sellPrice = 0;
 
@@ -22,6 +24,13 @@ public class Customer : MonoBehaviour
         floatPrice += potion.effects_dict["dex"] * dex_mult;
 
         sellPrice = (int)floatPrice;
+
+        if(sellPrice < 0)
+        {
+            sellPrice = 0;
+        }
+
+        hasBeenServed = true;
 
         return sellPrice;
     }
