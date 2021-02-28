@@ -25,9 +25,6 @@ public class ShopManager : MonoBehaviour
 
     private void Start()
     {
-        // Get our shop tier
-        tier = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerDataManager>().GetTierFromTag(shopTag);
-
         // Grab the ingredient Generator
         generator = GameObject.FindGameObjectWithTag("IngredientGenerator").GetComponent<IngredientGenerator>();
 

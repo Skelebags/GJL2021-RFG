@@ -13,7 +13,6 @@ TagManager:
   - IngredientGenerator
   - Customer
   - Generic
-  - ShopManager
   layers:
   - Default
   - TransparentFX
