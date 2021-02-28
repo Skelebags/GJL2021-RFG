@@ -16,7 +16,7 @@ public class Storage : MonoBehaviour, IPointerDownHandler
     public int quantity;
 
     // Variable for holding the GameManager, the image component that will display the held ingredient, and the held ingredient itself
-    private GameManager manager;
+    protected GameManager manager;
     private Image storedImage;
     private Ingredient heldIngredient;
 

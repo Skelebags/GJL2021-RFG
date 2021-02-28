@@ -12,6 +12,7 @@ TagManager:
   - GameManager
   - IngredientGenerator
   - Customer
+  - Generic
   layers:
   - Default
   - TransparentFX

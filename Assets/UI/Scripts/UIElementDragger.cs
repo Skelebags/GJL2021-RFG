@@ -67,7 +67,7 @@ public class UIElementDragger : MonoBehaviour, IPointerDownHandler
                     else if (overlap.CompareTag("Catcher"))
                     {
                         // Check if the origin was the player's inventory (We don't want the player to sell stuff to the shop from the shop's inventory, for example)
-                        if (spawn.transform.parent.CompareTag("Inventory"))
+                        if (spawn.transform.parent.CompareTag("Inventory") || spawn.transform.CompareTag("Generic"))
                         {
                             // If the overlap is a cauldron
                             if (overlap.GetComponent<Cauldron>())

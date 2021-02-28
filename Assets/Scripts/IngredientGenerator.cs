@@ -242,7 +242,7 @@ public class IngredientGenerator : MonoBehaviour
     /// </summary>
     /// <param name="effectsDict">The ingredient's effect dictionary</param>
     /// <returns>The pretty effects string</returns>
-    private string BuildEffectString(Dictionary<string, float[]> effectsDict)
+    public static string BuildEffectString(Dictionary<string, float[]> effectsDict)
     {
         // Create placeholders
         string finalString = "";
