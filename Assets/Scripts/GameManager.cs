@@ -52,26 +52,6 @@ public class GameManager : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        // Save data on S
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-
-            JSONObject data = BuildPlayerData();
-
-            handler.Save(saveSlot, data);
-        }
-
-        // Load data on L
-        if(Input.GetKeyDown(KeyCode.L))
-        {
-            ApplyLoadData();
-        }
-
-    }
-
     /// <summary>
     /// Create a JSONObject that contains all of the data relevant to the player
     /// </summary>
@@ -175,9 +155,9 @@ public class GameManager : MonoBehaviour
 
         JSONArray tiers = load_data["Shop_Tiers"].AsArray;
 
-        player.SetTierForTag(PartList.Part.Tags.plant, tiers[0]);
-        player.SetTierForTag(PartList.Part.Tags.meat, tiers[1]);
-        player.SetTierForTag(PartList.Part.Tags.mineral, tiers[2]);
+        player.SetTierForTag(PartList.Part.Tags.plant, tiers[0].AsInt);
+        player.SetTierForTag(PartList.Part.Tags.meat, tiers[1].AsInt);
+        player.SetTierForTag(PartList.Part.Tags.mineral, tiers[2].AsInt);
     }
 
     public void SaveData()
@@ -195,6 +175,11 @@ public class GameManager : MonoBehaviour
     public PlayerDataManager GetPlayer()
     {
         return player;
+    }
+
+    public IngredientGenerator GetGenerator()
+    {
+        return generator;
     }
 
     public void SetSaveSlot(int newSlot)

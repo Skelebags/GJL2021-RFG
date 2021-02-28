@@ -7,6 +7,7 @@ public class CustomerSpawner : MonoBehaviour
     public RectTransform spawnpointStart;
     public RectTransform spawnpointEnd;
 
+    public GameObject mapButton;
 
     [SerializeField]
     private int day_offset = 5;
@@ -44,6 +45,10 @@ public class CustomerSpawner : MonoBehaviour
                 curr_customer = Instantiate(customers[Random.Range(0, customers.Length)], spawnpointStart.position, Quaternion.identity, gameObject.transform);
 
             }
+        }
+        else
+        {
+            mapButton.SetActive(true);
         }
     }
 

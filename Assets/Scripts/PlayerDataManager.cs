@@ -27,7 +27,7 @@ public class PlayerDataManager : MonoBehaviour
     private int[] quantities = new int[9];
 
     // The shop tiers
-    Dictionary<string, int> tier_dict = new Dictionary<string, int>() { { "plant", 1 }, { "meat", 1 }, { "mineral", 1 } };
+    Dictionary<PartList.Part.Tags, int> tier_dict = new Dictionary<PartList.Part.Tags, int>() { { PartList.Part.Tags.plant, 1 }, { PartList.Part.Tags.meat, 1 }, { PartList.Part.Tags.mineral, 1 } };
 
     private void Start()
     {
@@ -53,7 +53,7 @@ public class PlayerDataManager : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("ShopManager"))
         {
             ShopManager shopManager = GameObject.FindGameObjectWithTag("ShopManager").GetComponent<ShopManager>();
-            shopManager.SetTier(tier_dict[shopManager.shopTag.ToString()]);
+            shopManager.SetTier(tier_dict[shopManager.shopTag]);
         }
     }
 
@@ -227,11 +227,17 @@ public class PlayerDataManager : MonoBehaviour
 
     public void SetTierForTag(PartList.Part.Tags tag, int newTier)
     {
-        tier_dict[tag.ToString()] = newTier;
+        tier_dict[tag] = newTier;
     }
 
     public int GetTierFromTag(PartList.Part.Tags tag)
     {
-        return tier_dict[tag.ToString()];
+        return tier_dict[tag];
+    }
+
+    public void NextDay()
+    {
+        day++;
+        GetComponent<GameManager>().GetGenerator().DumpShopInventories();
     }
 }

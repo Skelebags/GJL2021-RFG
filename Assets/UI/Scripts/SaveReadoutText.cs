@@ -16,10 +16,10 @@ public class SaveReadoutText : MonoBehaviour
         handler = GameObject.FindGameObjectWithTag("GameManager").GetComponent<SaveFileHandler>();
         text = GetComponent<TMPro.TextMeshProUGUI>();
 
-        text.text = BuildTextFromData();
+        BuildTextFromData();
     }
 
-    private string BuildTextFromData()
+    public void BuildTextFromData()
     {
         JSONNode data = handler.Load(save_slot);
 
@@ -28,6 +28,6 @@ public class SaveReadoutText : MonoBehaviour
         string money_string = data["Money"].AsInt.ToString();
 
         string final_string = "Name: " + name_string + "\nDay: " + day_string + "\nMoney: " + money_string;
-        return final_string;
+        text.text = final_string;
     }
 }

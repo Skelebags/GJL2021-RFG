@@ -15,12 +15,15 @@ public class ShopManager : MonoBehaviour
 
     // The shops inventory of ingredients
     private Ingredient[] shopInventory = new Ingredient[9];
+    private int[] quantities = new int[9];
 
     // The scene's ingredient generator
     private IngredientGenerator generator;
 
     [SerializeField]
-    private int tier = 1;
+    private int tier;
+
+    private List<Ingredient> generated = new List<Ingredient>();
 
 
     private void Start()
@@ -32,8 +35,10 @@ public class ShopManager : MonoBehaviour
         generator = GameObject.FindGameObjectWithTag("IngredientGenerator").GetComponent<IngredientGenerator>();
 
         // Generate a group of appropriate unique ingredients
-        List<Ingredient> generated = new List<Ingredient>();
+        
         generated = generator.GenerateIngredients(shopInventory.Length, shopTag, tier);
+        quantities = generator.GetQuantities(shopTag);
+        Debug.Log(quantities);
 
         // Assign those ingredients to the shop's inventory
         for (int i = 0; i < shopInventory.Length; i++)
@@ -45,7 +50,18 @@ public class ShopManager : MonoBehaviour
         for (int invSlot = 0; invSlot < inventory_obj.transform.childCount; invSlot++)
         {
             inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().AssignIngredient(shopInventory[invSlot], invSlot);
+            inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().quantity = quantities[invSlot];
         }
+    }
+
+    private void Update()
+    {
+        for (int invSlot = 0; invSlot < inventory_obj.transform.childCount; invSlot++)
+        {
+            quantities[invSlot] = inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().quantity;
+        }
+
+        generator.UpdateShopInventory(shopTag, shopInventory, quantities);
     }
 
     public void SetTier(int newTier)
@@ -56,5 +72,11 @@ public class ShopManager : MonoBehaviour
     public int GetTier()
     {
         return tier;
+    }
+
+    public void Upgrade()
+    {
+        tier++;
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerDataManager>().SetTierForTag(shopTag, tier);
     }
 }

@@ -13,6 +13,15 @@ public class IngredientGenerator : MonoBehaviour
     private List<PartList.Part> Descriptors = new List<PartList.Part>();
     private List<PartList.Part> Types = new List<PartList.Part>();
 
+    private List<Ingredient> plantShopInv = new List<Ingredient>();
+    private int[] plantQuantities = new int[9];
+
+    private List<Ingredient> meatShopInv = new List<Ingredient>();
+    private int[] meatQuantities = new int[9];
+
+    private List<Ingredient> mineralShopInv = new List<Ingredient>();
+    private int[] mineralQuantities = new int[9];
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -24,6 +33,10 @@ public class IngredientGenerator : MonoBehaviour
 
             SplitData();
         }
+
+        plantQuantities = GenerateDefaultQuantities();
+        meatQuantities = GenerateDefaultQuantities();
+        mineralQuantities = GenerateDefaultQuantities();
     }
 
     /// <summary>
@@ -115,6 +128,44 @@ public class IngredientGenerator : MonoBehaviour
             // Add the ingredient to the list
             Ingredients.Add(ingredient);
         }
+
+        // Only allow the shops to generate an inventory once per day!
+        switch(targetTag)
+        {
+            case PartList.Part.Tags.plant:
+                if(plantShopInv.Count == 0)
+                {
+                    plantShopInv = Ingredients;
+                }
+                else
+                {
+                    return plantShopInv;
+                }
+                break;
+            case PartList.Part.Tags.meat:
+                if (meatShopInv.Count == 0)
+                {
+                    meatShopInv = Ingredients;
+                }
+                else
+                {
+                    return meatShopInv;
+                }
+                break;
+            case PartList.Part.Tags.mineral:
+                if (mineralShopInv.Count == 0)
+                {
+                    mineralShopInv = Ingredients;
+                }
+                else
+                {
+                    return mineralShopInv;
+                }
+                break;
+            default:
+                break;
+        }
+
         
         // Return the list
         return Ingredients;
@@ -180,7 +231,6 @@ public class IngredientGenerator : MonoBehaviour
         ingredient.tags.AddRange(typePart.tags);
 
         // Build the ingredients new sprite
-        Debug.Log(typePart.part_name);
         ingredient.sprite = CombineSprites(colourPart.sprite, descPart.sprite, typePart.sprite);
 
         // Combine the part flavour text
@@ -209,7 +259,6 @@ public class IngredientGenerator : MonoBehaviour
         Texture2D tex = new Texture2D(128, 128);
 
         // Assign that texture to an instance of the Type Part's texture (we do not want to edit the original)
-        Debug.Log(typeSprite.texture.name);
         tex = Instantiate(typeSprite.texture);
 
         // Loop through every pixel in the texture
@@ -307,5 +356,61 @@ public class IngredientGenerator : MonoBehaviour
         finalString = str_string + int_string + dex_string;
 
         return finalString;
+    }
+
+    public int[] GenerateDefaultQuantities()
+    {
+        return new int[9] { 3, 3, 3, 3, 3, 3, 3, 3, 3};
+    }
+
+    public int[] GetQuantities(PartList.Part.Tags targetTag)
+    {
+        switch (targetTag)
+        {
+            case PartList.Part.Tags.plant:
+                return plantQuantities;
+            case PartList.Part.Tags.meat:
+                return meatQuantities;
+            case PartList.Part.Tags.mineral:
+                return mineralQuantities;
+            default:
+                break;
+        }
+
+        return new int[9];
+    }
+
+    public void UpdateShopInventory(PartList.Part.Tags targetTag, Ingredient[] inventory, int[] quantities)
+    {
+        switch (targetTag)
+        {
+            case PartList.Part.Tags.plant:
+                plantShopInv.Clear();
+                plantShopInv.AddRange(inventory);
+                plantQuantities = quantities;
+                break;
+            case PartList.Part.Tags.meat:
+                meatShopInv.Clear();
+                meatShopInv.AddRange(inventory);
+                meatQuantities = quantities;
+                break;
+            case PartList.Part.Tags.mineral:
+                mineralShopInv.Clear();
+                mineralShopInv.AddRange(inventory);
+                mineralQuantities = quantities;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void DumpShopInventories()
+    {
+        plantShopInv.Clear();
+        meatShopInv.Clear();
+        mineralShopInv.Clear();
+        plantQuantities = GenerateDefaultQuantities();
+        meatQuantities = GenerateDefaultQuantities();
+        mineralQuantities = GenerateDefaultQuantities();
     }
 }
