@@ -34,9 +34,7 @@ public class IngredientGenerator : MonoBehaviour
             SplitData();
         }
 
-        plantQuantities = GenerateDefaultQuantities();
-        meatQuantities = GenerateDefaultQuantities();
-        mineralQuantities = GenerateDefaultQuantities();
+
     }
 
     /// <summary>
@@ -304,7 +302,7 @@ public class IngredientGenerator : MonoBehaviour
         if (!(effectsDict["str"][0] == 0 && effectsDict["str"][1] == 1))
         {
             // Colour the text to make it nice
-            str_string = "<color=red>STR: ";
+            str_string = "<color=#ad2a1a>STR: ";
             if (effectsDict["str"][0] != 0)
             {
                 // Do we want a "+" for positive numbers?
@@ -323,7 +321,7 @@ public class IngredientGenerator : MonoBehaviour
             {
                 int_string += "\n";
             }
-            int_string += "<color=blue>INT: ";
+            int_string += "<color=#01579b>INT: ";
             if (effectsDict["int"][0] != 0)
             {
                 int_string += ((effectsDict["int"][0] < 0) ? "" : "+") + effectsDict["int"][0];
@@ -340,7 +338,7 @@ public class IngredientGenerator : MonoBehaviour
             {
                 dex_string += "\n";
             }
-            dex_string += "<color=green>DEX: ";
+            dex_string += "<color=#00FF66>DEX: ";
             if (effectsDict["dex"][0] != 0)
             {
                 dex_string += ((effectsDict["dex"][0] < 0) ? "" : "+") + effectsDict["dex"][0];
@@ -358,9 +356,27 @@ public class IngredientGenerator : MonoBehaviour
         return finalString;
     }
 
+    public void SetupFirstDay()
+    {
+        plantQuantities = GenerateDefaultQuantities();
+        meatQuantities = GenerateDefaultQuantities();
+        mineralQuantities = GenerateDefaultQuantities();
+    }
+
     public int[] GenerateDefaultQuantities()
     {
-        return new int[9] { 3, 3, 3, 3, 3, 3, 3, 3, 3};
+        PlayerDataManager player = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerDataManager>();
+
+        int[] values = new int[9];
+
+        for (int i = 0; i < values.Length; i++)
+        {
+            values[i] = Random.Range(player.day, (player.day * 2) + 1);
+
+            Debug.Log(values[i]);
+        }
+
+        return values;
     }
 
     public int[] GetQuantities(PartList.Part.Tags targetTag)

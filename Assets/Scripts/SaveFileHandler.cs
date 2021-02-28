@@ -49,8 +49,8 @@ public class SaveFileHandler : MonoBehaviour
                 save_data.Add("Save_Name", default_name);
                 // STARTING MONEY
                 save_data.Add("Money", STARTING_MONEY);
-                // START AT DAY 0
-                save_data.Add("Day", 0);
+                // START AT DAY 1
+                save_data.Add("Day", 1);
 
                 // INVENTORY STARTS EMPTY
                 JSONArray inventory = new JSONArray();
@@ -164,8 +164,8 @@ public class SaveFileHandler : MonoBehaviour
         save_data.Add("Save_Name", default_name);
         // STARTING MONEY
         save_data.Add("Money", STARTING_MONEY);
-        // START AT DAY 0
-        save_data.Add("Day", 0);
+        // START AT DAY 1
+        save_data.Add("Day", 1);
 
         // INVENTORY STARTS EMPTY
         JSONArray inventory = new JSONArray();

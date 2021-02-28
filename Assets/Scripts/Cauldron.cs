@@ -180,7 +180,7 @@ public class Cauldron : MonoBehaviour, IPointerDownHandler
         if (effects_dict["str"] != 0f)
         {
             // Colour the string to make it nice
-            str_string = "<color=red>STR: ";
+            str_string = "<color=#ad2a1a>STR: ";
            
             // Decide whether or not to use a "+" sign, or just to leave it blank if there is a negative modifier
             str_string += ((effects_dict["str"] < 0) ? "" : "+") + effects_dict["str"];
@@ -189,7 +189,7 @@ public class Cauldron : MonoBehaviour, IPointerDownHandler
         }
         if (effects_dict["int"] != 0f)
         {
-            int_string = "<color=blue>INT: ";
+            int_string = "<color=#01579b>INT: ";
 
             int_string += ((effects_dict["int"] < 0) ? "" : "+") + effects_dict["int"];
 
@@ -197,7 +197,7 @@ public class Cauldron : MonoBehaviour, IPointerDownHandler
         }
         if (effects_dict["dex"] != 0f)
         {
-            dex_string = "<color=green>DEX: ";
+            dex_string = "<color=#00FF66>DEX: ";
 
             dex_string += ((effects_dict["dex"] < 0) ? "" : "+") + effects_dict["dex"];
 

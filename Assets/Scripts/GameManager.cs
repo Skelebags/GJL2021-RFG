@@ -172,6 +172,8 @@ public class GameManager : MonoBehaviour
         player.SetTierForTag(PartList.Part.Tags.plant, tiers[0].AsInt);
         player.SetTierForTag(PartList.Part.Tags.meat, tiers[1].AsInt);
         player.SetTierForTag(PartList.Part.Tags.mineral, tiers[2].AsInt);
+
+        generator.SetupFirstDay();
     }
 
     public void SaveData()
