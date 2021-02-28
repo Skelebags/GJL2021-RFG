@@ -60,6 +60,7 @@ public class Storage : MonoBehaviour, IPointerDownHandler
             // If the storage is part of the players inventory *OR* the player can afford to purchase the ingredient from the shop
             if (transform.parent.CompareTag("Inventory") || manager.GetPlayer().CanAfford(heldIngredient.cost))
             {
+                FindObjectOfType<AudioManager>().Play("IngredientPickup", 1f);
                 // Spawn the draggable element
                 GameObject draggedIcon = Instantiate(icon_prefab, Input.mousePosition, Quaternion.identity, GameObject.Find("Icons").transform);
                 UIElementDragger dragger = draggedIcon.GetComponent<UIElementDragger>();

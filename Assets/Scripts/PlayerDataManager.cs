@@ -223,6 +223,7 @@ public class PlayerDataManager : MonoBehaviour
     public void Purchase(int price)
     {
         money -= price;
+        FindObjectOfType<AudioManager>().Play("Buy/Sell", 1f);
     }
 
     public void SetTierForTag(PartList.Part.Tags tag, int newTier)

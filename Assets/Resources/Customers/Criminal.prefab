@@ -140,4 +140,5 @@ MonoBehaviour:
   str_mult: 5
   int_mult: 5
   dex_mult: 5
+  voicePitch: 2
   hasBeenServed: 0

@@ -1,15 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class Customer : MonoBehaviour
+public class Customer : MonoBehaviour, IPointerDownHandler
 {
 
     // How much this customer wants each stat
     public float str_mult = 1.0f;
     public float int_mult = 1.0f;
     public float dex_mult = 1.0f;
-
+    
+    // Pitch of voice and array for selecting random voice line.
+    public float voicePitch = 1.0f;
+    private string[] voiceLine = { "Adventurer1", "Adventurer2", "Adventurer3" };
+    
     public bool hasBeenServed = false;
 
     // Calculate the sell price of a potion based on how much the customer wants it
@@ -18,6 +24,8 @@ public class Customer : MonoBehaviour
         int sellPrice = 0;
 
         float floatPrice = 0;
+
+        FindObjectOfType<AudioManager>().Play("Buy/Sell", 1f);
 
         floatPrice += potion.effects_dict["str"] * str_mult;
         floatPrice += potion.effects_dict["int"] * int_mult;
@@ -33,5 +41,12 @@ public class Customer : MonoBehaviour
         hasBeenServed = true;
 
         return sellPrice;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        int randomIndex = Random.Range(0, 3);
+        string randomVoiceline = voiceLine[randomIndex];
+        FindObjectOfType<AudioManager>().Play(randomVoiceline, voicePitch);
     }
 }
