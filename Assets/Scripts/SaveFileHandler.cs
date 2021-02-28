@@ -12,6 +12,8 @@ public class SaveFileHandler : MonoBehaviour
 
     private const int MAX_SAVES = 3;
 
+    private const int STARTING_MONEY = 250;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,8 +47,8 @@ public class SaveFileHandler : MonoBehaviour
 
                 // DEFAULT SAVE SLOT NAME
                 save_data.Add("Save_Name", default_name);
-                // STARTING MONEY OF 0
-                save_data.Add("Money", 0);
+                // STARTING MONEY
+                save_data.Add("Money", STARTING_MONEY);
                 // START AT DAY 1
                 save_data.Add("Day", 1);
 
@@ -124,5 +126,52 @@ public class SaveFileHandler : MonoBehaviour
         string file_string = System.IO.File.ReadAllText(load_path);
 
         return JSON.Parse(file_string);
+    }
+
+    public void ClearData(int slot)
+    {
+        save_path = System.IO.Path.Combine(save_directory, "slot_" + slot.ToString() + ".json");
+
+        // If the file exists, destroy it
+        if (System.IO.File.Exists(save_path))
+        {
+            System.IO.File.Delete(save_path);
+
+        }
+
+        // Then remake it
+
+        // Create the save file, then dispose of the filestream so we can access it
+        System.IO.File.Create(save_path).Dispose();
+
+        JSONObject save_data = new JSONObject();
+
+        // DEFAULT SAVE SLOT NAME
+        save_data.Add("Save_Name", default_name);
+        // STARTING MONEY OF 0
+        save_data.Add("Money", 0);
+        // START AT DAY 1
+        save_data.Add("Day", 1);
+
+        // INVENTORY STARTS EMPTY
+        JSONArray inventory = new JSONArray();
+        for (int i = 0; i < 9; i++)
+        {
+            JSONObject item = new JSONObject();
+            item.Add("id", "none");
+            inventory.Add(item);
+        }
+        save_data.Add("Inventory", inventory);
+
+        // QUANTITY ARRAY STARTS ALL 0s
+        JSONArray quantities = new JSONArray();
+        for (int i = 0; i < 9; i++)
+        {
+            quantities.Add("slot " + i, 0);
+        }
+        save_data.Add("Quantities", quantities);
+
+        System.IO.File.WriteAllText(save_path, save_data.ToString());
+
     }
 }

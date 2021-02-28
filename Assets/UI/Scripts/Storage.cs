@@ -41,16 +41,14 @@ public class Storage : MonoBehaviour, IPointerDownHandler
         if (quantity > 0)
         {
             GetComponentInChildren<Text>().text = quantity.ToString();
+            transform.Find("StoredImage").GetComponent<Image>().sprite = heldIngredient.sprite;
         }
         else
         {
             GetComponentInChildren<Text>().text = "";
-        }
-
-        if(heldIngredient.sprite == null)
-        {
             transform.Find("StoredImage").GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Empty");
         }
+
     }
 
     // When the storage is clicked
@@ -83,13 +81,7 @@ public class Storage : MonoBehaviour, IPointerDownHandler
 
         GetComponent<Display_Tooltip>().SetTooltipText(heldIngredient.ingredient_name + "\n" + "Price: " + heldIngredient.cost + "\n" + heldIngredient.desc_string + "\n" + heldIngredient.effect_string);
 
-        if (heldIngredient.sprite != null)
-        {
-            transform.Find("StoredImage").GetComponent<Image>().sprite = heldIngredient.sprite;
-        }
-        
-        
-
+        transform.Find("StoredImage").GetComponent<Image>().sprite = heldIngredient.sprite;
         slot = slot_number;
     }
 

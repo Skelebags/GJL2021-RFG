@@ -107,11 +107,8 @@ public class Cauldron : MonoBehaviour, IPointerDownHandler
         // Add all of the stat modifiers together
         foreach (Ingredient ingredient in contents)
         {
-            Debug.Log(ingredient.effectsDict["str"][0]);
             effects_dict["str"] += ingredient.effectsDict["str"][0];
-            Debug.Log(ingredient.effectsDict["int"][0]);
             effects_dict["int"] += ingredient.effectsDict["int"][0];
-            Debug.Log(ingredient.effectsDict["dex"][0]);
             effects_dict["dex"] += ingredient.effectsDict["dex"][0];
         }
         // Apply the stat multipliers to the collated modifiers

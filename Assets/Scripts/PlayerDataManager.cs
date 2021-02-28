@@ -42,11 +42,18 @@ public class PlayerDataManager : MonoBehaviour
         }
     }
 
-    private void OnLevelWasLoaded(int level)
+    public void RefreshInventory()
     {
         if(inventory_obj = GameObject.FindGameObjectWithTag("Inventory"))
         {
-            Debug.Log("Inventory Found!");
+            //Refresh the storage objects with what's supposed to be there
+            for (int invSlot = 0; invSlot < inventory_obj.transform.childCount; invSlot++)
+            {
+               
+                inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().AssignIngredient(inventory[invSlot], invSlot);
+                inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().quantity = quantities[invSlot];
+                
+            }
         }
     }
 
@@ -57,11 +64,14 @@ public class PlayerDataManager : MonoBehaviour
             // Loop through every inventory slot
             for (int invSlot = 0; invSlot < inventory_obj.transform.childCount; invSlot++)
             {
+                quantities[invSlot] = inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().quantity;
+
                 // If it has run out of an ingredient
-                if(inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().quantity <= 0)
+                if (quantities[invSlot] <= 0)
                 {
                     // Assign it an empty ingredient
                     inventory[invSlot] = ScriptableObject.CreateInstance<Ingredient>();
+                    inventory[invSlot].sprite = Resources.Load<Sprite>("Sprites/Empty");
                     inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().AssignIngredient(inventory[invSlot], invSlot);
                 }
             }

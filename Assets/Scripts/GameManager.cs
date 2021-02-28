@@ -9,6 +9,7 @@ using SimpleJSON;
 public class GameManager : MonoBehaviour
 {
     // What save slot is this?
+    public int saveSlot;
 
     // The Ingredient Generator in this scene
     private IngredientGenerator generator;
@@ -31,26 +32,24 @@ public class GameManager : MonoBehaviour
             tooltip.GetComponent<Tooltip>().HideTooltip();
         }
         
-
-        ApplyLoadData();
     }
 
     private void OnLevelWasLoaded(int level)
     {
-        Debug.Log("Scene Change!");
-        // Grab all of our components
-        generator = GameObject.FindGameObjectWithTag("IngredientGenerator").GetComponent<IngredientGenerator>();
-        handler = GetComponent<SaveFileHandler>();
-        player = GetComponent<PlayerDataManager>();
-        if (tooltip = GameObject.Find("Tooltip"))
+        if (PersistenceScript.instance == transform.parent.GetComponent<PersistenceScript>())
         {
-            tooltip.GetComponent<Tooltip>().HideTooltip();
+            // Grab all of our components
+            generator = GameObject.FindGameObjectWithTag("IngredientGenerator").GetComponent<IngredientGenerator>();
+            handler = GetComponent<SaveFileHandler>();
+            player = GetComponent<PlayerDataManager>();
+            if (tooltip = GameObject.Find("Tooltip"))
+            {
+                tooltip.GetComponent<Tooltip>().HideTooltip();
+            }
+            
+
+            player.RefreshInventory();
         }
-
-        JSONObject data = BuildPlayerData();
-        handler.Save(0, data);
-
-        ApplyLoadData();
     }
 
 
@@ -63,7 +62,7 @@ public class GameManager : MonoBehaviour
 
             JSONObject data = BuildPlayerData();
 
-            handler.Save(0, data);
+            handler.Save(saveSlot, data);
         }
 
         // Load data on L
@@ -124,6 +123,7 @@ public class GameManager : MonoBehaviour
             quantities.Add("slot " + i, player.GetQuantityAtSlot(i));
         }
         data.Add("Quantities", quantities);
+        
 
         // Return the player data
         return data;
@@ -132,10 +132,10 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Load in the player's data and update the current game state
     /// </summary>
-    void ApplyLoadData()
+    public void ApplyLoadData()
     {
         // Load in the JSON file
-        JSONNode load_data = handler.Load(0);
+        JSONNode load_data = handler.Load(saveSlot);
 
         // Set the player name
         player.player_name = load_data["Save_Name"].Value;
@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviour
                 JSONArray idArray = inventoryArray[i]["id"].AsArray;
                 // Tell the generator to create the specific ingredient that corresponds to the stored IDs
                 player.SetInventoryAtSlot(i, generator.GenerateIngredientFromIDs(idArray[0].AsInt, idArray[1].AsInt, idArray[2].AsInt), quantityArray[i].AsInt);
+                Debug.Log(quantityArray[i].AsInt);
             }
             else
             {
@@ -159,6 +160,11 @@ public class GameManager : MonoBehaviour
                 player.SetInventoryAtSlot(i, ingredient, quantityArray[i].AsInt);
             }
         }
+    }
+
+    public void SaveData()
+    {
+        handler.Save(saveSlot, BuildPlayerData());
     }
 
     // Returns this scene's tooltip object
@@ -171,5 +177,10 @@ public class GameManager : MonoBehaviour
     public PlayerDataManager GetPlayer()
     {
         return player;
+    }
+
+    public void SetSaveSlot(int newSlot)
+    {
+        saveSlot = newSlot;
     }
 }

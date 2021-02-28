@@ -29,4 +29,11 @@ public class Navigator : MonoBehaviour
     {
         SceneManager.LoadScene("Main");
     }
+
+    public void SaveData()
+    {
+        GameManager manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
+        manager.SaveData();
+    }
 }
