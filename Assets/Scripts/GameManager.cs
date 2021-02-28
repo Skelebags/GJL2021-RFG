@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using SimpleJSON;
 
 /// <summary>
@@ -11,6 +12,9 @@ public class GameManager : MonoBehaviour
     // What save slot is this?
     public int saveSlot;
 
+    public GameObject quitMenuPrefab;
+    private GameObject quitMenu;
+
     // The Ingredient Generator in this scene
     private IngredientGenerator generator;
 
@@ -19,6 +23,7 @@ public class GameManager : MonoBehaviour
     private PlayerDataManager player;
 
     private GameObject tooltip;
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +56,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(quitMenu == null && SceneManager.GetActiveScene().name != "StartMenu")
+            {
+                quitMenu = Instantiate(quitMenuPrefab, GameObject.Find("UI").transform);
+            }
+        }
+    }
 
     /// <summary>
     /// Create a JSONObject that contains all of the data relevant to the player
