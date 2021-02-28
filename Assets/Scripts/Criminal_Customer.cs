@@ -23,7 +23,7 @@ public class Criminal_Customer : Customer
             floatPrice += potion.effects_dict["dex"] * dex_mult;
         }
 
-        sellPrice = (int)floatPrice;
+        sellPrice = (int)floatPrice * -1;
 
         if (sellPrice < 0)
         {
