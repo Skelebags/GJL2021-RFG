@@ -610,15 +610,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6859836145341320117, guid: b0bc946deb01c3045b36407e42ad8e2b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 209.74219
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6859836145341320117, guid: b0bc946deb01c3045b36407e42ad8e2b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 215.00743
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6859836145341320117, guid: b0bc946deb01c3045b36407e42ad8e2b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -127.79741
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6859836145341320117, guid: b0bc946deb01c3045b36407e42ad8e2b, type: 3}
       propertyPath: m_LocalRotation.x
@@ -845,7 +845,7 @@ MonoBehaviour:
   sounds:
   - name: PotionDrop
     clip: {fileID: 8300000, guid: 99ee0a7abf98a9649a453e2ac28b5fc8, type: 3}
-    volume: 0
+    volume: 1
     volumeVariance: 0
     pitch: 0.1
     pitchVariance: 0
@@ -854,7 +854,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: PotionPickup
     clip: {fileID: 8300000, guid: 432215ebe4d6f3d479033279224d5670, type: 3}
-    volume: 0
+    volume: 1
     volumeVariance: 0
     pitch: 0
     pitchVariance: 0
@@ -863,7 +863,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: IngredientPickup
     clip: {fileID: 8300000, guid: 905490cb828f9be44816ec6063e80511, type: 3}
-    volume: 0
+    volume: 1
     volumeVariance: 0
     pitch: 0
     pitchVariance: 0
@@ -872,7 +872,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Buy/Sell
     clip: {fileID: 8300000, guid: e8a94d68b5958954b9ca2a9a29bf6db1, type: 3}
-    volume: 0
+    volume: 1
     volumeVariance: 0
     pitch: 0
     pitchVariance: 0
@@ -881,25 +881,25 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Crowd
     clip: {fileID: 8300000, guid: 209b0952e54b97248a46d06c5caf55af, type: 3}
-    volume: 0
+    volume: 1
     volumeVariance: 0
     pitch: 0
     pitchVariance: 0
-    loop: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Bubbling
     clip: {fileID: 8300000, guid: 2c9783fe5a4e58640a1f6e0b27b324ab, type: 3}
-    volume: 0
+    volume: 1
     volumeVariance: 0
     pitch: 0
     pitchVariance: 0
-    loop: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Adventurer1
     clip: {fileID: 8300000, guid: e86f5645adb535941a66d5a11cd0484c, type: 3}
-    volume: 0
+    volume: 1
     volumeVariance: 0
     pitch: 0
     pitchVariance: 0
@@ -908,7 +908,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Adventurer2
     clip: {fileID: 8300000, guid: dd95c8a2e06ac5348bc1bb4e24def0d7, type: 3}
-    volume: 0
+    volume: 1
     volumeVariance: 0
     pitch: 0
     pitchVariance: 0
@@ -917,7 +917,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Assassin
     clip: {fileID: 8300000, guid: 4dba3036a5e208e4689d2d8497d94c93, type: 3}
-    volume: 0
+    volume: 1
     volumeVariance: 0
     pitch: 0
     pitchVariance: 0
@@ -926,7 +926,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Knight
     clip: {fileID: 8300000, guid: e7468d367f047004f981981d18a8f5bc, type: 3}
-    volume: 0
+    volume: 1
     volumeVariance: 0
     pitch: 0
     pitchVariance: 0
@@ -935,7 +935,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Footstep
     clip: {fileID: 8300000, guid: bbd84b74d94a78b47b4d58f7df56c4d5, type: 3}
-    volume: 0
+    volume: 1
     volumeVariance: 0
     pitch: 0
     pitchVariance: 0
@@ -944,7 +944,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: PaperCrinkle
     clip: {fileID: 8300000, guid: 3164a3055065ee641b12b0b3e4971a81, type: 3}
-    volume: 0
+    volume: 0.5
     volumeVariance: 0
     pitch: 0
     pitchVariance: 0
@@ -953,7 +953,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Adventurer3
     clip: {fileID: 8300000, guid: e7468d367f047004f981981d18a8f5bc, type: 3}
-    volume: 0
+    volume: 1
     volumeVariance: 0
     pitch: 0
     pitchVariance: 0
@@ -1638,7 +1638,6 @@ GameObject:
   m_Component:
   - component: {fileID: 711949009}
   - component: {fileID: 711949008}
-  - component: {fileID: 711949007}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1646,14 +1645,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &711949007
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711949006}
-  m_Enabled: 1
 --- !u!20 &711949008
 Camera:
   m_ObjectHideFlags: 0
@@ -4154,11 +4145,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522228951}
   m_CullTransparentMesh: 0
+--- !u!1 &1540016480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3238085828601570121, guid: b0bc946deb01c3045b36407e42ad8e2b, type: 3}
+  m_PrefabInstance: {fileID: 257277011}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1540016482 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6859836145341320117, guid: b0bc946deb01c3045b36407e42ad8e2b, type: 3}
   m_PrefabInstance: {fileID: 257277011}
   m_PrefabAsset: {fileID: 0}
+--- !u!81 &1540016483
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540016480}
+  m_Enabled: 1
 --- !u!1 &1574201579
 GameObject:
   m_ObjectHideFlags: 0
