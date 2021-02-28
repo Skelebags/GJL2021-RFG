@@ -73,4 +73,9 @@ public class CustomerSpawner : MonoBehaviour
             }
         }
     }
+
+    public void KickOut()
+    {
+        curr_customer.GetComponent<Customer>().hasBeenServed = true;
+    }
 }
