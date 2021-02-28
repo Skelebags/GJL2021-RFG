@@ -144,7 +144,6 @@ public class GameManager : MonoBehaviour
                 JSONArray idArray = inventoryArray[i]["id"].AsArray;
                 // Tell the generator to create the specific ingredient that corresponds to the stored IDs
                 player.SetInventoryAtSlot(i, generator.GenerateIngredientFromIDs(idArray[0].AsInt, idArray[1].AsInt, idArray[2].AsInt), quantityArray[i].AsInt);
-                Debug.Log(quantityArray[i].AsInt);
             }
             else
             {

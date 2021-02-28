@@ -45,7 +45,7 @@ public class Storage : MonoBehaviour, IPointerDownHandler
         }
         else
         {
-            GetComponentInChildren<Text>().text = "";
+            GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "";
             transform.Find("StoredImage").GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Empty");
         }
 

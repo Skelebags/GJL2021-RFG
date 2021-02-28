@@ -50,7 +50,7 @@ public class Cauldron : MonoBehaviour, IPointerDownHandler
         else
         {
             fillObj.SetActive(false);
-            FindObjectOfType<AudioManager>().Stop("Bubbling");
+            
         }
     }
 
@@ -142,6 +142,7 @@ public class Cauldron : MonoBehaviour, IPointerDownHandler
         fillObj.GetComponent<Image>().color = Color.white;
         effect_string = "";
         GetComponent<Display_Tooltip>().SetTooltipText(effect_string);
+        FindObjectOfType<AudioManager>().Stop("Bubbling");
     }
 
 

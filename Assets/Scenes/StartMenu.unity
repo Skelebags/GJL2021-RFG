@@ -1066,10 +1066,10 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Bubbling
     clip: {fileID: 8300000, guid: 2c9783fe5a4e58640a1f6e0b27b324ab, type: 3}
-    volume: 0
-    volumeVariance: 0
+    volume: 0.05
+    volumeVariance: 0.025
     pitch: 0
-    pitchVariance: 0
+    pitchVariance: 0.1
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}

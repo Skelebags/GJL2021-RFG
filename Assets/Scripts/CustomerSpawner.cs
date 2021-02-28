@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CustomerSpawner : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class CustomerSpawner : MonoBehaviour
     public RectTransform spawnpointEnd;
 
     public GameObject mapButton;
+    public GameObject door;
 
     [SerializeField]
     private int day_offset = 5;
@@ -26,11 +28,6 @@ public class CustomerSpawner : MonoBehaviour
     {
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         customers = Resources.LoadAll<GameObject>("Customers");
-        
-        foreach(GameObject customer in customers)
-        {
-            Debug.Log(customer.name);
-        }
 
         remaining = (manager.GetPlayer().day * 2) + day_offset;
     }
@@ -43,12 +40,12 @@ public class CustomerSpawner : MonoBehaviour
             if (curr_customer == null)
             {
                 curr_customer = Instantiate(customers[Random.Range(0, customers.Length)], spawnpointStart.position, Quaternion.identity, gameObject.transform);
-
             }
         }
         else
         {
             mapButton.SetActive(true);
+            door.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Door_Open_Graphic");
         }
     }
 
@@ -56,7 +53,6 @@ public class CustomerSpawner : MonoBehaviour
     {
         if (curr_customer != null && !curr_customer.GetComponent<Customer>().hasBeenServed)
         {
-            FindObjectOfType<AudioManager>().Play("Footstep", 1f);
             curr_customer.GetComponent<RectTransform>().position = Vector2.Lerp(curr_customer.GetComponent<RectTransform>().position, spawnpointEnd.position, slide_speed);
             if ((curr_customer.GetComponent<RectTransform>().position - spawnpointEnd.position).magnitude <= 0.5f)
             {
@@ -69,6 +65,7 @@ public class CustomerSpawner : MonoBehaviour
             if ((curr_customer.GetComponent<RectTransform>().position - spawnpointStart.position).magnitude <= 0.5f)
             {
                 Destroy(curr_customer);
+                FindObjectOfType<AudioManager>().Play("Footstep", 1f);
                 remaining--;
             }
         }

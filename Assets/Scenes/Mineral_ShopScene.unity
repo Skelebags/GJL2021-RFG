@@ -539,7 +539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8178136860758030079, guid: f5db288d14ac2384091a59da3acdce47, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8178136860758030079, guid: f5db288d14ac2384091a59da3acdce47, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -807,7 +807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5846315482239382154, guid: f6464c8788c850e4c90b24e6082bdee5, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5846315482239382154, guid: f6464c8788c850e4c90b24e6082bdee5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1347,11 +1347,11 @@ RectTransform:
   - {fileID: 1939346319}
   - {fileID: 103496293}
   - {fileID: 1893992752}
-  - {fileID: 1026823073}
   - {fileID: 1400709545}
-  - {fileID: 59946824}
   - {fileID: 942867292}
   - {fileID: 205387661}
+  - {fileID: 1026823073}
+  - {fileID: 59946824}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1532,7 +1532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5557015299414677489, guid: ff748830a6b0418449dab1d2a97f74bc, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5557015299414677489, guid: ff748830a6b0418449dab1d2a97f74bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1742,7 +1742,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 640380570}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1094736745
 PrefabInstance:
@@ -2091,7 +2091,7 @@ RectTransform:
   m_Children:
   - {fileID: 488499219}
   m_Father: {fileID: 640380570}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

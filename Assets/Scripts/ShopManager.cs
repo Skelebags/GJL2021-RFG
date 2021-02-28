@@ -38,7 +38,6 @@ public class ShopManager : MonoBehaviour
         
         generated = generator.GenerateIngredients(shopInventory.Length, shopTag, tier);
         quantities = generator.GetQuantities(shopTag);
-        Debug.Log(quantities);
 
         // Assign those ingredients to the shop's inventory
         for (int i = 0; i < shopInventory.Length; i++)
