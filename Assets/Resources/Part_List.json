@@ -877,7 +877,13 @@
       "effects": [
         {
           "int": [
-            { "mod": 0 },
+            { "mod": 20 },
+            { "mult": 1 }
+          ]
+        },
+        {
+          "str": [
+            { "mod": -5 },
             { "mult": 1 }
           ]
         }
@@ -894,9 +900,15 @@
       "slot": "Type",
       "effects": [
         {
-          "int": [
-            { "mod": 0 },
+          "dex": [
+            { "mod": 20 },
             { "mult": 1 }
+          ]
+        },
+        {
+          "str": [
+            { "mod": 0 },
+            { "mult": 2 }
           ]
         }
       ],
@@ -914,7 +926,7 @@
         {
           "int": [
             { "mod": 0 },
-            { "mult": 1 }
+            { "mult": 3 }
           ]
         }
       ],
@@ -1009,7 +1021,7 @@
       "effects": [
         {
           "str": [
-            { "mod": 10 },
+            { "mod": 5 },
             { "mult": 1 }
           ]
         },
@@ -1021,12 +1033,12 @@
         },
         {
           "int": [
-            { "mod": 10 },
+            { "mod": 15 },
             { "mult": 1 }
           ]
         }
       ],
-      "cost": 20,
+      "cost": 25,
       "tags": [ "meat" ],
       "tier": 4,
       "graphic": "Sprites/Brain_Graphic",
@@ -1056,9 +1068,9 @@
       "slot": "Type",
       "effects": [
         {
-          "dex": [
+          "str": [
             { "mod": 5 },
-            { "mult": 1 }
+            { "mult": 1.5 }
           ]
         }
       ],
@@ -1074,9 +1086,9 @@
       "slot": "Type",
       "effects": [
         {
-          "dex": [
+          "int": [
             { "mod": 5 },
-            { "mult": 1 }
+            { "mult": 1.5 }
           ]
         }
       ],
@@ -1093,8 +1105,20 @@
       "effects": [
         {
           "dex": [
+            { "mod": -10 },
+            { "mult": 1.5 }
+          ]
+        },
+        {
+          "int": [
             { "mod": 5 },
-            { "mult": 1 }
+            { "mult": 0.5 }
+          ]
+        },
+        {
+          "str": [
+            { "mod": 10 },
+            { "mult": 2 }
           ]
         }
       ],
@@ -1111,7 +1135,19 @@
       "effects": [
         {
           "dex": [
-            { "mod": 5 },
+            { "mod": 10 },
+            { "mult": 1 }
+          ]
+        },
+        {
+          "int": [
+            { "mod": 10 },
+            { "mult": 1 }
+          ]
+        },
+        {
+          "str": [
+            { "mod": 10 },
             { "mult": 1 }
           ]
         }
