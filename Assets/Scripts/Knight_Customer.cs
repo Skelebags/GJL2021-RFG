@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class Knight_Customer : Customer
+public class Knight_Customer : Customer, IPointerDownHandler
 {
     public override int Sell(Potion potion)
     {
@@ -33,5 +35,10 @@ public class Knight_Customer : Customer
         hasBeenServed = true;
 
         return sellPrice;
+    }
+
+    new public void OnPointerDown(PointerEventData eventData)
+    {
+        FindObjectOfType<AudioManager>().Play("Adventurer1", 1f);
     }
 }

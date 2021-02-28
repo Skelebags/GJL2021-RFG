@@ -1066,7 +1066,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Bubbling
     clip: {fileID: 8300000, guid: 2c9783fe5a4e58640a1f6e0b27b324ab, type: 3}
-    volume: 1
+    volume: 0
     volumeVariance: 0
     pitch: 0
     pitchVariance: 0
@@ -1128,6 +1128,15 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Adventurer3
+    clip: {fileID: 8300000, guid: e7468d367f047004f981981d18a8f5bc, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: PotionFail
     clip: {fileID: 8300000, guid: e7468d367f047004f981981d18a8f5bc, type: 3}
     volume: 1
     volumeVariance: 0

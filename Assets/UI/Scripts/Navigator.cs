@@ -37,7 +37,6 @@ public class Navigator : MonoBehaviour
     {
         SceneManager.LoadScene("Main");
         FindObjectOfType<AudioManager>().Play("PaperCrinkle", 1f);
-        FindObjectOfType<AudioManager>().Play("Bubbling”", 1f);
         FindObjectOfType<AudioManager>().Stop("Crowd");
     }
 

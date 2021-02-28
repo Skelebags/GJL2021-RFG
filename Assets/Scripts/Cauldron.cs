@@ -44,10 +44,13 @@ public class Cauldron : MonoBehaviour, IPointerDownHandler
         if(contents.Count > 0)
         {
             fillObj.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("Bubbling", 1f);
+            
         }
         else
         {
             fillObj.SetActive(false);
+            FindObjectOfType<AudioManager>().Stop("Bubbling");
         }
     }
 
@@ -68,7 +71,8 @@ public class Cauldron : MonoBehaviour, IPointerDownHandler
             UIElementDragger dragger = draggedIcon.GetComponent<UIElementDragger>();
             dragger.dragging = true; dragger.spawn = transform.gameObject; dragger.SetPotion(newPotion); dragger.manager = manager;
 
-            // Dump the cauldron
+            // Dump the cauldron and play bottling sound
+            FindObjectOfType<AudioManager>().Play("PotionPickup", 1f);
             EmptyCauldron();
         }
     }
@@ -93,6 +97,13 @@ public class Cauldron : MonoBehaviour, IPointerDownHandler
             GetComponent<Display_Tooltip>().SetTooltipText(effect_string);
             // Update the fill color
             fillObj.GetComponent<Image>().color = BuildFillColour();
+            // Play the adding sound effect
+            FindObjectOfType<AudioManager>().Play("PotionDrop", 1f);
+        }
+        else
+        {
+            // Play the potion duplicate warning sound
+            FindObjectOfType<AudioManager>().Play("PotionFail", 1f);
         }
     }
 

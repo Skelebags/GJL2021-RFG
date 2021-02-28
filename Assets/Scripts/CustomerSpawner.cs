@@ -56,6 +56,7 @@ public class CustomerSpawner : MonoBehaviour
     {
         if (curr_customer != null && !curr_customer.GetComponent<Customer>().hasBeenServed)
         {
+            FindObjectOfType<AudioManager>().Play("Footstep", 1f);
             curr_customer.GetComponent<RectTransform>().position = Vector2.Lerp(curr_customer.GetComponent<RectTransform>().position, spawnpointEnd.position, slide_speed);
             if ((curr_customer.GetComponent<RectTransform>().position - spawnpointEnd.position).magnitude <= 0.5f)
             {

@@ -93,6 +93,7 @@ MonoBehaviour:
   str_mult: 5
   int_mult: 5
   dex_mult: 5
+  voicePitch: 1.5
   hasBeenServed: 0
 --- !u!50 &1406367509710876088
 Rigidbody2D:
