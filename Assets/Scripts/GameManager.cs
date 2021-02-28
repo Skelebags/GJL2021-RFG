@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
             {
                 tooltip.GetComponent<Tooltip>().HideTooltip();
             }
-            
 
             player.RefreshInventory();
         }
@@ -123,7 +122,18 @@ public class GameManager : MonoBehaviour
             quantities.Add("slot " + i, player.GetQuantityAtSlot(i));
         }
         data.Add("Quantities", quantities);
+
+        // Save the shop tiers
+        JSONArray tiers = new JSONArray();
+
+        tiers.Add(PartList.Part.Tags.plant.ToString(), player.GetTierFromTag(PartList.Part.Tags.plant));
+
+        tiers.Add(PartList.Part.Tags.meat.ToString(), player.GetTierFromTag(PartList.Part.Tags.meat));
         
+        tiers.Add(PartList.Part.Tags.mineral.ToString(), player.GetTierFromTag(PartList.Part.Tags.mineral));
+
+        data.Add("Shop_Tiers", tiers);
+
 
         // Return the player data
         return data;
@@ -139,6 +149,8 @@ public class GameManager : MonoBehaviour
 
         // Set the player name
         player.player_name = load_data["Save_Name"].Value;
+        player.day = load_data["Day"].AsInt;
+        player.money = load_data["Money"].AsInt;
 
         // Grab the inventory and quantity arrays
         JSONArray inventoryArray = load_data["Inventory"].AsArray;
@@ -160,6 +172,12 @@ public class GameManager : MonoBehaviour
                 player.SetInventoryAtSlot(i, ingredient, quantityArray[i].AsInt);
             }
         }
+
+        JSONArray tiers = load_data["Shop_Tiers"].AsArray;
+
+        player.SetTierForTag(PartList.Part.Tags.plant, tiers[0]);
+        player.SetTierForTag(PartList.Part.Tags.meat, tiers[1]);
+        player.SetTierForTag(PartList.Part.Tags.mineral, tiers[2]);
     }
 
     public void SaveData()

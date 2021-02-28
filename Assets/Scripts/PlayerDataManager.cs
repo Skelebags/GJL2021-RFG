@@ -50,31 +50,31 @@ public class PlayerDataManager : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        ShopManager shopManager;
-        if(shopManager = GameObject.FindGameObjectWithTag("ShopManager").GetComponent<ShopManager>())
+        if (GameObject.FindGameObjectWithTag("ShopManager"))
         {
+            ShopManager shopManager = GameObject.FindGameObjectWithTag("ShopManager").GetComponent<ShopManager>();
             shopManager.SetTier(tier_dict[shopManager.shopTag.ToString()]);
         }
     }
 
     public void RefreshInventory()
     {
-        if(inventory_obj = GameObject.FindGameObjectWithTag("Inventory"))
+        if (inventory_obj = GameObject.FindGameObjectWithTag("Inventory"))
         {
             //Refresh the storage objects with what's supposed to be there
             for (int invSlot = 0; invSlot < inventory_obj.transform.childCount; invSlot++)
             {
-               
+
                 inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().AssignIngredient(inventory[invSlot], invSlot);
                 inventory_obj.transform.GetChild(invSlot).GetComponent<Storage>().quantity = quantities[invSlot];
-                
+
             }
         }
     }
 
     private void Update()
     {
-        if(inventory_obj)
+        if (inventory_obj)
         {
             // Loop through every inventory slot
             for (int invSlot = 0; invSlot < inventory_obj.transform.childCount; invSlot++)
@@ -91,7 +91,7 @@ public class PlayerDataManager : MonoBehaviour
                 }
             }
         }
-        
+
     }
 
     // Return the ID array of the ingredient at a slot
@@ -110,7 +110,7 @@ public class PlayerDataManager : MonoBehaviour
     public void AddToInventoryAtSlot(int slot, Ingredient ingredient)
     {
         // If this inventory slot already contains this ingredient
-        if(CompareIDs(inventory[slot].ids, ingredient.ids))
+        if (CompareIDs(inventory[slot].ids, ingredient.ids))
         {
             if (inventory_obj)
             {
@@ -119,7 +119,7 @@ public class PlayerDataManager : MonoBehaviour
             }
         }
         else
-        { 
+        {
             // Assign that ingredient to the inventory slot, to the storage object, and set the quantity to 1
             inventory[slot] = ingredient;
             if (inventory_obj)
@@ -168,9 +168,9 @@ public class PlayerDataManager : MonoBehaviour
     public bool CompareIDs(int[] ids1, int[] ids2)
     {
 
-        for(int i = 0; i < ids1.Length; i++)
+        for (int i = 0; i < ids1.Length; i++)
         {
-            if(ids1[i] != ids2[i])
+            if (ids1[i] != ids2[i])
             {
                 return false;
             }
@@ -178,7 +178,7 @@ public class PlayerDataManager : MonoBehaviour
 
         return true;
     }
-    
+
     // Return the quantity at a particular inventory slot
     public int GetQuantityAtSlot(int slot)
     {
@@ -223,5 +223,15 @@ public class PlayerDataManager : MonoBehaviour
     public void Purchase(int price)
     {
         money -= price;
+    }
+
+    public void SetTierForTag(PartList.Part.Tags tag, int newTier)
+    {
+        tier_dict[tag.ToString()] = newTier;
+    }
+
+    public int GetTierFromTag(PartList.Part.Tags tag)
+    {
+        return tier_dict[tag.ToString()];
     }
 }
