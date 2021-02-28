@@ -1627,7 +1627,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: IngredientPickup
     clip: {fileID: 8300000, guid: 905490cb828f9be44816ec6063e80511, type: 3}
-    volume: 1
+    volume: 0.25
     volumeVariance: 0
     pitch: 0
     pitchVariance: 0
@@ -1725,8 +1725,8 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: PotionFail
-    clip: {fileID: 8300000, guid: e7468d367f047004f981981d18a8f5bc, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: eeeb36142bc3bc248b33baceec390176, type: 3}
+    volume: 0.25
     volumeVariance: 0
     pitch: 0
     pitchVariance: 0
