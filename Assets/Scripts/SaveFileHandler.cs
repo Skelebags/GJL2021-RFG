@@ -69,7 +69,17 @@ public class SaveFileHandler : MonoBehaviour
                     quantities.Add("slot " + i, 0);
                 }
                 save_data.Add("Quantities", quantities);
-                
+
+                // ALL SHOPS START AT 1
+                JSONArray tiers = new JSONArray();
+
+                tiers.Add(PartList.Part.Tags.plant.ToString(), 1);
+                tiers.Add(PartList.Part.Tags.meat.ToString(), 1);
+                tiers.Add(PartList.Part.Tags.mineral.ToString(), 1);
+
+                save_data.Add("Shop_Tiers", tiers);
+
+
                 System.IO.File.WriteAllText(save_path, save_data.ToString());
             }
         }
@@ -112,6 +122,10 @@ public class SaveFileHandler : MonoBehaviour
         if(S["Quantities"] != null && saveData["Quantities"] != null)
         {
             S["Quantities"] = saveData["Quantities"].AsArray;
+        }
+        if (S["Shop_Tiers"] != null && saveData["Shop_Tiers"] != null)
+        {
+            S["Shop_Tiers"] = saveData["Shop_Tiers"].AsArray;
         }
 
         // Write it

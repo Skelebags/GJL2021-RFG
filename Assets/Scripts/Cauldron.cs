@@ -61,6 +61,7 @@ public class Cauldron : MonoBehaviour, IPointerDownHandler
             Potion newPotion = ScriptableObject.CreateInstance<Potion>();
             newPotion.effects_dict = effects_dict;
             newPotion.effect_string = effect_string;
+            newPotion.sprite = newPotion.BuildSprite(fillObj.GetComponent<Image>().color, Resources.Load<Sprite>("Sprites/Potion_Graphic"));
 
             // Create a draggable ui element to hold that potion
             GameObject draggedIcon = Instantiate(icon_prefab, Input.mousePosition, Quaternion.identity, GameObject.Find("Icons").transform);
