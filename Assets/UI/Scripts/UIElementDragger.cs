@@ -133,15 +133,11 @@ public class UIElementDragger : MonoBehaviour, IPointerDownHandler
                 }
                 else if(potion)
                 {
-                    if(overlap)
+                    if(overlap.CompareTag("Customer"))
                     {
-                        if (overlap.CompareTag("Customer"))
-                        {
-                            playerDataManager.AddMoney(overlap.GetComponent<Customer>().Sell(potion));
-                            Cleanup();
-                        }
+                        playerDataManager.AddMoney(overlap.GetComponent<Customer>().Sell(potion));
+                        Cleanup();
                     }
-
                 }
                 
             }
@@ -247,9 +243,8 @@ public class UIElementDragger : MonoBehaviour, IPointerDownHandler
     public void SetPotion(Potion newPotion)
     {
         potion = newPotion;
-        GetComponent<Image>().sprite = potion.sprite;
+        //GetComponent<Image>().sprite = potion.sprite;
         GetComponent<Display_Tooltip>().SetTooltipText(potion.effect_string);
-        transform.localScale *= 1.5f;
     }
 
     private GameObject GetClosestOverlap()
