@@ -95,17 +95,24 @@ public class UIElementDragger : MonoBehaviour, IPointerDownHandler
                         // If the overlapping storage is empty, or the overlapped storage already contains this ingredient
                         if (overlap.GetComponent<Storage>().IsEmpty() || playerDataManager.CompareIDs(ingredient.ids, overlap.GetComponent<Storage>().GetIngredient().ids))
                         {
-                            // Add it to the inventory slot
-                            playerDataManager.AddToInventoryAtSlot(overlap.GetComponent<Storage>().GetSlotNumber(), ingredient);
-
-                            // If the element is from the shop
-                            if(spawn.transform.parent.CompareTag("Shop"))
+                            if (!spawn.transform.CompareTag("Generic"))
                             {
-                                // PAY FOR IT!!!
-                                playerDataManager.Purchase(ingredient.cost);
+                                // Add it to the inventory slot
+                                playerDataManager.AddToInventoryAtSlot(overlap.GetComponent<Storage>().GetSlotNumber(), ingredient);
+
+                                // If the element is from the shop
+                                if (spawn.transform.parent.CompareTag("Shop"))
+                                {
+                                    // PAY FOR IT!!!
+                                    playerDataManager.Purchase(ingredient.cost);
+                                }
+                                // Cleanup the element
+                                Cleanup();
                             }
-                            // Cleanup the element
-                            Cleanup();
+                            else
+                            {
+                                returning = true;
+                            }
                         }
                         // If the overlapping storage is not empty, and does not contain this ingredient, but is still an inventory slot
                         else if (spawn.transform.parent.name == "Inventory")

@@ -205,6 +205,8 @@ public class PlayerDataManager : MonoBehaviour
     public void AddMoney(int increase)
     {
         money += increase;
+
+        FindObjectOfType<AudioManager>().Play("Buy/Sell", 1f);
     }
 
     // Return the player's money

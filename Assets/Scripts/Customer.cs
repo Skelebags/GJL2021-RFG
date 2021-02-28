@@ -31,7 +31,6 @@ public class Customer : MonoBehaviour, IPointerDownHandler
 
         float floatPrice = 0;
 
-        FindObjectOfType<AudioManager>().Play("Buy/Sell", 1f);
 
         floatPrice += potion.effects_dict["str"] * str_mult;
         floatPrice += potion.effects_dict["int"] * int_mult;
