@@ -40,12 +40,12 @@ public class Storage : MonoBehaviour, IPointerDownHandler
         // Keep tabs on the quantity of ingredients available
         if (quantity > 0)
         {
-            GetComponentInChildren<Text>().text = quantity.ToString();
+            GetComponentInChildren<TMPro.TextMeshProUGUI>().text = quantity.ToString();
             transform.Find("StoredImage").GetComponent<Image>().sprite = heldIngredient.sprite;
         }
         else
         {
-            GetComponentInChildren<Text>().text = "";
+            GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "";
             transform.Find("StoredImage").GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Empty");
         }
 

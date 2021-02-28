@@ -16,7 +16,6 @@ public class LoadButton : MonoBehaviour
 
     public void NewOrLoad()
     {
-        Debug.Log(player.player_name);
         if(player.player_name == "NO SAVE DATA")
         {
             newGameScreen.SetActive(true);

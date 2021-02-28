@@ -39,6 +39,10 @@ public class Knight_Customer : Customer, IPointerDownHandler
 
     new public void OnPointerDown(PointerEventData eventData)
     {
-        FindObjectOfType<AudioManager>().Play("Adventurer1", 1f);
+        if (!isVisible)
+        {
+            FindObjectOfType<AudioManager>().Play("Adventurer1", 1f);
+            isVisible = true;
+        }
     }
 }
