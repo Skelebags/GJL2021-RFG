@@ -798,6 +798,168 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304658232}
   m_CullTransparentMesh: 0
+--- !u!1 &337333105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 337333106}
+  - component: {fileID: 337333107}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &337333106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337333105}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1540016482}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &337333107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337333105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b1843ab899a92f4bb625563d2655016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 0}
+  sounds:
+  - name: PotionDrop
+    clip: {fileID: 8300000, guid: 99ee0a7abf98a9649a453e2ac28b5fc8, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0.1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: PotionPickup
+    clip: {fileID: 8300000, guid: 432215ebe4d6f3d479033279224d5670, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: IngredientPickup
+    clip: {fileID: 8300000, guid: 905490cb828f9be44816ec6063e80511, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Buy/Sell
+    clip: {fileID: 8300000, guid: e8a94d68b5958954b9ca2a9a29bf6db1, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Crowd
+    clip: {fileID: 8300000, guid: 209b0952e54b97248a46d06c5caf55af, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Bubbling
+    clip: {fileID: 8300000, guid: 2c9783fe5a4e58640a1f6e0b27b324ab, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Adventurer1
+    clip: {fileID: 8300000, guid: e86f5645adb535941a66d5a11cd0484c, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Adventurer2
+    clip: {fileID: 8300000, guid: dd95c8a2e06ac5348bc1bb4e24def0d7, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Assassin
+    clip: {fileID: 8300000, guid: 4dba3036a5e208e4689d2d8497d94c93, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Knight
+    clip: {fileID: 8300000, guid: e7468d367f047004f981981d18a8f5bc, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Footstep
+    clip: {fileID: 8300000, guid: bbd84b74d94a78b47b4d58f7df56c4d5, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: PaperCrinkle
+    clip: {fileID: 8300000, guid: 3164a3055065ee641b12b0b3e4971a81, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Adventurer3
+    clip: {fileID: 8300000, guid: e7468d367f047004f981981d18a8f5bc, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!1 &377045073
 GameObject:
   m_ObjectHideFlags: 0
@@ -3992,6 +4154,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522228951}
   m_CullTransparentMesh: 0
+--- !u!4 &1540016482 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6859836145341320117, guid: b0bc946deb01c3045b36407e42ad8e2b, type: 3}
+  m_PrefabInstance: {fileID: 257277011}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1574201579
 GameObject:
   m_ObjectHideFlags: 0
