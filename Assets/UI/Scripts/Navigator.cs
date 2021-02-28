@@ -40,6 +40,13 @@ public class Navigator : MonoBehaviour
         FindObjectOfType<AudioManager>().Stop("Crowd");
     }
 
+    public void ToStartMenu()
+    {
+        SceneManager.LoadScene("StartMenu");
+        FindObjectOfType<AudioManager>().Stop("Crowd");
+        FindObjectOfType<AudioManager>().Play("PotionDrop", 1f);
+    }
+
     public void SaveData()
     {
         GameManager manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();

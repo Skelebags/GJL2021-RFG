@@ -19,6 +19,6 @@ public class QuitMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        navigator.ToMap();
+        navigator.ToStartMenu();
     }
 }
