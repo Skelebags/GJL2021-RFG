@@ -180,6 +180,7 @@ public class IngredientGenerator : MonoBehaviour
         ingredient.tags.AddRange(typePart.tags);
 
         // Build the ingredients new sprite
+        Debug.Log(typePart.part_name);
         ingredient.sprite = CombineSprites(colourPart.sprite, descPart.sprite, typePart.sprite);
 
         // Combine the part flavour text
@@ -208,6 +209,7 @@ public class IngredientGenerator : MonoBehaviour
         Texture2D tex = new Texture2D(128, 128);
 
         // Assign that texture to an instance of the Type Part's texture (we do not want to edit the original)
+        Debug.Log(typeSprite.texture.name);
         tex = Instantiate(typeSprite.texture);
 
         // Loop through every pixel in the texture

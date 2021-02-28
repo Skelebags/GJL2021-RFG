@@ -33,7 +33,7 @@
       "cost": 5,
       "tags": [ "plant" ],
       "tier": 1,
-      "graphic": "Sprites/Blue_Graphic",
+      "graphic": "Sprites/Fibrous_Graphic",
       "desc": "A matted"
     },
     {
@@ -51,7 +51,7 @@
       "cost": 5,
       "tags": [ "plant", "meat" ],
       "tier": 1,
-      "graphic": "Sprites/Rust_Graphic",
+      "graphic": "Sprites/Blue_Graphic",
       "desc": "A damp"
     },
     {
@@ -87,7 +87,7 @@
       "cost": 5,
       "tags": [ "any", "toxic" ],
       "tier": 1,
-      "graphic": "Sprites/Rust_Graphic",
+      "graphic": "Sprites/Oozing_Graphic",
       "desc": "A slimy"
     },
     {
@@ -123,7 +123,7 @@
       "cost": 5,
       "tags": [ "mineral", "blessed" ],
       "tier": 1,
-      "graphic": "Sprites/Rust_Graphic",
+      "graphic": "Sprites/Shiny_Graphic",
       "desc": "A reflective"
     },
     {
@@ -141,7 +141,7 @@
       "cost": 10,
       "tags": [ "any" ],
       "tier": 2,
-      "graphic": "Sprites/Rust_Graphic",
+      "graphic": "Sprites/Shimmering_Graphic",
       "desc": "A glittering"
     },
     {
@@ -159,7 +159,7 @@
       "cost": 10,
       "tags": [ "any", "toxic", "toxic" ],
       "tier": 2,
-      "graphic": "Sprites/Rust_Graphic",
+      "graphic": "Sprites/Glowing_Graphic",
       "desc": "A glowing"
     },
     {
@@ -183,7 +183,7 @@
       "cost": 15,
       "tags": [ "plant", "meat" ],
       "tier": 3,
-      "graphic": "Sprites/Rust_Graphic",
+      "graphic": "Sprites/Bleached_Graphic",
       "desc": "The sun-bleached"
     },
     {
@@ -207,7 +207,7 @@
       "cost": 15,
       "tags": [ "any" ],
       "tier": 3,
-      "graphic": "Sprites/Rust_Graphic",
+      "graphic": "Sprites/Blackened_Graphic",
       "desc": "The stained"
     },
     {
@@ -243,7 +243,7 @@
       "cost": 5,
       "tags": [ "plant" ],
       "tier": 1,
-      "graphic": "Sprites/Ginger_Graphic",
+      "graphic": "Sprites/Onion_Graphic",
       "desc": " a common staple. Makes poor eyedrops."
     },
     {
@@ -261,7 +261,7 @@
       "cost": 5,
       "tags": [ "plant" ],
       "tier": 1,
-      "graphic": "Sprites/Ginger_Graphic",
+      "graphic": "Sprites/Garlic_Graphic",
       "desc": " a common flavouring. Repels vampires."
     },
     {
@@ -285,7 +285,7 @@
       "cost": 10,
       "tags": [ "plant" ],
       "tier": 2,
-      "graphic": "Sprites/Ginger_Graphic",
+      "graphic": "Sprites/Amaranth_Graphic",
       "desc": " a useful grain."
     },
     {
@@ -345,7 +345,7 @@
       "cost": 15,
       "tags": [ "plant", "meat", "toxic" ],
       "tier": 3,
-      "graphic": "Sprites/CaveSlime_Graphic",
+      "graphic": "Sprites/BlueSlime_Graphic",
       "desc": " an uncommon dungeon monster."
     },
     {
@@ -369,7 +369,7 @@
       "cost": 15,
       "tags": [ "plant" ],
       "tier": 3,
-      "graphic": "Sprites/CaveSlime_Graphic",
+      "graphic": "Sprites/Ginseng_Graphic",
       "desc": " a pleasant herbal remedy."
     },
     {
@@ -393,7 +393,7 @@
       "cost": 20,
       "tags": [ "plant", "blessed" ],
       "tier": 4,
-      "graphic": "Sprites/CaveSlime_Graphic",
+      "graphic": "Sprites/Moly_Graphic",
       "desc": " a legendary plant known for its healing powers."
     },
     {
@@ -411,7 +411,7 @@
       "cost": 20,
       "tags": [ "plant" ],
       "tier": 4,
-      "graphic": "Sprites/CaveSlime_Graphic",
+      "graphic": "Sprites/Mandrake_Graphic",
       "desc": " a notorious magical plant. Ear protection is strongly recommended."
     },
     {
@@ -429,7 +429,7 @@
       "cost": 5,
       "tags": [ "meat" ],
       "tier": 1,
-      "graphic": "Sprites/Toad_Graphic",
+      "graphic": "Sprites/Newt_Graphic",
       "desc": " a common salamander with useful regenerative abilities."
     },
     {
@@ -447,7 +447,7 @@
       "cost": 5,
       "tags": [ "meat" ],
       "tier": 1,
-      "graphic": "Sprites/CaveSlime_Graphic",
+      "graphic": "Sprites/Toad_Graphic",
       "desc": " a garden amphibian."
     },
     {
@@ -465,7 +465,7 @@
       "cost": 5,
       "tags": [ "meat" ],
       "tier": 1,
-      "graphic": "Sprites/CaveSlime_Graphic",
+      "graphic": "Sprites/Goat_Graphic",
       "desc": " a farm animal."
     },
     {
@@ -489,7 +489,7 @@
       "cost": 10,
       "tags": [ "meat", "toxic" ],
       "tier": 2,
-      "graphic": "Sprites/Human_Graphic",
+      "graphic": "Sprites/Zombie_Graphic",
       "desc": " an undead creature. Probably a hygiene hazard."
     },
     {
@@ -513,7 +513,7 @@
       "cost": 15,
       "tags": [ "meat", "blessed", "blessed" ],
       "tier": 3,
-      "graphic": "Sprites/CaveSlime_Graphic",
+      "graphic": "Sprites/Unicorn_Graphic",
       "desc": " a magical creature. Where did the butcher get this?"
     },
     {
@@ -543,7 +543,7 @@
       "cost": 20,
       "tags": [ "meat", "mineral" ],
       "tier": 4,
-      "graphic": "Sprites/CaveSlime_Graphic",
+      "graphic": "Sprites/Dragon_Graphic",
       "desc": " a powerful monster. Its diet of precious minerals turns its body rock hard."
     },
     {
@@ -573,7 +573,7 @@
       "cost": 20,
       "tags": [ "meat" ],
       "tier": 4,
-      "graphic": "Sprites/CaveSlime_Graphic",
+      "graphic": "Sprites/Fairy_Graphic",
       "desc": " a magical trickster. Produces unpredictable effects."
     },
     {
@@ -609,7 +609,7 @@
       "cost": 5,
       "tags": [ "mineral" ],
       "tier": 1,
-      "graphic": "Sprites/Copper_Graphic",
+      "graphic": "Sprites/Iron_Graphic",
       "desc": " a common building material."
     },
     {
@@ -627,7 +627,7 @@
       "cost": 5,
       "tags": [ "mineral", "toxic" ],
       "tier": 1,
-      "graphic": "Sprites/Copper_Graphic",
+      "graphic": "Sprites/Coal_Graphic",
       "desc": " a household fuel."
     },
     {
@@ -651,7 +651,7 @@
       "cost": 10,
       "tags": [ "mineral" ],
       "tier": 2,
-      "graphic": "Sprites/Copper_Graphic",
+      "graphic": "Sprites/Silver_Graphic",
       "desc": " a precious metal. Repels bacteria and werewolves."
     },
     {
@@ -675,7 +675,7 @@
       "cost": 10,
       "tags": [ "mineral" ],
       "tier": 2,
-      "graphic": "Sprites/Copper_Graphic",
+      "graphic": "Sprites/Gold_Graphic",
       "desc": " a precious metal. Commonly found in bank vaults and/or dragon hordes."
     },
     {
@@ -699,7 +699,7 @@
       "cost": 15,
       "tags": [ "mineral" ],
       "tier": 3,
-      "graphic": "Sprites/Copper_Graphic",
+      "graphic": "Sprites/Platinum_Graphic",
       "desc": " a very precious metal. Good for alchemy."
     },
     {
@@ -717,7 +717,7 @@
       "cost": 15,
       "tags": [ "mineral" ],
       "tier": 3,
-      "graphic": "Sprites/Copper_Graphic",
+      "graphic": "Sprites/Diamond_Graphic",
       "desc": " a precious gem."
     },
     {
@@ -741,7 +741,7 @@
       "cost": 20,
       "tags": [ "mineral" ],
       "tier": 4,
-      "graphic": "Sprites/Copper_Graphic",
+      "graphic": "Sprites/Mythril_Graphic",
       "desc": " a magical metal."
     },
     {
@@ -795,7 +795,7 @@
       "cost": 5,
       "tags": [ "plant", "meat" ],
       "tier": 1,
-      "graphic": "Sprites/Root_Graphic",
+      "graphic": "Sprites/Flesh_Graphic",
       "desc": " flesh of"
     },
     {
@@ -819,7 +819,7 @@
       "cost": 10,
       "tags": [ "plant", "meat" ],
       "tier": 2,
-      "graphic": "Sprites/Root_Graphic",
+      "graphic": "Sprites/Slice_Graphic",
       "desc": " slice of"
     },
     {
@@ -885,7 +885,7 @@
       "cost": 15,
       "tags": [ "any", "blessed" ],
       "tier": 3,
-      "graphic": "Sprites/Juice_Graphic",
+      "graphic": "Sprites/Extract_Graphic",
       "desc": " extract of"
     },
     {
@@ -903,7 +903,7 @@
       "cost": 20,
       "tags": [ "plant", "meat" ],
       "tier": 4,
-      "graphic": "Sprites/Leaf_Graphic",
+      "graphic": "Sprites/Skin_Graphic",
       "desc": " skin from"
     },
     {
@@ -939,7 +939,7 @@
       "cost": 5,
       "tags": [ "meat", "mineral" ],
       "tier": 1,
-      "graphic": "Sprites/Juice_Graphic",
+      "graphic": "Sprites/Chunk_Graphic",
       "desc": " chunk of"
     },
     {
@@ -969,7 +969,7 @@
       "cost": -10,
       "tags": [ "meat", "toxic" ],
       "tier": 1,
-      "graphic": "Sprites/Juice_Graphic",
+      "graphic": "Sprites/Toe_Graphic",
       "desc": " toe from"
     },
     {
@@ -999,7 +999,7 @@
       "cost": 15,
       "tags": [ "meat", "toxic" ],
       "tier": 3,
-      "graphic": "Sprites/Juice_Graphic",
+      "graphic": "Sprites/Eye_Graphic",
       "desc": " eye of"
     },
     {
@@ -1029,7 +1029,7 @@
       "cost": 20,
       "tags": [ "meat" ],
       "tier": 4,
-      "graphic": "Sprites/Juice_Graphic",
+      "graphic": "Sprites/Brain_Graphic",
       "desc": " brain of"
     },
     {
@@ -1047,7 +1047,7 @@
       "cost": 5,
       "tags": [ "mineral" ],
       "tier": 1,
-      "graphic": "Sprites/Dust_Graphic",
+      "graphic": "Sprites/Sliver_Graphic",
       "desc": " sliver of"
     },
     {
@@ -1065,7 +1065,7 @@
       "cost": 10,
       "tags": [ "mineral" ],
       "tier": 2,
-      "graphic": "Sprites/Dust_Graphic",
+      "graphic": "Sprites/Ingot_Graphic",
       "desc": " ingot forged from"
     },
     {
@@ -1083,7 +1083,7 @@
       "cost": 10,
       "tags": [ "mineral" ],
       "tier": 2,
-      "graphic": "Sprites/Dust_Graphic",
+      "graphic": "Sprites/Wire_Graphic",
       "desc": " wire extruded from"
     },
     {
@@ -1101,7 +1101,7 @@
       "cost": 20,
       "tags": [ "mineral" ],
       "tier": 4,
-      "graphic": "Sprites/Dust_Graphic",
+      "graphic": "Sprites/Alloy_Graphic",
       "desc": " alloy based on"
     },
     {
@@ -1119,7 +1119,7 @@
       "cost": 20,
       "tags": [ "mineral" ],
       "tier": 4,
-      "graphic": "Sprites/Dust_Graphic",
+      "graphic": "Sprites/Crystal_Graphic",
       "desc": " crystalline form of"
     }
   ]
