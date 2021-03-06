@@ -1253,7 +1253,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 2047177738}
+  m_TargetGraphic: {fileID: 243506044}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1945,7 +1945,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1429354399}
+  m_TargetGraphic: {fileID: 427929295}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -5895,7 +5895,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 2047177738}
+  m_TargetGraphic: {fileID: 1347460231}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -6819,7 +6819,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1429354399}
+  m_TargetGraphic: {fileID: 1442281517}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
